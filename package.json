@@ -1,0 +1,36 @@
+{
+  "name": "accountability-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Track what politicians say vs what they do",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "pipeline": "tsx pipeline/index.ts",
+    "pipeline:members": "tsx pipeline/sources/congress-members.ts",
+    "pipeline:votes": "tsx pipeline/sources/propublica-votes.ts",
+    "db:push": "turso db shell accountability-dashboard < database/schema.sql",
+    "db:studio": "turso db shell accountability-dashboard"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.5.0",
+    "next": "14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
