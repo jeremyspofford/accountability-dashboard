@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-slate-900 border border-slate-800 rounded-xl p-6;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-dem {
+    @apply bg-blue-900/50 text-blue-300 border border-blue-800;
+  }
+  
+  .badge-rep {
+    @apply bg-red-900/50 text-red-300 border border-red-800;
+  }
+  
+  .badge-ind {
+    @apply bg-purple-900/50 text-purple-300 border border-purple-800;
+  }
+}
