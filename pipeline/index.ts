@@ -68,6 +68,17 @@ async function runPipeline() {
     );
     console.log(`\nWrote ${outDir}/members.json`);
 
+    // Also copy to src/data for Next.js static import
+    const srcDataDir = "./src/data";
+    if (!fs.existsSync(srcDataDir)) {
+      fs.mkdirSync(srcDataDir, { recursive: true });
+    }
+    fs.writeFileSync(
+      `${srcDataDir}/members.json`,
+      JSON.stringify(transformedMembers, null, 2)
+    );
+    console.log(`Copied to ${srcDataDir}/members.json`);
+
   } catch (error) {
     console.error("\n❌ Pipeline failed:", error);
     process.exit(1);

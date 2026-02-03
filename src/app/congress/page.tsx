@@ -1,54 +1,61 @@
-import { getMockMembers } from "@/lib/mock-data";
+import Link from "next/link";
+import { getMembers, getPartyBreakdown, getStates } from "@/lib/data";
 
 export default function CongressPage() {
-  const members = getMockMembers();
+  const members = getMembers();
+  const stats = getPartyBreakdown();
+  const states = getStates();
   
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-bold">Congress Members</h1>
           <p className="text-slate-400 mt-2">
-            All 535 members of the 118th United States Congress
+            All {stats.total} members of the 119th United States Congress
           </p>
         </div>
         
         {/* Filters */}
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           <select className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white">
             <option value="">All Chambers</option>
-            <option value="house">House</option>
-            <option value="senate">Senate</option>
+            <option value="house">House ({stats.house})</option>
+            <option value="senate">Senate ({stats.senate})</option>
           </select>
           <select className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white">
             <option value="">All Parties</option>
-            <option value="D">Democrat</option>
-            <option value="R">Republican</option>
-            <option value="I">Independent</option>
+            <option value="D">Democrat ({stats.democrats})</option>
+            <option value="R">Republican ({stats.republicans})</option>
+            <option value="I">Independent ({stats.independents})</option>
           </select>
           <select className="bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-white">
             <option value="">All States</option>
-            {/* TODO: Add state options */}
+            {states.map(state => (
+              <option key={state.abbrev} value={state.abbrev}>
+                {state.name} ({state.count})
+              </option>
+            ))}
           </select>
         </div>
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <div className="card py-4">
-          <div className="text-2xl font-bold text-center">535</div>
+          <div className="text-2xl font-bold text-center">{stats.total}</div>
           <div className="text-slate-400 text-sm text-center">Total Members</div>
         </div>
         <div className="card py-4">
-          <div className="text-2xl font-bold text-center text-blue-400">212</div>
+          <div className="text-2xl font-bold text-center text-blue-400">{stats.democrats}</div>
           <div className="text-slate-400 text-sm text-center">Democrats</div>
         </div>
         <div className="card py-4">
-          <div className="text-2xl font-bold text-center text-red-400">220</div>
+          <div className="text-2xl font-bold text-center text-red-400">{stats.republicans}</div>
           <div className="text-slate-400 text-sm text-center">Republicans</div>
         </div>
         <div className="card py-4">
-          <div className="text-2xl font-bold text-center text-purple-400">3</div>
+          <div className="text-2xl font-bold text-center text-purple-400">{stats.independents}</div>
           <div className="text-slate-400 text-sm text-center">Independents</div>
         </div>
       </div>
@@ -56,20 +63,28 @@ export default function CongressPage() {
       {/* Members Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {members.map((member) => (
-          <a
+          <Link
             key={member.bioguide_id}
             href={`/rep/${member.bioguide_id}`}
-            className="card hover:border-slate-700 transition group"
+            className="card hover:border-slate-600 transition group"
           >
             <div className="flex gap-4">
-              <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center text-2xl">
-                {member.party === "D" ? "🔵" : member.party === "R" ? "🔴" : "🟣"}
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold group-hover:text-blue-400 transition">
+              {member.photo_url ? (
+                <img 
+                  src={member.photo_url} 
+                  alt={member.full_name}
+                  className="w-16 h-16 rounded-full object-cover bg-slate-800"
+                />
+              ) : (
+                <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center text-2xl">
+                  {member.party === "D" ? "🔵" : member.party === "R" ? "🔴" : "🟣"}
+                </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold group-hover:text-blue-400 transition truncate">
                   {member.full_name}
                 </h3>
-                <div className="flex items-center gap-2 mt-1">
+                <div className="flex flex-wrap items-center gap-2 mt-1">
                   <span className={`badge ${member.party === "D" ? "badge-dem" : member.party === "R" ? "badge-rep" : "badge-ind"}`}>
                     {member.party === "D" ? "Democrat" : member.party === "R" ? "Republican" : "Independent"}
                   </span>
@@ -95,7 +110,7 @@ export default function CongressPage() {
                 <div className="text-xs text-slate-500">Bills</div>
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
