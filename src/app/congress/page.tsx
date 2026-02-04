@@ -1,19 +1,34 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { getMembers, getPartyBreakdown, getStates, Member } from "@/lib/data";
 
-export default function CongressPage() {
+function CongressContent() {
+  const searchParams = useSearchParams();
   const allMembers = getMembers();
   const stats = getPartyBreakdown();
   const states = getStates();
   
-  // Filter state
+  // Filter state - initialize from URL params
   const [chamber, setChamber] = useState<string>("");
   const [party, setParty] = useState<string>("");
   const [state, setState] = useState<string>("");
   const [search, setSearch] = useState<string>("");
+  
+  // Read URL params on mount
+  useEffect(() => {
+    const urlState = searchParams.get("state");
+    const urlSearch = searchParams.get("search");
+    const urlParty = searchParams.get("party");
+    const urlChamber = searchParams.get("chamber");
+    
+    if (urlState) setState(urlState.toUpperCase());
+    if (urlSearch) setSearch(urlSearch);
+    if (urlParty) setParty(urlParty);
+    if (urlChamber) setChamber(urlChamber);
+  }, [searchParams]);
   
   // Filter members
   const filteredMembers = useMemo(() => {
@@ -188,5 +203,13 @@ export default function CongressPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function CongressPage() {
+  return (
+    <Suspense fallback={<div className="max-w-7xl mx-auto px-4 py-12 text-center text-slate-400">Loading...</div>}>
+      <CongressContent />
+    </Suspense>
   );
 }
