@@ -1,6 +1,7 @@
 import { getMember, getMembers } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import VotingCharts from "@/components/VotingCharts";
 
 export function generateStaticParams() {
   return getMembers().map((member) => ({
@@ -92,13 +93,8 @@ export default function RepPage({ params }: { params: { id: string } }) {
       <div className="grid md:grid-cols-2 gap-6">
         {/* Voting Record */}
         <div className="card">
-          <h2 className="text-xl font-semibold mb-4">Recent Votes</h2>
-          <div className="text-slate-400 text-sm py-8 text-center">
-            Voting data coming soon...
-            <p className="text-xs text-slate-500 mt-2">
-              Will include votes from Congress.gov API
-            </p>
-          </div>
+          <h2 className="text-xl font-semibold mb-4">Voting Record</h2>
+          <VotingCharts member={member} />
         </div>
 
         {/* Top Donors */}
