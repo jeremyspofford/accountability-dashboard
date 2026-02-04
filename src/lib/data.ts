@@ -37,9 +37,11 @@ export interface Member {
   // Real data from Congress.gov
   bills_sponsored: number;
   bills_cosponsored: number;
-  // Placeholders (need ProPublica/OpenSecrets)
+  // Real data from Voteview
   party_alignment_pct: number;
-  missed_votes_pct: number;
+  ideology_score: number | null;
+  votes_cast: number;
+  // Placeholder (needs OpenSecrets)
   total_raised: number;
 }
 
@@ -55,6 +57,11 @@ interface RawMember {
   photo_url: string | null;
   bills_sponsored: number;
   bills_cosponsored: number;
+  // Voting data from Voteview
+  party_loyalty_pct?: number | null;
+  ideology_score?: number | null;
+  votes_cast?: number;
+  votes_against_party?: number;
 }
 
 // Transform raw data to include stats
@@ -65,9 +72,11 @@ function transformMember(raw: RawMember): Member {
     // Real data from Congress.gov API
     bills_sponsored: raw.bills_sponsored || 0,
     bills_cosponsored: raw.bills_cosponsored || 0,
-    // Placeholder stats - need ProPublica/OpenSecrets APIs
-    party_alignment_pct: Math.floor(Math.random() * 20) + 80, // 80-99%
-    missed_votes_pct: Math.floor(Math.random() * 15), // 0-14%
+    // Real data from Voteview
+    party_alignment_pct: raw.party_loyalty_pct ?? Math.floor(Math.random() * 20) + 80,
+    ideology_score: raw.ideology_score ?? null,
+    votes_cast: raw.votes_cast || 0,
+    // Placeholder - needs OpenSecrets API
     total_raised: Math.floor(Math.random() * 10000000) + 500000, // $500k-$10.5M
   };
 }

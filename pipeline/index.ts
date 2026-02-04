@@ -12,6 +12,7 @@
  */
 
 import { fetchAllMembers, transformMember, enrichMembersWithBills } from "./sources/congress-members.js";
+import { fetchVoteviewData, calculatePartyLoyalty, VoteviewMember } from "./sources/voteview.js";
 
 async function runPipeline() {
   console.log("=".repeat(60));
@@ -35,14 +36,23 @@ async function runPipeline() {
     console.log("Sample transformed member:");
     console.log(JSON.stringify(transformedMembers[0], null, 2));
 
-    // Step 2: Fetch votes (requires API key)
-    console.log("\n[2/4] Fetching voting records...");
-    if (process.env.PROPUBLICA_API_KEY) {
-      // TODO: Implement vote fetching
-      console.log("⏳ Vote fetching not yet implemented");
-    } else {
-      console.log("⚠️  Skipping votes (PROPUBLICA_API_KEY not set)");
+    // Step 2: Fetch voting data from Voteview
+    console.log("\n[2/4] Fetching voting records from Voteview...");
+    const voteviewData = await fetchVoteviewData();
+    
+    // Merge Voteview data into transformed members
+    for (const member of transformedMembers) {
+      const vv = voteviewData.get(member.bioguide_id);
+      if (vv) {
+        member.party_loyalty_pct = calculatePartyLoyalty(vv);
+        member.ideology_score = vv.nominate_dim1;
+        member.votes_cast = vv.nominate_number_of_votes || 0;
+        member.votes_against_party = vv.nominate_number_of_errors || 0;
+      }
     }
+    
+    const membersWithVotes = transformedMembers.filter(m => m.party_loyalty_pct !== undefined).length;
+    console.log(`✓ Merged voting data for ${membersWithVotes}/${transformedMembers.length} members`);
 
     // Step 3: Fetch campaign finance
     console.log("\n[3/4] Fetching campaign finance data...");

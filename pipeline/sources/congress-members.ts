@@ -58,6 +58,11 @@ export interface TransformedMember {
   photo_url: string | null;
   bills_sponsored: number;
   bills_cosponsored: number;
+  // Voting data (from Voteview, added in pipeline)
+  party_loyalty_pct?: number | null;
+  ideology_score?: number | null;
+  votes_cast?: number;
+  votes_against_party?: number;
 }
 
 async function fetchCurrentMembers(): Promise<CongressMemberRaw[]> {

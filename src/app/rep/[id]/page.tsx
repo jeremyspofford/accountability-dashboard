@@ -62,10 +62,10 @@ export default function RepPage({ params }: { params: { id: string } }) {
           </div>
         </div>
         <div className="card text-center">
-          <div className="text-3xl font-bold text-yellow-400">{member.missed_votes_pct}%</div>
-          <div className="text-slate-400 mt-1">Missed Votes</div>
+          <div className="text-3xl font-bold text-yellow-400">{member.votes_cast}</div>
+          <div className="text-slate-400 mt-1">Votes Cast</div>
           <div className="text-xs text-slate-500 mt-1">
-            {member.missed_votes_pct < 5 ? "Better than average" : "Above average"}
+            119th Congress roll calls
           </div>
         </div>
         <div className="card text-center">
@@ -81,10 +81,10 @@ export default function RepPage({ params }: { params: { id: string } }) {
       </div>
 
       {/* Data Notice */}
-      <div className="bg-yellow-900/20 border border-yellow-800/50 rounded-lg p-4 mb-8">
-        <p className="text-yellow-300 text-sm">
-          ⚠️ <strong>Note:</strong> Voting records and campaign finance data are placeholder values. 
-          Real data integration coming soon.
+      <div className="bg-blue-900/20 border border-blue-800/50 rounded-lg p-4 mb-8">
+        <p className="text-blue-300 text-sm">
+          ℹ️ <strong>Data sources:</strong> Member info & bills from Congress.gov API. 
+          Party alignment & votes from Voteview. Campaign finance is placeholder (OpenSecrets coming soon).
         </p>
       </div>
 

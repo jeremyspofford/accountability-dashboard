@@ -102,8 +102,8 @@ export default function CongressPage() {
                 <div className="text-xs text-slate-500">Party Align</div>
               </div>
               <div className="text-center">
-                <div className="text-lg font-semibold text-yellow-400">{member.missed_votes_pct}%</div>
-                <div className="text-xs text-slate-500">Missed Votes</div>
+                <div className="text-lg font-semibold text-yellow-400">{member.votes_cast}</div>
+                <div className="text-xs text-slate-500">Votes Cast</div>
               </div>
               <div className="text-center">
                 <div className="text-lg font-semibold text-blue-400">{member.bills_sponsored}</div>
