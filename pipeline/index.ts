@@ -11,7 +11,7 @@
  * 5. Writes everything to the database
  */
 
-import { fetchAllMembers, transformMember } from "./sources/congress-members.js";
+import { fetchAllMembers, transformMember, enrichMembersWithBills } from "./sources/congress-members.js";
 
 async function runPipeline() {
   console.log("=".repeat(60));
@@ -23,8 +23,13 @@ async function runPipeline() {
     // Step 1: Fetch members
     console.log("\n[1/4] Fetching Congress members...");
     const members = await fetchAllMembers();
-    const transformedMembers = members.map(transformMember);
-    console.log(`✓ Got ${transformedMembers.length} members\n`);
+    console.log(`✓ Got ${members.length} members\n`);
+    
+    // Step 1b: Enrich with bills data
+    console.log("[1b/4] Enriching with bills data...");
+    const enrichedMembers = await enrichMembersWithBills(members);
+    const transformedMembers = enrichedMembers.map(transformMember);
+    console.log(`✓ Transformed ${transformedMembers.length} members\n`);
 
     // Log sample data
     console.log("Sample transformed member:");

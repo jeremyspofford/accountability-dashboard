@@ -34,10 +34,12 @@ export interface Member {
   district: number | null;
   chamber: "house" | "senate";
   photo_url: string | null;
-  // Stats (placeholders until we have voting data)
+  // Real data from Congress.gov
+  bills_sponsored: number;
+  bills_cosponsored: number;
+  // Placeholders (need ProPublica/OpenSecrets)
   party_alignment_pct: number;
   missed_votes_pct: number;
-  bills_sponsored: number;
   total_raised: number;
 }
 
@@ -51,17 +53,21 @@ interface RawMember {
   district: number | null;
   chamber: "house" | "senate";
   photo_url: string | null;
+  bills_sponsored: number;
+  bills_cosponsored: number;
 }
 
-// Transform raw data to include stats (placeholder values for now)
+// Transform raw data to include stats
 function transformMember(raw: RawMember): Member {
   return {
     ...raw,
     state: STATE_ABBREV[raw.state] || raw.state,
-    // Placeholder stats - will be replaced with real data
+    // Real data from Congress.gov API
+    bills_sponsored: raw.bills_sponsored || 0,
+    bills_cosponsored: raw.bills_cosponsored || 0,
+    // Placeholder stats - need ProPublica/OpenSecrets APIs
     party_alignment_pct: Math.floor(Math.random() * 20) + 80, // 80-99%
     missed_votes_pct: Math.floor(Math.random() * 15), // 0-14%
-    bills_sponsored: Math.floor(Math.random() * 40) + 5, // 5-44
     total_raised: Math.floor(Math.random() * 10000000) + 500000, // $500k-$10.5M
   };
 }

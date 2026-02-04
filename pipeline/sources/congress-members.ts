@@ -33,6 +33,9 @@ interface CongressMemberRaw {
     }>;
   };
   url: string;
+  // Enriched data from member detail endpoint
+  sponsoredLegislation?: { count: number };
+  cosponsoredLegislation?: { count: number };
 }
 
 interface CongressApiResponse {
@@ -53,6 +56,8 @@ export interface TransformedMember {
   district: number | null;
   chamber: "house" | "senate";
   photo_url: string | null;
+  bills_sponsored: number;
+  bills_cosponsored: number;
 }
 
 async function fetchCurrentMembers(): Promise<CongressMemberRaw[]> {
@@ -95,6 +100,65 @@ export async function fetchAllMembers(): Promise<CongressMemberRaw[]> {
   return fetchCurrentMembers();
 }
 
+// Fetch detailed info for a single member (includes bills counts)
+async function fetchMemberDetail(bioguideId: string): Promise<{
+  sponsoredCount: number;
+  cosponsoredCount: number;
+} | null> {
+  try {
+    const url = `${CONGRESS_API_BASE}/member/${bioguideId}?format=json&api_key=${API_KEY}`;
+    const response = await fetch(url);
+    if (!response.ok) return null;
+    
+    const data = await response.json();
+    return {
+      sponsoredCount: data.member?.sponsoredLegislation?.count || 0,
+      cosponsoredCount: data.member?.cosponsoredLegislation?.count || 0,
+    };
+  } catch {
+    return null;
+  }
+}
+
+// Enrich members with bills data (batched to respect rate limits)
+export async function enrichMembersWithBills(
+  members: CongressMemberRaw[],
+  batchSize = 10,
+  delayMs = 500
+): Promise<CongressMemberRaw[]> {
+  console.log(`Enriching ${members.length} members with bills data...`);
+  
+  const enriched = [...members];
+  
+  for (let i = 0; i < members.length; i += batchSize) {
+    const batch = members.slice(i, i + batchSize);
+    
+    const details = await Promise.all(
+      batch.map(m => fetchMemberDetail(m.bioguideId))
+    );
+    
+    for (let j = 0; j < batch.length; j++) {
+      if (details[j]) {
+        enriched[i + j] = {
+          ...enriched[i + j],
+          sponsoredLegislation: { count: details[j]!.sponsoredCount },
+          cosponsoredLegislation: { count: details[j]!.cosponsoredCount },
+        };
+      }
+    }
+    
+    const progress = Math.min(i + batchSize, members.length);
+    process.stdout.write(`\r  Enriched ${progress}/${members.length} members...`);
+    
+    if (i + batchSize < members.length) {
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+    }
+  }
+  
+  console.log('\n✓ Bills data enrichment complete');
+  return enriched;
+}
+
 // Transform API response to our schema format
 export function transformMember(member: CongressMemberRaw): TransformedMember {
   // Parse name (API gives "LastName, FirstName MiddleName")
@@ -124,6 +188,9 @@ export function transformMember(member: CongressMemberRaw): TransformedMember {
     district: member.district || null,
     chamber,
     photo_url: member.depiction?.imageUrl || null,
+    // Real data from API (or 0 if not enriched)
+    bills_sponsored: member.sponsoredLegislation?.count || 0,
+    bills_cosponsored: member.cosponsoredLegislation?.count || 0,
   };
 }
 
