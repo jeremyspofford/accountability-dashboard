@@ -13,6 +13,7 @@
 
 import { fetchAllMembers, transformMember, enrichMembersWithBills } from "./sources/congress-members.js";
 import { fetchVoteviewData, calculatePartyLoyalty, VoteviewMember } from "./sources/voteview.js";
+import { enrichMembersWithFinance } from "./sources/fec.js";
 
 async function runPipeline() {
   console.log("=".repeat(60));
@@ -54,9 +55,35 @@ async function runPipeline() {
     const membersWithVotes = transformedMembers.filter(m => m.party_loyalty_pct !== undefined).length;
     console.log(`✓ Merged voting data for ${membersWithVotes}/${transformedMembers.length} members`);
 
-    // Step 3: Fetch campaign finance
-    console.log("\n[3/4] Fetching campaign finance data...");
-    console.log("⏳ Campaign finance not yet implemented");
+    // Step 3: Fetch campaign finance from FEC
+    console.log("\n[3/4] Fetching campaign finance from FEC...");
+    if (process.env.FEC_API_KEY && process.env.FEC_API_KEY !== 'DEMO_KEY') {
+      // Only run with real API key (DEMO_KEY is too slow for 538 members)
+      const financeData = await enrichMembersWithFinance(
+        transformedMembers.map(m => ({
+          full_name: m.full_name,
+          state: m.state,
+          chamber: m.chamber,
+          district: m.district,
+        })),
+        10, // batch size
+        500 // delay between batches
+      );
+      
+      // Merge finance data
+      for (const member of transformedMembers) {
+        const finance = financeData.get(member.full_name);
+        if (finance) {
+          member.total_raised = finance.receipts;
+          member.total_spent = finance.disbursements;
+          member.cash_on_hand = finance.cashOnHand;
+        }
+      }
+      
+      console.log(`✓ Merged finance data for ${financeData.size} members`);
+    } else {
+      console.log("⚠️  Skipping FEC (set FEC_API_KEY for real data, DEMO_KEY is too slow)");
+    }
 
     // Step 4: Compute stats
     console.log("\n[4/4] Computing aggregate stats...");

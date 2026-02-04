@@ -63,6 +63,10 @@ export interface TransformedMember {
   ideology_score?: number | null;
   votes_cast?: number;
   votes_against_party?: number;
+  // Finance data (from FEC, added in pipeline)
+  total_raised?: number;
+  total_spent?: number;
+  cash_on_hand?: number;
 }
 
 async function fetchCurrentMembers(): Promise<CongressMemberRaw[]> {
