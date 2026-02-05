@@ -118,7 +118,7 @@ export async function enrichMemberWithFECData(
         total_raised: fecData.financials.total_receipts,
         donor_breakdown: donorBreakdown,
       },
-      trading_stats,
+      tradingStats,
       corruption_factors: corruptionFactors,
     };
   } catch (error) {
