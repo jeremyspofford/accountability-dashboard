@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { getMembers, getPartyBreakdown, getStates, Member } from "@/lib/data";
-import GradeBadge from "@/components/GradeBadge";
+import { getMembers, getPartyBreakdown, getStates } from "@/lib/data";
+import type { Member } from "@/lib/types";
 
 function CongressContent() {
   const searchParams = useSearchParams();
@@ -12,12 +12,11 @@ function CongressContent() {
   const stats = getPartyBreakdown();
   const states = getStates();
   
-  // Filter state - initialize from URL params
+  // Filter state
   const [chamber, setChamber] = useState<string>("");
   const [party, setParty] = useState<string>("");
   const [state, setState] = useState<string>("");
   const [search, setSearch] = useState<string>("");
-  const [grade, setGrade] = useState<string>("");
   
   // Read URL params on mount
   useEffect(() => {
@@ -25,13 +24,11 @@ function CongressContent() {
     const urlSearch = searchParams.get("search");
     const urlParty = searchParams.get("party");
     const urlChamber = searchParams.get("chamber");
-    const urlGrade = searchParams.get("grade");
     
     if (urlState) setState(urlState.toUpperCase());
     if (urlSearch) setSearch(urlSearch);
     if (urlParty) setParty(urlParty);
     if (urlChamber) setChamber(urlChamber);
-    if (urlGrade) setGrade(urlGrade);
   }, [searchParams]);
   
   // Filter members
@@ -40,7 +37,6 @@ function CongressContent() {
       if (chamber && m.chamber !== chamber) return false;
       if (party && m.party !== party) return false;
       if (state && m.state !== state) return false;
-      if (grade && m.corruption_grade !== grade) return false;
       if (search) {
         const q = search.toLowerCase();
         if (!m.full_name.toLowerCase().includes(q) && 
@@ -48,7 +44,7 @@ function CongressContent() {
       }
       return true;
     });
-  }, [allMembers, chamber, party, state, search, grade]);
+  }, [allMembers, chamber, party, state, search]);
   
   // Dynamic stats for filtered view
   const filteredStats = useMemo(() => ({
@@ -58,7 +54,7 @@ function CongressContent() {
     independents: filteredMembers.filter(m => m.party === "I").length,
   }), [filteredMembers]);
   
-  const isFiltered = chamber || party || state || search || grade;
+  const isFiltered = chamber || party || state || search;
   
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 space-y-8">
@@ -75,7 +71,7 @@ function CongressContent() {
           
           {isFiltered && (
             <button 
-              onClick={() => { setChamber(""); setParty(""); setState(""); setSearch(""); setGrade(""); }}
+              onClick={() => { setChamber(""); setParty(""); setState(""); setSearch(""); }}
               className="text-sm text-blue-600 hover:text-blue-700 font-medium"
             >
               Clear filters ✕
@@ -91,20 +87,8 @@ function CongressContent() {
               placeholder="Search by name..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full sm:flex-1 sm:min-w-[180px] px-4 py-3 border border-slate-300 rounded-lg text-base leading-relaxed focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition min-h-[44px]"
+              className="w-full sm:flex-1 sm:min-w-[200px] px-4 py-3 border border-slate-300 rounded-lg text-base leading-relaxed focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition min-h-[44px]"
             />
-            <select 
-              value={grade}
-              onChange={(e) => setGrade(e.target.value)}
-              className="w-full sm:w-auto px-4 py-3 border border-slate-300 rounded-lg bg-white text-slate-700 font-medium text-base leading-relaxed focus:ring-2 focus:ring-blue-500 transition min-h-[44px]"
-            >
-              <option value="">All Grades</option>
-              <option value="A">Grade A - Transparent</option>
-              <option value="B">Grade B - Trustworthy</option>
-              <option value="C">Grade C - Concerning</option>
-              <option value="D">Grade D - Questionable</option>
-              <option value="F">Grade F - Corrupt</option>
-            </select>
             <select 
               value={chamber}
               onChange={(e) => setChamber(e.target.value)}
@@ -168,83 +152,75 @@ function CongressContent() {
           No members match your filters. Try adjusting your search.
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredMembers.map((member) => (
             <Link
               key={member.bioguide_id}
               href={`/rep/${member.bioguide_id}`}
-              className="bg-white border border-slate-200 rounded-xl p-8 transition-all duration-200 hover:shadow-xl hover:border-slate-300 cursor-pointer group"
+              className="bg-white border border-slate-200 rounded-xl p-6 transition-all duration-200 hover:shadow-lg hover:border-slate-300 cursor-pointer group"
             >
               {/* Header: Photo + Name + Party */}
-              <div className="flex items-start gap-5 mb-8">
+              <div className="flex items-start gap-4 mb-6">
                 {/* Photo */}
                 {member.photo_url ? (
                   <img 
                     src={member.photo_url} 
                     alt={member.full_name}
-                    className="w-20 h-20 rounded-full object-cover border-2 border-slate-200 flex-shrink-0"
+                    className="w-16 h-16 rounded-full object-cover border-2 border-slate-200 flex-shrink-0"
                   />
                 ) : (
-                  <div className="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center text-3xl flex-shrink-0 border-2 border-slate-200">
+                  <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center text-2xl flex-shrink-0 border-2 border-slate-200">
                     {member.party === "D" ? "🔵" : member.party === "R" ? "🔴" : "🟣"}
                   </div>
                 )}
                 
                 {/* Name & Info */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-2xl font-bold leading-tight text-slate-900 mb-2 group-hover:text-blue-600 transition truncate">
+                  <h3 className="text-xl font-bold leading-tight text-slate-900 mb-1 group-hover:text-blue-600 transition truncate">
                     {member.full_name}
                   </h3>
-                  <div className="flex items-center gap-2 text-base text-slate-600">
-                    <span className={`badge ${member.party === "D" ? "badge-dem" : member.party === "R" ? "badge-rep" : "badge-ind"}`}>
+                  <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
+                      member.party === "D" 
+                        ? "bg-blue-100 text-blue-700" 
+                        : member.party === "R" 
+                        ? "bg-red-100 text-red-700" 
+                        : "bg-purple-100 text-purple-700"
+                    }`}>
                       {member.party === "D" ? "D" : member.party === "R" ? "R" : "I"}
                     </span>
                     <span>
                       {member.state}{member.district ? `-${member.district}` : ""}
                     </span>
+                    <span className="text-slate-400">•</span>
+                    <span>{member.chamber === "house" ? "House" : "Senate"}</span>
                   </div>
                 </div>
+              </div>
+              
+              {/* Key Metrics */}
+              <div className="grid grid-cols-3 gap-3">
+                <div className="bg-slate-50 rounded-lg py-2 px-2 text-center">
+                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Bills</div>
+                  <div className="font-mono text-lg font-bold text-slate-900">{member.bills_sponsored}</div>
+                </div>
                 
-                {/* Grade Badge - Focal Point */}
-                <div className="flex-shrink-0">
-                  <GradeBadge 
-                    grade={member.corruption_grade} 
-                    score={member.corruption_score}
-                    size="lg"
-                  />
+                <div className="bg-slate-50 rounded-lg py-2 px-2 text-center">
+                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Votes</div>
+                  <div className="font-mono text-lg font-bold text-slate-900">{member.votes_cast}</div>
+                </div>
+                
+                <div className="bg-slate-50 rounded-lg py-2 px-2 text-center">
+                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">Cosponsor</div>
+                  <div className="font-mono text-lg font-bold text-slate-900">{member.bills_cosponsored}</div>
                 </div>
               </div>
               
-              {/* Key Metrics Grid */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-5 mb-6">
-                <div className="bg-slate-50 rounded-xl py-3 sm:py-4 px-2 sm:px-3 text-center">
-                  <div className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Party Align</div>
-                  <div className="font-mono text-xl sm:text-2xl font-bold text-slate-900 tabular-nums leading-tight">{member.party_alignment_pct}%</div>
-                </div>
-                
-                <div className="bg-slate-50 rounded-xl py-3 sm:py-4 px-2 sm:px-3 text-center">
-                  <div className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Votes Cast</div>
-                  <div className="font-mono text-xl sm:text-2xl font-bold text-slate-900 tabular-nums leading-tight">{member.votes_cast}</div>
-                </div>
-                
-                <div className="bg-slate-50 rounded-xl py-3 sm:py-4 px-2 sm:px-3 text-center">
-                  <div className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Bills</div>
-                  <div className="font-mono text-xl sm:text-2xl font-bold text-slate-900 tabular-nums leading-tight">{member.bills_sponsored}</div>
-                </div>
-              </div>
-              
-              {/* Quick Stats Bar */}
-              <div className="flex items-center gap-6 pt-6 border-t border-slate-100 text-base leading-relaxed">
-                <div className="flex items-center gap-2">
-                  <span className="text-slate-500">Chamber:</span>
-                  <span className="font-semibold text-slate-900">
-                    {member.chamber === "house" ? "House" : "Senate"}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-slate-500">Score:</span>
-                  <span className="font-semibold text-slate-900 tabular-nums">{member.corruption_score}/100</span>
-                </div>
+              {/* View Details CTA */}
+              <div className="mt-4 pt-4 border-t border-slate-100 text-center">
+                <span className="text-sm text-blue-600 font-semibold group-hover:text-blue-700">
+                  View Campaign Finance →
+                </span>
               </div>
             </Link>
           ))}
@@ -259,13 +235,10 @@ export default function CongressPage() {
     <Suspense fallback={
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="animate-pulse space-y-8">
-          {/* Header skeleton */}
           <div className="space-y-4">
             <div className="h-12 bg-slate-200 rounded-lg w-1/3"></div>
             <div className="h-6 bg-slate-200 rounded-lg w-2/3"></div>
           </div>
-          
-          {/* Filter skeleton */}
           <div className="bg-white rounded-xl border border-slate-200 p-6">
             <div className="flex gap-4">
               <div className="h-12 bg-slate-200 rounded-lg flex-1"></div>
@@ -273,8 +246,6 @@ export default function CongressPage() {
               <div className="h-12 bg-slate-200 rounded-lg w-32"></div>
             </div>
           </div>
-          
-          {/* Stats skeleton */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[1, 2, 3, 4].map(i => (
               <div key={i} className="bg-white rounded-xl border border-slate-200 p-8">
@@ -283,13 +254,11 @@ export default function CongressPage() {
               </div>
             ))}
           </div>
-          
-          {/* Cards skeleton */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3, 4, 5, 6].map(i => (
-              <div key={i} className="bg-white rounded-xl border border-slate-200 p-8">
+              <div key={i} className="bg-white rounded-xl border border-slate-200 p-6">
                 <div className="flex gap-4 mb-6">
-                  <div className="w-20 h-20 bg-slate-200 rounded-full"></div>
+                  <div className="w-16 h-16 bg-slate-200 rounded-full"></div>
                   <div className="flex-1 space-y-3">
                     <div className="h-6 bg-slate-200 rounded w-3/4"></div>
                     <div className="h-4 bg-slate-200 rounded w-1/2"></div>
@@ -297,7 +266,7 @@ export default function CongressPage() {
                 </div>
                 <div className="grid grid-cols-3 gap-3">
                   {[1, 2, 3].map(j => (
-                    <div key={j} className="h-16 bg-slate-100 rounded-xl"></div>
+                    <div key={j} className="h-14 bg-slate-100 rounded-lg"></div>
                   ))}
                 </div>
               </div>

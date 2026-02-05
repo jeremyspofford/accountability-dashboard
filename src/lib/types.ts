@@ -1,5 +1,6 @@
 /**
  * Core TypeScript interfaces for the accountability dashboard
+ * v2: Focused on transparency data, no arbitrary grades
  */
 
 // ==================== Member Data ====================
@@ -23,16 +24,152 @@ export interface Member {
   party_alignment_pct: number;
   ideology_score: number | null;
   votes_cast: number;
-  
-  // Financial data (OpenFEC)
-  total_raised: number;
-  
-  // Corruption scoring
-  corruption_grade: "A" | "B" | "C" | "D" | "F";
-  corruption_score: number;
 }
 
-// ==================== OpenFEC API ====================
+// ==================== Campaign Finance (OpenFEC) ====================
+
+export interface CampaignFinance {
+  candidate_id: string;
+  cycle: number;
+  
+  // Totals
+  total_raised: number;
+  total_spent: number;
+  cash_on_hand: number;
+  
+  // Source breakdown
+  individual_contributions: number;
+  pac_contributions: number;
+  party_contributions: number;
+  candidate_self_funding: number;
+  
+  // Individual donor breakdown
+  small_donors: number;        // ≤$200 (unitemized)
+  large_donors: number;        // >$200 (itemized)
+  
+  // Percentages for quick display
+  pac_percentage: number;
+  small_donor_percentage: number;
+  large_donor_percentage: number;
+  
+  // Top contributors
+  top_contributors: Contributor[];
+  
+  // Industry breakdown
+  top_industries: IndustryDonation[];
+}
+
+export interface Contributor {
+  name: string;
+  total: number;
+  count: number;
+  type: 'individual' | 'pac' | 'party' | 'committee';
+  employer?: string;
+  occupation?: string;
+}
+
+export interface IndustryDonation {
+  industry: string;
+  total: number;
+  pac_amount: number;
+  individual_amount: number;
+}
+
+// ==================== Red Flags (Transparency Indicators) ====================
+
+export interface RedFlag {
+  type: 'finance' | 'trading' | 'wealth' | 'voting';
+  severity: 'low' | 'medium' | 'high';
+  title: string;
+  description: string;
+  data?: Record<string, unknown>;
+}
+
+// ==================== Stock Trading ====================
+
+export interface StockTrade {
+  disclosure_date: string;
+  transaction_date: string;
+  ticker: string;
+  company_name: string;
+  asset_type: 'stock' | 'bond' | 'fund' | 'option' | 'other';
+  transaction_type: 'purchase' | 'sale' | 'exchange';
+  amount_range: string;  // e.g., "$15,001 - $50,000"
+  
+  // Parsed amounts
+  amount_min?: number;
+  amount_max?: number;
+}
+
+export interface TradingProfile {
+  total_trades: number;
+  total_value_min: number;
+  total_value_max: number;
+  
+  // Conflict of interest analysis
+  committee_related_trades: number;
+  days_to_disclosure_avg: number;
+  
+  // Flagged trades
+  flagged_trades: FlaggedTrade[];
+}
+
+export interface FlaggedTrade extends StockTrade {
+  flag_reason: string;
+  related_committee?: string;
+  related_legislation?: string;
+}
+
+// ==================== Wealth Tracking ====================
+
+export interface WealthSnapshot {
+  year: number;
+  net_worth_min: number;
+  net_worth_max: number;
+  net_worth_mid: number;  // Midpoint estimate
+  source: 'disclosure' | 'estimate';
+}
+
+export interface WealthProfile {
+  first_year_in_office: number;
+  snapshots: WealthSnapshot[];
+  
+  // Calculated metrics
+  total_change: number;
+  percent_change: number;
+  annual_growth_rate: number;
+  
+  // Context
+  median_constituent_income?: number;
+  salary_total?: number;  // Total salary earned over period
+}
+
+// ==================== Voting Record ====================
+
+export interface VoteCategory {
+  category: string;  // Healthcare, Environment, Defense, etc.
+  total_votes: number;
+  votes_for: number;
+  votes_against: number;
+  abstained: number;
+  
+  // Notable votes
+  key_votes: KeyVote[];
+}
+
+export interface KeyVote {
+  date: string;
+  bill_id: string;
+  bill_title: string;
+  vote: 'yea' | 'nay' | 'abstain' | 'not_voting';
+  bill_outcome: 'passed' | 'failed';
+  
+  // Context
+  description?: string;
+  who_benefits?: string[];  // ['corporations', 'consumers', etc.]
+}
+
+// ==================== API Types ====================
 
 export interface FECCandidate {
   candidate_id: string;
@@ -55,10 +192,8 @@ export interface FECFinancialSummary {
   party_contributions: number;
   candidate_contributions: number;
   other_receipts: number;
-  
-  // Detailed breakdown
-  individual_itemized: number;      // Donations >$200
-  individual_unitemized: number;    // Donations ≤$200 (small donors)
+  individual_itemized: number;
+  individual_unitemized: number;
 }
 
 export interface FECContributor {
@@ -71,17 +206,11 @@ export interface FECContributor {
 export interface FECDonorBreakdown {
   candidate_id: string;
   cycle: number;
-  
-  // Summary percentages
   pac_percentage: number;
   individual_percentage: number;
-  small_donor_percentage: number;  // ≤$200
-  large_donor_percentage: number;  // >$200
-  
-  // Top contributors
+  small_donor_percentage: number;
+  large_donor_percentage: number;
   top_contributors: FECContributor[];
-  
-  // Raw totals
   total_raised: number;
   pac_total: number;
   individual_total: number;
@@ -89,112 +218,13 @@ export interface FECDonorBreakdown {
   large_donor_total: number;
 }
 
-// ==================== Corruption Scoring ====================
-
-export interface CorruptionFactors {
-  // Financial transparency (0-100, higher is better)
-  financialTransparency: number;
-  
-  // Donor influence (0-100, lower is better - flipped in calculation)
-  donorInfluence: number;
-  
-  // Voting independence (0-100, higher is better)
-  votingIndependence: number;
-  
-  // Net worth growth rate (0-100, lower is better)
-  wealthGrowth: number;
-}
-
-export interface CorruptionScore {
-  grade: 'A' | 'B' | 'C' | 'D' | 'F';
-  score: number; // 0-100
-  factors: CorruptionFactors;
-  breakdown: {
-    financialTransparency: number;
-    donorInfluence: number;
-    votingIndependence: number;
-    wealthGrowth: number;
-  };
-}
-
-// ==================== Stock Trading ====================
-
-export interface StockTrade {
-  disclosure_date: string;
-  transaction_date: string;
-  ticker: string;
-  company_name: string;
-  asset_type: 'stock' | 'bond' | 'fund' | 'other';
-  transaction_type: 'purchase' | 'sale' | 'exchange';
-  amount_range: string;  // e.g., "$15,001 - $50,000"
-  
-  // Derived data
-  estimated_amount_min?: number;
-  estimated_amount_max?: number;
-}
-
-export interface StockTradeWithContext extends StockTrade {
-  // Committee memberships at time of trade
-  relevant_committees?: string[];
-  
-  // Days between trade and disclosure
-  days_to_disclosure?: number;
-  
-  // Stock performance after trade
-  price_change_30d?: number;
-  price_change_90d?: number;
-  
-  // Conflict of interest flags
-  conflict_flags?: string[];
-}
-
-// ==================== Congress.gov API ====================
-
-export interface CongressBill {
-  bill_id: string;
-  bill_type: string;
-  number: string;
-  title: string;
-  introduced_date: string;
-  latest_action: {
-    action_date: string;
-    text: string;
-  };
-  sponsors: {
-    bioguide_id: string;
-    full_name: string;
-    party: string;
-    state: string;
-  }[];
-  cosponsors_count: number;
-}
-
-export interface CongressVote {
-  roll_call: number;
-  chamber: 'house' | 'senate';
-  session: number;
-  vote_date: string;
-  question: string;
-  result: string;
-  total_yes: number;
-  total_no: number;
-  total_not_voting: number;
-}
-
-// ==================== Data Caching ====================
+// ==================== Cache & API Utilities ====================
 
 export interface CacheEntry<T> {
   data: T;
   timestamp: number;
   expires_at: number;
 }
-
-export interface CacheOptions {
-  ttl?: number;  // Time to live in milliseconds
-  force_refresh?: boolean;
-}
-
-// ==================== API Responses ====================
 
 export interface ApiResponse<T> {
   success: boolean;
@@ -214,8 +244,6 @@ export interface PaginatedResponse<T> {
   };
 }
 
-// ==================== Error Handling ====================
-
 export type ApiErrorCode = 
   | 'NETWORK_ERROR'
   | 'API_KEY_MISSING'
@@ -228,5 +256,5 @@ export interface ApiError {
   code: ApiErrorCode;
   message: string;
   details?: unknown;
-  retry_after?: number;  // For rate limits
+  retry_after?: number;
 }

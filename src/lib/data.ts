@@ -1,10 +1,14 @@
 /**
  * Data loading utilities for the accountability dashboard
- * Loads from pipeline JSON output (static at build time)
+ * v2: Real data only, no fake scores
  */
 
 import membersData from "../data/members.json";
-import { generatePlaceholderScore } from "./scoring";
+import financeData from "../data/finance.json";
+import type { Member, CampaignFinance } from "./types";
+
+// Re-export types for convenience
+export type { Member, CampaignFinance } from "./types";
 
 // State name to abbreviation mapping
 const STATE_ABBREV: Record<string, string> = {
@@ -25,30 +29,6 @@ const STATE_ABBREV: Record<string, string> = {
   "Virgin Islands": "VI", "Northern Mariana Islands": "MP",
 };
 
-export interface Member {
-  bioguide_id: string;
-  first_name: string;
-  last_name: string;
-  full_name: string;
-  party: "D" | "R" | "I" | string;
-  state: string;
-  district: number | null;
-  chamber: "house" | "senate";
-  photo_url: string | null;
-  // Real data from Congress.gov
-  bills_sponsored: number;
-  bills_cosponsored: number;
-  // Real data from Voteview
-  party_alignment_pct: number;
-  ideology_score: number | null;
-  votes_cast: number;
-  // Placeholder (needs OpenSecrets)
-  total_raised: number;
-  // Corruption score
-  corruption_grade: "A" | "B" | "C" | "D" | "F";
-  corruption_score: number;
-}
-
 interface RawMember {
   bioguide_id: string;
   first_name: string;
@@ -61,38 +41,34 @@ interface RawMember {
   photo_url: string | null;
   bills_sponsored: number;
   bills_cosponsored: number;
-  // Voting data from Voteview
   party_loyalty_pct?: number | null;
   ideology_score?: number | null;
   votes_cast?: number;
-  votes_against_party?: number;
 }
 
-// Transform raw data to include stats
+// Transform raw member data
 function transformMember(raw: RawMember): Member {
-  // Generate corruption score (placeholder until we have real FEC data)
-  const corruptionScore = generatePlaceholderScore(raw.bioguide_id);
-  
   return {
-    ...raw,
+    bioguide_id: raw.bioguide_id,
+    first_name: raw.first_name,
+    last_name: raw.last_name,
+    full_name: raw.full_name,
+    party: raw.party as Member["party"],
     state: STATE_ABBREV[raw.state] || raw.state,
-    // Real data from Congress.gov API
+    district: raw.district,
+    chamber: raw.chamber,
+    photo_url: raw.photo_url,
     bills_sponsored: raw.bills_sponsored || 0,
     bills_cosponsored: raw.bills_cosponsored || 0,
-    // Real data from Voteview
-    party_alignment_pct: raw.party_loyalty_pct ?? Math.floor(Math.random() * 20) + 80,
+    party_alignment_pct: raw.party_loyalty_pct ?? 0,
     ideology_score: raw.ideology_score ?? null,
     votes_cast: raw.votes_cast || 0,
-    // Placeholder - needs OpenSecrets API
-    total_raised: Math.floor(Math.random() * 10000000) + 500000, // $500k-$10.5M
-    // Corruption score
-    corruption_grade: corruptionScore.grade,
-    corruption_score: corruptionScore.score,
   };
 }
 
-// Cache transformed members
+// Cache transformed data
 let _members: Member[] | null = null;
+let _financeMap: Map<string, CampaignFinance> | null = null;
 
 export function getMembers(): Member[] {
   if (!_members) {
@@ -103,6 +79,22 @@ export function getMembers(): Member[] {
 
 export function getMember(bioguideId: string): Member | undefined {
   return getMembers().find(m => m.bioguide_id === bioguideId);
+}
+
+// Finance data access
+function getFinanceMap(): Map<string, CampaignFinance> {
+  if (!_financeMap) {
+    _financeMap = new Map();
+    const data = financeData as Record<string, CampaignFinance>;
+    for (const [bioguideId, finance] of Object.entries(data)) {
+      _financeMap.set(bioguideId, finance);
+    }
+  }
+  return _financeMap;
+}
+
+export function getMemberFinance(bioguideId: string): CampaignFinance | null {
+  return getFinanceMap().get(bioguideId) || null;
 }
 
 export function getMembersByState(stateAbbrev: string): Member[] {
@@ -125,7 +117,6 @@ export function getStates(): Array<{ abbrev: string; name: string; count: number
     stateCount.set(member.state, (stateCount.get(member.state) || 0) + 1);
   }
   
-  // Reverse lookup for state names
   const abbrevToName = Object.fromEntries(
     Object.entries(STATE_ABBREV).map(([name, abbrev]) => [abbrev, name])
   );
@@ -151,4 +142,21 @@ export function getPartyBreakdown() {
     house: members.filter(m => m.chamber === "house").length,
     senate: members.filter(m => m.chamber === "senate").length,
   };
+}
+
+// Get members sorted by total raised (for rankings)
+export function getMembersByFunding(): Array<Member & { finance: CampaignFinance | null }> {
+  const members = getMembers();
+  const financeMap = getFinanceMap();
+  
+  return members
+    .map(m => ({
+      ...m,
+      finance: financeMap.get(m.bioguide_id) || null,
+    }))
+    .sort((a, b) => {
+      const aRaised = a.finance?.total_raised || 0;
+      const bRaised = b.finance?.total_raised || 0;
+      return bRaised - aRaised;
+    });
 }
