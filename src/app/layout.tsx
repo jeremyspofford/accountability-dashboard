@@ -29,11 +29,11 @@ export default function RootLayout({
           </div>
         </nav>
         <main className="bg-slate-50">{children}</main>
-        <footer className="bg-white border-t border-slate-200 py-8 mt-16">
-          <div className="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-            <p className="font-medium text-slate-700">Built by Aria Labs</p>
-            <p className="mt-2">Data from Congress.gov, ProPublica, and OpenSecrets</p>
-            <p className="mt-1">Democracy shouldn't be paywalled. This is open source.</p>
+        <footer className="bg-white border-t border-slate-200 py-12 mt-24">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center text-slate-500 leading-relaxed space-y-3">
+            <p className="font-semibold text-slate-700 text-base">Built by Aria Labs</p>
+            <p className="text-base">Data from Congress.gov, ProPublica, and OpenSecrets</p>
+            <p className="text-base">Democracy shouldn't be paywalled. This is open source.</p>
           </div>
         </footer>
       </body>
