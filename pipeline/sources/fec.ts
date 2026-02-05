@@ -167,7 +167,7 @@ export async function fetchMemberFinanceDetailed(
     name: c.contributor_name || c.committee_name || 'Unknown',
     total: c.total || 0,
     count: c.count || 1,
-    type: c.committee_id ? 'pac' : 'individual' as const,
+    type: (c.committee_id ? 'pac' : 'individual') as 'individual' | 'pac' | 'party' | 'committee',
   }));
   
   return {
