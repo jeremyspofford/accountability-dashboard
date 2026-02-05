@@ -4,6 +4,7 @@
  */
 
 import membersData from "../data/members.json";
+import { generatePlaceholderScore } from "./scoring";
 
 // State name to abbreviation mapping
 const STATE_ABBREV: Record<string, string> = {
@@ -43,6 +44,9 @@ export interface Member {
   votes_cast: number;
   // Placeholder (needs OpenSecrets)
   total_raised: number;
+  // Corruption score
+  corruption_grade: "A" | "B" | "C" | "D" | "F";
+  corruption_score: number;
 }
 
 interface RawMember {
@@ -66,6 +70,9 @@ interface RawMember {
 
 // Transform raw data to include stats
 function transformMember(raw: RawMember): Member {
+  // Generate corruption score (placeholder until we have real FEC data)
+  const corruptionScore = generatePlaceholderScore(raw.bioguide_id);
+  
   return {
     ...raw,
     state: STATE_ABBREV[raw.state] || raw.state,
@@ -78,6 +85,9 @@ function transformMember(raw: RawMember): Member {
     votes_cast: raw.votes_cast || 0,
     // Placeholder - needs OpenSecrets API
     total_raised: Math.floor(Math.random() * 10000000) + 500000, // $500k-$10.5M
+    // Corruption score
+    corruption_grade: corruptionScore.grade,
+    corruption_score: corruptionScore.score,
   };
 }
 

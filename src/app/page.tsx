@@ -56,19 +56,22 @@ export default function Home() {
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Hero Section */}
       <section className="text-center py-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-400 to-red-400 bg-clip-text text-transparent">
-          Track What Politicians Say vs What They Do
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          Grade Your Representatives
         </h1>
-        <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-8">
-          No fake trust scores. No spin. Just voting records, donor money, and the facts
-          you need to hold your representatives accountable.
+        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-4">
+          Who do they <span className="font-semibold text-blue-400">really</span> represent? You or their donors?
+        </p>
+        <p className="text-base text-slate-400 max-w-2xl mx-auto mb-8">
+          Clear A-F grades based on voting records, campaign finance, and transparency.
+          No spin. Just facts.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/congress" className="btn-primary">
-            Explore Congress →
+          <Link href="/congress" className="btn-primary text-lg px-8 py-3">
+            View All Grades →
           </Link>
           <Link href="/about" className="text-slate-300 hover:text-white py-2 px-4 transition">
-            How It Works
+            How We Grade
           </Link>
         </div>
       </section>
@@ -131,34 +134,34 @@ export default function Home() {
 
       {/* What We Track */}
       <section className="py-12">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">What We Track</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">How We Grade Accountability</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           <div className="card">
-            <div className="text-2xl mb-3">🗳️</div>
-            <h3 className="font-semibold text-lg mb-2">Voting Records</h3>
+            <div className="text-3xl mb-3">💰</div>
+            <h3 className="font-semibold text-lg mb-2">Campaign Finance</h3>
             <p className="text-slate-400 text-sm">
-              Party alignment percentage and votes cast from Voteview DW-NOMINATE scores.
+              Who funds them? PACs, corporations, or small donors? OpenFEC data reveals the truth.
             </p>
           </div>
           <div className="card">
-            <div className="text-2xl mb-3">💰</div>
-            <h3 className="font-semibold text-lg mb-2">Money Trail</h3>
+            <div className="text-3xl mb-3">🗳️</div>
+            <h3 className="font-semibold text-lg mb-2">Voting Independence</h3>
             <p className="text-slate-400 text-sm">
-              Campaign finance data from the FEC — total raised, spent, and cash on hand.
+              Do they think for themselves or just vote party line? Voteview DW-NOMINATE analysis.
             </p>
           </div>
           <div className="card">
-            <div className="text-2xl mb-3">📜</div>
-            <h3 className="font-semibold text-lg mb-2">Bills & Legislation</h3>
+            <div className="text-3xl mb-3">📊</div>
+            <h3 className="font-semibold text-lg mb-2">Financial Transparency</h3>
             <p className="text-slate-400 text-sm">
-              Bills sponsored and cosponsored, pulled directly from Congress.gov API.
+              Do they disclose everything? Track net worth changes and compliance.
             </p>
           </div>
           <div className="card">
-            <div className="text-2xl mb-3">📊</div>
-            <h3 className="font-semibold text-lg mb-2">Real Photos</h3>
+            <div className="text-3xl mb-3">📈</div>
+            <h3 className="font-semibold text-lg mb-2">Wealth Growth</h3>
             <p className="text-slate-400 text-sm">
-              Official member photos and biographical data from Congress.gov.
+              Sudden wealth spikes raise red flags. We track suspicious patterns.
             </p>
           </div>
         </div>
