@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useState, useMemo, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { getMembers, getPartyBreakdown, getStates } from "@/lib/data";
+import { getMembers, getPartyBreakdown, getStates, getMemberFinance } from "@/lib/data";
+import { calculateGrade } from "@/lib/grading";
 import type { Member } from "@/lib/types";
 
 function CongressContent() {
@@ -153,13 +154,30 @@ function CongressContent() {
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredMembers.map((member) => (
+          {filteredMembers.map((member) => {
+            // Get finance data and calculate grade
+            const finance = getMemberFinance(member.bioguide_id);
+            const grade = calculateGrade({
+              pac_percentage: finance?.pac_percentage,
+              large_donor_percentage: finance?.large_donor_percentage,
+            });
+            
+            // Grade badge colors
+            const gradeColors = {
+              A: "bg-green-100 text-green-700 border-green-200",
+              B: "bg-blue-100 text-blue-700 border-blue-200",
+              C: "bg-yellow-100 text-yellow-700 border-yellow-200",
+              D: "bg-orange-100 text-orange-700 border-orange-200",
+              F: "bg-red-100 text-red-700 border-red-200",
+            };
+            
+            return (
             <Link
               key={member.bioguide_id}
               href={`/rep/${member.bioguide_id}`}
               className="bg-white border border-slate-200 rounded-xl p-6 transition-all duration-200 hover:shadow-lg hover:border-slate-300 cursor-pointer group"
             >
-              {/* Header: Photo + Name + Party */}
+              {/* Header: Photo + Name + Party + Grade */}
               <div className="flex items-start gap-4 mb-6">
                 {/* Photo */}
                 {member.photo_url ? (
@@ -196,6 +214,55 @@ function CongressContent() {
                     <span>{member.chamber === "house" ? "House" : "Senate"}</span>
                   </div>
                 </div>
+                
+                {/* Grade Badge */}
+                <div className={`flex-shrink-0 w-12 h-12 rounded-lg border-2 flex items-center justify-center ${gradeColors[grade.letter]}`}>
+                  <span className="text-2xl font-black">{grade.letter}</span>
+                </div>
+              </div>
+              
+              {/* Grade Breakdown Bars */}
+              <div className="mb-4 space-y-2">
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="w-16 text-slate-500 font-medium">Donors</span>
+                  <div className="flex-1 bg-slate-100 rounded-full h-2">
+                    <div 
+                      className="bg-amber-500 h-2 rounded-full transition-all" 
+                      style={{ width: `${grade.breakdown.donorScore}%` }}
+                    />
+                  </div>
+                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.donorScore)}</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="w-16 text-slate-500 font-medium">Transp.</span>
+                  <div className="flex-1 bg-slate-100 rounded-full h-2">
+                    <div 
+                      className="bg-emerald-500 h-2 rounded-full transition-all" 
+                      style={{ width: `${grade.breakdown.transparencyScore}%` }}
+                    />
+                  </div>
+                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.transparencyScore)}</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="w-16 text-slate-500 font-medium">Wealth</span>
+                  <div className="flex-1 bg-slate-100 rounded-full h-2">
+                    <div 
+                      className="bg-purple-500 h-2 rounded-full transition-all" 
+                      style={{ width: `${grade.breakdown.wealthScore}%` }}
+                    />
+                  </div>
+                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.wealthScore)}</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="w-16 text-slate-500 font-medium">Stocks</span>
+                  <div className="flex-1 bg-slate-100 rounded-full h-2">
+                    <div 
+                      className="bg-blue-500 h-2 rounded-full transition-all" 
+                      style={{ width: `${grade.breakdown.stockScore}%` }}
+                    />
+                  </div>
+                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.stockScore)}</span>
+                </div>
               </div>
               
               {/* Key Metrics */}
@@ -219,11 +286,12 @@ function CongressContent() {
               {/* View Details CTA */}
               <div className="mt-4 pt-4 border-t border-slate-100 text-center">
                 <span className="text-sm text-blue-600 font-semibold group-hover:text-blue-700">
-                  View Campaign Finance →
+                  View Details →
                 </span>
               </div>
             </Link>
-          ))}
+          );
+          })}
         </div>
       )}
     </div>
