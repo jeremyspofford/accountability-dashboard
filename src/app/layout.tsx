@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Rep Accountability Dashboard",
   description: "Grade your representatives based on voting records, campaign finance, and transparency",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
