@@ -1,0 +1,82 @@
+{
+  "vice_president": {
+    "id": "vance-2025",
+    "name": "J.D. Vance",
+    "party": "R",
+    "state": "Ohio",
+    "inaugurated": "2025-01-20",
+    "photo_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Senator-Elect_James_David_Vance_official_portrait%2C_117th_Congress_%28cropped%29.jpg",
+    "background": {
+      "summary": "Author, venture capitalist, and Marine veteran who served as U.S. Senator from Ohio before becoming Vice President.",
+      "highlights": [
+        "Author of bestselling memoir 'Hillbilly Elegy' (2016)",
+        "Served in U.S. Marine Corps, including deployment to Iraq",
+        "Worked in venture capital in Silicon Valley",
+        "U.S. Senator from Ohio (2023-2025)",
+        "Yale Law School graduate"
+      ]
+    },
+    "previous_role": {
+      "position": "U.S. Senator",
+      "state": "Ohio",
+      "term_start": "2023-01-03",
+      "term_end": "2025-01-20",
+      "party": "Republican"
+    }
+  },
+  "senate_record": {
+    "summary": "Served one term in the U.S. Senate representing Ohio, focusing on industrial policy, family policy, and tech regulation.",
+    "key_votes": [
+      {
+        "bill": "Infrastructure Investment and Jobs Act",
+        "date": "2021-11-15",
+        "vote": "No",
+        "note": "Before taking office - ran opposing the bill"
+      },
+      {
+        "bill": "Support for Ukraine Aid Package",
+        "date": "2024-04-23",
+        "vote": "No",
+        "note": "Opposed additional military aid to Ukraine"
+      },
+      {
+        "bill": "Federal Marriage Protection",
+        "date": "2024-02-13",
+        "vote": "No",
+        "note": "Voted against federal protection for same-sex marriage"
+      }
+    ],
+    "committees": [
+      "Committee on Commerce, Science, and Transportation",
+      "Committee on Banking, Housing, and Urban Affairs",
+      "Special Committee on Aging"
+    ]
+  },
+  "key_positions": [
+    {
+      "topic": "Trade Policy",
+      "stance": "Supports aggressive tariffs to protect American manufacturing and workers",
+      "quote": "We need to re-industrialize America and bring back the jobs that were shipped overseas."
+    },
+    {
+      "topic": "Tech Regulation",
+      "stance": "Advocates for breaking up Big Tech and reducing Section 230 protections",
+      "quote": "Big Tech has too much power over our speech, our data, and our democracy."
+    },
+    {
+      "topic": "Family Policy",
+      "stance": "Supports expanding child tax credits and family-friendly policies",
+      "quote": "We need to make it easier for American families to have and raise children."
+    },
+    {
+      "topic": "Foreign Policy",
+      "stance": "Skeptical of foreign interventions, opposes continued aid to Ukraine",
+      "quote": "America needs to focus on our own problems before policing the world."
+    },
+    {
+      "topic": "Immigration",
+      "stance": "Strong border security advocate, supports immigration restrictions",
+      "quote": "We must secure our border and put American workers first."
+    }
+  ]
+}
