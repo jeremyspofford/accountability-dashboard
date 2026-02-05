@@ -1,0 +1,153 @@
+{
+  "president": {
+    "id": "trump-47",
+    "name": "Donald J. Trump",
+    "party": "R",
+    "term_number": 47,
+    "term_start": "2025-01-20",
+    "photo_url": "https://www.whitehouse.gov/wp-content/uploads/2025/01/trump-official.jpg"
+  },
+  "promises": [
+    {
+      "id": "tariffs-china",
+      "text": "Impose 60% tariffs on all Chinese imports",
+      "category": "Trade",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-02-01",
+          "note": "Announced 10% tariffs on China, far below promised 60%",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "tariffs-universal",
+      "text": "Impose 10-20% universal tariffs on all imports",
+      "category": "Trade",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-02-01",
+          "note": "Initial tariffs announced, scope limited",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "border-wall",
+      "text": "Complete the border wall",
+      "category": "Immigration",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Signed executive order to resume wall construction",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "mass-deportation",
+      "text": "Largest deportation operation in American history",
+      "category": "Immigration",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Declared national emergency at border",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "end-ukraine-war",
+      "text": "End the war in Ukraine in 24 hours",
+      "category": "Foreign Policy",
+      "status": "broken",
+      "source_url": "https://www.cnn.com/2023/05/10/politics/trump-ukraine-war-24-hours",
+      "updates": [
+        {
+          "date": "2025-02-05",
+          "note": "War continues, no peace deal reached",
+          "source": "Current events"
+        }
+      ]
+    },
+    {
+      "id": "drain-swamp",
+      "text": "Drain the swamp - fire federal bureaucrats",
+      "category": "Government",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Executive order on Schedule F reclassification",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "lower-prices",
+      "text": "Bring down prices and end inflation on Day 1",
+      "category": "Economy",
+      "status": "broken",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-02-05",
+          "note": "Inflation remains; tariffs may increase prices",
+          "source": "Economic data"
+        }
+      ]
+    },
+    {
+      "id": "energy-dominance",
+      "text": "Unleash American energy - drill baby drill",
+      "category": "Energy",
+      "status": "kept",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Signed executive order expanding drilling on federal lands",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "free-speech",
+      "text": "Protect free speech and end censorship",
+      "category": "Civil Liberties",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "pardon-j6",
+      "text": "Pardon January 6th defendants",
+      "category": "Justice",
+      "status": "kept",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Pardoned approximately 1,500 January 6th defendants",
+          "source": "Presidential Pardons"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "kept": 2,
+    "broken": 2,
+    "in_progress": 6,
+    "compromised": 0
+  }
+}
