@@ -20,6 +20,9 @@ interface StockTradesProps {
   memberName: string;
 }
 
+// Warren Buffett's average annual return (Berkshire Hathaway benchmark)
+const BUFFETT_ANNUAL_RETURN = 19.8; // ~20% annual average
+
 export default function StockTradesSection({ trades, memberName }: StockTradesProps) {
   // Calculate summary stats
   const purchases = trades.filter(t => t.transaction === "Purchase");
@@ -34,6 +37,10 @@ export default function StockTradesSection({ trades, memberName }: StockTradesPr
   const avgExcessReturn = tradesWithReturn.length > 0
     ? tradesWithReturn.reduce((sum, t) => sum + (t.excessReturn || 0), 0) / tradesWithReturn.length
     : null;
+  
+  // Compare to Warren Buffett benchmark
+  const beatsBuffett = avgExcessReturn !== null && avgExcessReturn > BUFFETT_ANNUAL_RETURN;
+  const suspiciouslyGood = avgExcessReturn !== null && avgExcessReturn > BUFFETT_ANNUAL_RETURN * 1.5; // 50% better than Buffett
 
   const formatCurrency = (value: number) => {
     if (value >= 1000000) return `$${(value / 1000000).toFixed(1)}M`;
@@ -56,15 +63,61 @@ export default function StockTradesSection({ trades, memberName }: StockTradesPr
           📊 Stock Trades
         </h3>
         {avgExcessReturn !== null && (
-          <div className={`px-4 py-2 rounded-xl font-mono text-lg font-bold ${
-            avgExcessReturn > 0 
-              ? "bg-emerald-100 text-emerald-700" 
-              : "bg-red-100 text-red-700"
-          }`}>
-            {avgExcessReturn > 0 ? "+" : ""}{avgExcessReturn.toFixed(1)}% vs Market
+          <div className="flex items-center gap-3">
+            <div className={`px-4 py-2 rounded-xl font-mono text-lg font-bold ${
+              avgExcessReturn > 0 
+                ? "bg-emerald-100 text-emerald-700" 
+                : "bg-red-100 text-red-700"
+            }`}>
+              {avgExcessReturn > 0 ? "+" : ""}{avgExcessReturn.toFixed(1)}% vs Market
+            </div>
+            {beatsBuffett && (
+              <div 
+                title={suspiciouslyGood 
+                  ? "Significantly outperforming Warren Buffett — potential insider trading?" 
+                  : "Outperforming Warren Buffett's historical average"
+                }
+                className={`px-3 py-2 rounded-xl text-sm font-bold cursor-help ${
+                  suspiciouslyGood 
+                    ? "bg-amber-100 text-amber-800 border-2 border-amber-300" 
+                    : "bg-blue-100 text-blue-700"
+                }`}
+              >
+                {suspiciouslyGood ? "⚠️ " : ""}Beats Buffett
+              </div>
+            )}
           </div>
         )}
       </div>
+      
+      {/* Buffett Comparison Banner */}
+      {avgExcessReturn !== null && beatsBuffett && (
+        <div className={`mb-6 p-4 rounded-xl border-2 ${
+          suspiciouslyGood 
+            ? "bg-amber-50 border-amber-200" 
+            : "bg-blue-50 border-blue-200"
+        }`}>
+          <div className="flex items-start gap-3">
+            <div className="text-2xl">{suspiciouslyGood ? "🚨" : "📈"}</div>
+            <div>
+              <div className="font-bold text-slate-900">
+                {suspiciouslyGood 
+                  ? "Suspiciously High Returns" 
+                  : "Outperforming Professional Investors"}
+              </div>
+              <div className="text-sm text-slate-600 mt-1">
+                This representative's stock trades average <strong>+{avgExcessReturn.toFixed(1)}%</strong> vs market.
+                Warren Buffett — widely considered the greatest investor of all time — averages ~{BUFFETT_ANNUAL_RETURN}% annually.
+                {suspiciouslyGood && (
+                  <span className="block mt-2 text-amber-800 font-medium">
+                    Performance this high without insider information would be statistically remarkable.
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {trades.length === 0 ? (
         <div className="text-center py-12">

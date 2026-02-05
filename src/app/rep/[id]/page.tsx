@@ -108,10 +108,10 @@ export default function RepPage({ params }: { params: { id: string } }) {
                 {member.full_name}
                 {member.party_alignment_pct === 100 && (
                   <span 
-                    title="Rubber Stamp: Votes 100% with party line"
-                    className="text-3xl md:text-4xl opacity-70 hover:opacity-100 transition cursor-help"
+                    title="Rubber Stamp: Votes 100% with party — no independent judgment"
+                    className="inline-flex items-center justify-center w-12 h-12 bg-red-100 rounded-full border-3 border-red-300 text-red-700 font-black text-lg transform -rotate-12 cursor-help"
                   >
-                    🤖
+                    ✓
                   </span>
                 )}
               </h1>

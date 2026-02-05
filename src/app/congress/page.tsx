@@ -17,6 +17,7 @@ function CongressContent() {
   const [party, setParty] = useState<string>("");
   const [state, setState] = useState<string>("");
   const [search, setSearch] = useState<string>("");
+  const [rubberStampOnly, setRubberStampOnly] = useState<boolean>(false);
   
   // Read URL params on mount
   useEffect(() => {
@@ -37,6 +38,7 @@ function CongressContent() {
       if (chamber && m.chamber !== chamber) return false;
       if (party && m.party !== party) return false;
       if (state && m.state !== state) return false;
+      if (rubberStampOnly && m.party_alignment_pct !== 100) return false;
       if (search) {
         const q = search.toLowerCase();
         if (!m.full_name.toLowerCase().includes(q) && 
@@ -44,7 +46,7 @@ function CongressContent() {
       }
       return true;
     });
-  }, [allMembers, chamber, party, state, search]);
+  }, [allMembers, chamber, party, state, search, rubberStampOnly]);
   
   // Dynamic stats for filtered view
   const filteredStats = useMemo(() => ({
@@ -54,7 +56,10 @@ function CongressContent() {
     independents: filteredMembers.filter(m => m.party === "I").length,
   }), [filteredMembers]);
   
-  const isFiltered = chamber || party || state || search;
+  const isFiltered = chamber || party || state || search || rubberStampOnly;
+  
+  // Count rubber stamps
+  const rubberStampCount = allMembers.filter(m => m.party_alignment_pct === 100).length;
   
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 space-y-8">
@@ -71,7 +76,7 @@ function CongressContent() {
           
           {isFiltered && (
             <button 
-              onClick={() => { setChamber(""); setParty(""); setState(""); setSearch(""); }}
+              onClick={() => { setChamber(""); setParty(""); setState(""); setSearch(""); setRubberStampOnly(false); }}
               className="text-sm text-blue-600 hover:text-blue-700 font-medium"
             >
               Clear filters ✕
@@ -120,6 +125,29 @@ function CongressContent() {
                 </option>
               ))}
             </select>
+          </div>
+          
+          {/* Rubber Stamp Filter */}
+          <div className="mt-4 pt-4 border-t border-slate-200">
+            <label className="flex items-center gap-3 cursor-pointer group">
+              <input
+                type="checkbox"
+                checked={rubberStampOnly}
+                onChange={(e) => setRubberStampOnly(e.target.checked)}
+                className="w-5 h-5 rounded border-slate-300 text-red-600 focus:ring-red-500"
+              />
+              <span className="flex items-center gap-2">
+                <span className="inline-flex items-center justify-center w-8 h-8 bg-red-100 rounded-full border-2 border-red-300 text-red-700 font-black text-xs transform -rotate-12">
+                  ✓
+                </span>
+                <span className="font-semibold text-slate-700 group-hover:text-slate-900">
+                  Rubber Stamps Only ({rubberStampCount})
+                </span>
+              </span>
+            </label>
+            <p className="text-sm text-slate-500 mt-2 ml-8">
+              Show only members who vote 100% with their party — no independent judgment, no constituent input.
+            </p>
           </div>
         </div>
       </div>
@@ -180,10 +208,10 @@ function CongressContent() {
                     {member.full_name}
                     {member.party_alignment_pct === 100 && (
                       <span 
-                        title="Rubber Stamp: Votes 100% with party"
-                        className="text-base opacity-70 hover:opacity-100 transition"
+                        title="Rubber Stamp: Votes 100% with party — no independent judgment"
+                        className="inline-flex items-center justify-center w-6 h-6 bg-red-100 rounded-full border-2 border-red-300 text-red-700 font-black text-[10px] transform -rotate-12 ml-1 cursor-help"
                       >
-                        🤖
+                        ✓
                       </span>
                     )}
                   </h3>
