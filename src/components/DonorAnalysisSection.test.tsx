@@ -59,7 +59,7 @@ describe("DonorAnalysisSection", () => {
     const { container } = render(<DonorAnalysisSection {...mockProps} />);
 
     // Check for the stacked bar chart
-    const barChart = container.querySelector(".h-16.flex.rounded-lg");
+    const barChart = container.querySelector(".h-20.flex.rounded-xl");
     expect(barChart).toBeInTheDocument();
   });
 });

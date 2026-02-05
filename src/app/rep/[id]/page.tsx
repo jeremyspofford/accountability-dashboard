@@ -159,29 +159,29 @@ export default function RepPage({ params }: { params: { id: string } }) {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
-      <section className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-200 py-12">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-200 py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Breadcrumb */}
-          <div className="mb-6">
+          <div className="mb-8">
             <Link
               href="/congress"
-              className="text-slate-500 hover:text-slate-900 text-sm transition"
+              className="text-slate-600 hover:text-slate-900 text-base font-medium transition"
             >
               ← Back to Representatives
             </Link>
           </div>
 
-          <div className="flex flex-col md:flex-row items-start gap-8">
+          <div className="flex flex-col md:flex-row items-start gap-10">
             {/* Photo */}
             <div className="flex-shrink-0">
               {member.photo_url ? (
                 <img
                   src={member.photo_url}
                   alt={member.full_name}
-                  className="w-32 h-32 md:w-48 md:h-48 rounded-2xl object-cover border-4 border-white shadow-lg"
+                  className="w-40 h-40 md:w-56 md:h-56 rounded-3xl object-cover border-4 border-white shadow-2xl"
                 />
               ) : (
-                <div className="w-32 h-32 md:w-48 md:h-48 rounded-2xl bg-slate-200 flex items-center justify-center text-6xl border-4 border-white shadow-lg">
+                <div className="w-40 h-40 md:w-56 md:h-56 rounded-3xl bg-slate-200 flex items-center justify-center text-7xl border-4 border-white shadow-2xl">
                   {member.party === "D"
                     ? "🔵"
                     : member.party === "R"
@@ -193,58 +193,60 @@ export default function RepPage({ params }: { params: { id: string } }) {
 
             <div className="flex-1">
               {/* Name & Title */}
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 mb-2">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-900 mb-4 leading-tight">
                 {member.full_name}
               </h1>
 
               {/* Party & District */}
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex flex-wrap items-center gap-4 mb-8">
                 <span
-                  className={`px-3 py-1 rounded-full font-medium ${getPartyBadgeClass(
+                  className={`px-4 py-2 rounded-xl font-bold text-base ${getPartyBadgeClass(
                     member.party
                   )}`}
                 >
                   {getPartyName(member.party)}
                 </span>
-                <span className="text-lg text-slate-600">
+                <span className="text-lg md:text-xl text-slate-600 leading-relaxed">
                   {member.state}
                   {member.district ? `-${member.district}` : ""} •{" "}
                   {member.chamber === "house" ? "Representative" : "Senator"}
                 </span>
               </div>
 
-              {/* PROMINENT Grade Badge */}
-              <div
-                className={`inline-flex items-center gap-4 px-8 py-4 rounded-2xl border-2 mb-6 ${getGradeBadgeClasses(
-                  member.corruption_grade
-                )}`}
-              >
-                <span className="font-mono text-6xl font-bold">
-                  {member.corruption_grade}
-                </span>
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold uppercase tracking-wider">
-                    Accountability Score
+              {/* PROMINENT Grade Badge - Now CENTERED and LARGER */}
+              <div className="flex justify-center md:justify-start mb-8">
+                <div
+                  className={`inline-flex items-center gap-6 px-12 py-8 rounded-3xl border-4 shadow-2xl hover:shadow-3xl transition-all duration-300 ${getGradeBadgeClasses(
+                    member.corruption_grade
+                  )}`}
+                >
+                  <span className="font-mono text-8xl md:text-9xl font-black leading-none">
+                    {member.corruption_grade}
                   </span>
-                  <span className="text-lg font-medium">
-                    {getGradeLabel(member.corruption_grade)}
-                  </span>
-                  <span className="text-sm opacity-75">
-                    {member.corruption_score}/100
-                  </span>
+                  <div className="flex flex-col gap-1">
+                    <span className="text-sm md:text-base font-black uppercase tracking-wider">
+                      Accountability Score
+                    </span>
+                    <span className="text-2xl md:text-3xl font-black">
+                      {getGradeLabel(member.corruption_grade)}
+                    </span>
+                    <span className="text-base md:text-lg opacity-75 font-mono font-bold">
+                      {member.corruption_score}/100
+                    </span>
+                  </div>
                 </div>
               </div>
 
               {/* Quick Actions */}
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-4">
                 <a
                   href={`https://www.congress.gov/member/${member.bioguide_id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 flex items-center gap-2 transition"
+                  className="px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 hover:scale-105 flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   <svg
-                    className="w-5 h-5"
+                    className="w-6 h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -252,16 +254,16 @@ export default function RepPage({ params }: { params: { id: string } }) {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth="2"
+                      strokeWidth="2.5"
                       d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                     />
                   </svg>
                   Official Profile
                 </a>
 
-                <button className="px-6 py-3 border-2 border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-50 flex items-center gap-2 transition">
+                <button className="px-8 py-4 border-2 border-slate-300 text-slate-700 font-bold rounded-2xl hover:bg-slate-50 hover:border-slate-400 hover:scale-105 flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl">
                   <svg
-                    className="w-5 h-5"
+                    className="w-6 h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -269,7 +271,7 @@ export default function RepPage({ params }: { params: { id: string } }) {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth="2"
+                      strokeWidth="2.5"
                       d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
                     />
                   </svg>
@@ -282,20 +284,20 @@ export default function RepPage({ params }: { params: { id: string } }) {
       </section>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 md:py-20">
         {/* Data Notice */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
-          <p className="text-blue-900 text-sm">
-            ℹ️ <strong>Data sources:</strong> Member info & bills from
+        <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-6 mb-12">
+          <p className="text-blue-900 text-base leading-relaxed">
+            ℹ️ <strong className="font-bold">Data sources:</strong> Member info & bills from
             Congress.gov API. Party alignment & votes from Voteview. Campaign
             finance and financial disclosures are placeholder data (OpenSecrets
             & FEC coming soon).
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Main Content (2/3 width) */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-10">
             {/* Score Breakdown */}
             <ScoreBreakdownCard {...scoreFactors} />
 
@@ -314,45 +316,45 @@ export default function RepPage({ params }: { params: { id: string } }) {
           </div>
 
           {/* Sidebar (1/3 width) */}
-          <aside className="space-y-8">
+          <aside className="space-y-10">
             {/* Committee Memberships */}
             <CommitteeMemberships committees={committees} />
 
             {/* Quick Stats */}
-            <div className="bg-white rounded-xl border border-slate-200 p-6">
-              <h4 className="text-base font-semibold uppercase tracking-wide text-slate-700 mb-4">
+            <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+              <h4 className="text-2xl font-black uppercase tracking-tight text-slate-900 mb-6">
                 Quick Stats
               </h4>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
+                  <div className="text-sm font-black uppercase tracking-wider text-slate-600 mb-2">
                     Bills Sponsored
                   </div>
-                  <div className="font-mono text-2xl font-bold text-slate-900">
+                  <div className="font-mono text-4xl font-black text-slate-900">
                     {member.bills_sponsored}
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
+                  <div className="text-sm font-black uppercase tracking-wider text-slate-600 mb-2">
                     Bills Cosponsored
                   </div>
-                  <div className="font-mono text-2xl font-bold text-slate-900">
+                  <div className="font-mono text-4xl font-black text-slate-900">
                     {member.bills_cosponsored}
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
+                  <div className="text-sm font-black uppercase tracking-wider text-slate-600 mb-2">
                     Votes Cast
                   </div>
-                  <div className="font-mono text-2xl font-bold text-slate-900">
+                  <div className="font-mono text-4xl font-black text-slate-900">
                     {member.votes_cast}
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1">
+                  <div className="text-sm font-black uppercase tracking-wider text-slate-600 mb-2">
                     Total Raised (2024)
                   </div>
-                  <div className="font-mono text-2xl font-bold text-slate-900">
+                  <div className="font-mono text-4xl font-black text-slate-900">
                     ${(member.total_raised / 1000000).toFixed(1)}M
                   </div>
                 </div>
@@ -360,16 +362,16 @@ export default function RepPage({ params }: { params: { id: string } }) {
             </div>
 
             {/* External Links */}
-            <div className="bg-white rounded-xl border border-slate-200 p-6">
-              <h4 className="text-base font-semibold uppercase tracking-wide text-slate-700 mb-4">
+            <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+              <h4 className="text-2xl font-black uppercase tracking-tight text-slate-900 mb-6">
                 Official Resources
               </h4>
-              <div className="space-y-2 text-sm">
+              <div className="space-y-3 text-base">
                 <a
                   href={`https://www.congress.gov/member/${member.bioguide_id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline block"
+                  className="text-blue-600 hover:text-blue-700 font-bold hover:underline block leading-relaxed"
                 >
                   Congress.gov Profile →
                 </a>
@@ -377,7 +379,7 @@ export default function RepPage({ params }: { params: { id: string } }) {
                   href={`https://bioguide.congress.gov/search/bio/${member.bioguide_id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline block"
+                  className="text-blue-600 hover:text-blue-700 font-bold hover:underline block leading-relaxed"
                 >
                   Biographical Directory →
                 </a>

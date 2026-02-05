@@ -49,7 +49,7 @@ describe("ScoreBreakdownCard", () => {
     const { container } = render(<ScoreBreakdownCard {...mockProps} />);
 
     // Should have 4 progress bars (one for each factor)
-    const progressBars = container.querySelectorAll(".h-3.bg-slate-100");
+    const progressBars = container.querySelectorAll(".h-4.bg-slate-100");
     expect(progressBars).toHaveLength(4);
   });
 });

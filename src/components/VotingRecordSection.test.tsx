@@ -57,7 +57,7 @@ describe("VotingRecordSection", () => {
     );
 
     expect(screen.getByText("Ideology Score")).toBeInTheDocument();
-    expect(screen.getByText(/Conservative/)).toBeInTheDocument();
+    expect(screen.getByText(/Conservative \(0\.30\)/)).toBeInTheDocument();
   });
 
   it("does not show ideology score when null", () => {

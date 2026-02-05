@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Financial Section - Net worth and stock trades (placeholder)
  */
@@ -35,26 +37,26 @@ export default function FinancialSection({
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6">
-      <h3 className="text-xl font-semibold text-slate-800 mb-6">
+    <div className="bg-white rounded-3xl border border-slate-200 p-10 shadow-sm hover:shadow-xl transition-all duration-300">
+      <h3 className="text-3xl font-black text-slate-900 mb-8 tracking-tight">
         Financial Disclosures
       </h3>
 
       {/* Net Worth */}
-      <div className="mb-6 pb-6 border-b border-slate-100">
-        <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
+      <div className="mb-8 pb-8 border-b border-slate-200">
+        <div className="text-sm font-black uppercase tracking-wider text-slate-700 mb-4">
           Net Worth
         </div>
 
         {netWorth !== null ? (
           <div>
-            <div className="font-mono text-4xl font-bold text-slate-900 mb-2">
+            <div className="font-mono text-5xl font-black text-slate-900 mb-4">
               {formatCurrency(netWorth)}
             </div>
             {netWorthChange !== null && netWorthChangePercent !== null && (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <span
-                  className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
+                  className={`inline-flex items-center px-4 py-2 rounded-xl text-sm font-black ${
                     netWorthChange > 0
                       ? "bg-red-100 text-red-700"
                       : "bg-emerald-100 text-emerald-700"
@@ -64,14 +66,14 @@ export default function FinancialSection({
                   {formatCurrency(Math.abs(netWorthChange))} (
                   {Math.abs(netWorthChangePercent)}%)
                 </span>
-                <span className="text-sm text-slate-500">
+                <span className="text-base text-slate-600 leading-relaxed">
                   Since entering Congress
                 </span>
               </div>
             )}
           </div>
         ) : (
-          <div className="text-sm text-slate-400 py-4">
+          <div className="text-base text-slate-400 py-6 leading-relaxed">
             Net worth data coming soon...
           </div>
         )}
@@ -79,39 +81,39 @@ export default function FinancialSection({
 
       {/* Stock Trades */}
       <div>
-        <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
+        <div className="text-sm font-black uppercase tracking-wider text-slate-700 mb-5">
           Recent Stock Trades
         </div>
 
         {stockTrades.length > 0 ? (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {stockTrades.slice(0, 10).map((trade, idx) => (
-              <div key={idx} className="border-l-4 border-slate-200 pl-4">
-                <div className="flex items-start justify-between mb-1">
+              <div key={idx} className="border-l-4 border-slate-300 pl-5">
+                <div className="flex items-start justify-between mb-2">
                   <div>
-                    <div className="text-sm font-medium text-slate-900">
+                    <div className="text-base font-bold text-slate-900">
                       {trade.type === "Buy" ? "Bought" : "Sold"} {trade.ticker}
                     </div>
-                    <div className="text-xs text-slate-500">{trade.company}</div>
+                    <div className="text-sm text-slate-600 leading-relaxed">{trade.company}</div>
                   </div>
                   <div className="text-right">
                     <div
-                      className={`font-mono text-sm font-bold ${
+                      className={`font-mono text-base font-black ${
                         trade.type === "Sell" ? "text-red-600" : "text-emerald-600"
                       }`}
                     >
                       {trade.type === "Sell" ? "-" : "+"}
                       {trade.amount}
                     </div>
-                    <div className="text-xs text-slate-500">{trade.date}</div>
+                    <div className="text-sm text-slate-600">{trade.date}</div>
                   </div>
                 </div>
 
                 {trade.daysBeforeEvent && (
-                  <div className="mt-2 p-2 rounded bg-amber-50 border border-amber-200">
+                  <div className="mt-3 p-3 rounded-xl bg-amber-50 border-2 border-amber-200">
                     <div className="flex items-start gap-2">
                       <svg
-                        className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5"
+                        className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -121,8 +123,8 @@ export default function FinancialSection({
                           clipRule="evenodd"
                         />
                       </svg>
-                      <div className="text-xs text-amber-900">
-                        <strong>Potential conflict:</strong> {trade.type} {trade.daysBeforeEvent.days} days before {trade.daysBeforeEvent.event}
+                      <div className="text-sm text-amber-900 leading-relaxed">
+                        <strong className="font-bold">Potential conflict:</strong> {trade.type} {trade.daysBeforeEvent.days} days before {trade.daysBeforeEvent.event}
                       </div>
                     </div>
                   </div>
@@ -131,9 +133,9 @@ export default function FinancialSection({
             ))}
           </div>
         ) : (
-          <div className="text-sm text-slate-400 text-center py-4">
+          <div className="text-base text-slate-400 text-center py-8 leading-relaxed">
             Stock trading data coming soon...
-            <p className="text-xs text-slate-400 mt-2">
+            <p className="text-sm text-slate-400 mt-2 leading-relaxed">
               Will include data from financial disclosures
             </p>
           </div>

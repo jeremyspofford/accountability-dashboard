@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Committee Memberships Component
  */
@@ -33,8 +35,8 @@ export default function CommitteeMemberships({
     ["Chair", "Ranking Member", "Vice Chair"].includes(role);
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6">
-      <h3 className="text-xl font-semibold text-slate-800 mb-6">
+    <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+      <h3 className="text-2xl font-black text-slate-900 mb-6 tracking-tight">
         Committee Memberships
       </h3>
 
@@ -43,31 +45,31 @@ export default function CommitteeMemberships({
           {committees.map((committee, idx) => (
             <div
               key={idx}
-              className={`p-4 rounded-lg border ${
+              className={`p-5 rounded-2xl border-2 transition-all duration-300 ${
                 isLeadership(committee.role)
-                  ? "bg-blue-50 border-blue-200"
-                  : "bg-slate-50 border-slate-200"
+                  ? "bg-blue-50 border-blue-200 hover:border-blue-300"
+                  : "bg-slate-50 border-slate-200 hover:border-slate-300"
               }`}
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex-1">
-                  <div className="font-semibold text-slate-900 mb-1">
+                  <div className="font-bold text-slate-900 mb-1 text-base leading-relaxed">
                     {committee.name}
                   </div>
                   {committee.subcommittees &&
                     committee.subcommittees.length > 0 && (
-                      <div className="text-xs text-slate-500 space-y-1 mt-2">
-                        <div className="font-medium">Subcommittees:</div>
-                        <ul className="list-disc list-inside pl-2">
+                      <div className="text-sm text-slate-600 space-y-1 mt-3">
+                        <div className="font-bold">Subcommittees:</div>
+                        <ul className="list-disc list-inside pl-2 space-y-1">
                           {committee.subcommittees.map((sub, subIdx) => (
-                            <li key={subIdx}>{sub}</li>
+                            <li key={subIdx} className="leading-relaxed">{sub}</li>
                           ))}
                         </ul>
                       </div>
                     )}
                 </div>
                 <span
-                  className={`px-3 py-1 rounded-lg border text-xs font-semibold ${getRoleBadge(
+                  className={`px-3 py-1.5 rounded-lg border-2 text-xs font-black ${getRoleBadge(
                     committee.role
                   )}`}
                 >
@@ -78,7 +80,7 @@ export default function CommitteeMemberships({
           ))}
         </div>
       ) : (
-        <div className="text-sm text-slate-400 text-center py-8">
+        <div className="text-base text-slate-400 text-center py-8 leading-relaxed">
           Committee information coming soon...
         </div>
       )}

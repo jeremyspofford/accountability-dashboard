@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Score Breakdown Card - Shows the 4 scoring factors
  */
@@ -60,28 +62,28 @@ export default function ScoreBreakdownCard({
   };
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6">
-      <h3 className="text-xl font-semibold text-slate-800 mb-6">
+    <div className="bg-white rounded-3xl border border-slate-200 p-10 shadow-sm hover:shadow-xl transition-all duration-300">
+      <h3 className="text-3xl font-black text-slate-900 mb-8 tracking-tight">
         Score Breakdown
       </h3>
 
-      <div className="space-y-6">
+      <div className="space-y-8">
         {factors.map((factor) => (
-          <div key={factor.name} className="space-y-2">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">{factor.icon}</span>
-                <div>
-                  <div className="font-semibold text-slate-900">
+          <div key={factor.name} className="space-y-3">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-start gap-3 flex-1">
+                <span className="text-3xl flex-shrink-0">{factor.icon}</span>
+                <div className="flex-1">
+                  <div className="text-lg font-black text-slate-900 mb-1">
                     {factor.name}
                   </div>
-                  <div className="text-sm text-slate-500">
+                  <div className="text-base text-slate-600 leading-relaxed">
                     {factor.description}
                   </div>
                 </div>
               </div>
               <div
-                className={`px-3 py-1.5 rounded-lg border font-mono font-bold text-lg ${getScoreColor(
+                className={`px-5 py-2.5 rounded-xl border-2 font-mono font-black text-2xl flex-shrink-0 ${getScoreColor(
                   factor.score
                 )}`}
               >
@@ -90,7 +92,7 @@ export default function ScoreBreakdownCard({
             </div>
 
             {/* Progress Bar */}
-            <div className="h-3 bg-slate-100 rounded-full overflow-hidden">
+            <div className="h-4 bg-slate-100 rounded-full overflow-hidden shadow-inner">
               <div
                 className={`h-full ${getBarColor(factor.score)} transition-all duration-500`}
                 style={{ width: `${factor.score}%` }}
