@@ -220,8 +220,8 @@ export async function fetchAllMemberFinance(
     chamber: "house" | "senate";
     district: number | null;
   }>,
-  batchSize = 3,
-  delayMs = 2000
+  batchSize = 2,
+  delayMs = 6000
 ): Promise<Record<string, FECFinanceData>> {
   const results: Record<string, FECFinanceData> = {};
   

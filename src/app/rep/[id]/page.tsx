@@ -104,8 +104,16 @@ export default function RepPage({ params }: { params: { id: string } }) {
 
             <div className="flex-1">
               {/* Name */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 mb-3 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 mb-3 leading-tight flex items-center gap-3">
                 {member.full_name}
+                {member.party_loyalty_pct === 100 && (
+                  <span 
+                    title="Rubber Stamp: Votes 100% with party line"
+                    className="text-3xl md:text-4xl opacity-70 hover:opacity-100 transition cursor-help"
+                  >
+                    🤖
+                  </span>
+                )}
               </h1>
 
               {/* Party & District */}

@@ -176,8 +176,16 @@ function CongressContent() {
                 
                 {/* Name & Info */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-xl font-bold leading-tight text-slate-900 mb-1 group-hover:text-blue-600 transition truncate">
+                  <h3 className="text-xl font-bold leading-tight text-slate-900 mb-1 group-hover:text-blue-600 transition truncate flex items-center gap-2">
                     {member.full_name}
+                    {member.party_loyalty_pct === 100 && (
+                      <span 
+                        title="Rubber Stamp: Votes 100% with party"
+                        className="text-base opacity-70 hover:opacity-100 transition"
+                      >
+                        🤖
+                      </span>
+                    )}
                   </h3>
                   <div className="flex items-center gap-2 text-sm text-slate-600">
                     <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
