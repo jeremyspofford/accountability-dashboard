@@ -15,7 +15,9 @@ describe("Individual Justice Page", () => {
     const page = await JusticePage({ params: { id: "sotomayor" } });
     render(page);
     
-    expect(screen.getByText(/Barack Obama/)).toBeDefined();
+    // Check for "Appointed by" text and the president's name
+    expect(screen.getByText("Appointed by")).toBeDefined();
+    expect(screen.getAllByText("Barack Obama").length).toBeGreaterThan(0);
   });
 
   it("displays ideology score", async () => {

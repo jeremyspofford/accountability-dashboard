@@ -36,7 +36,7 @@ describe("VicePresidentPage", () => {
     expect(ohioElements.length).toBeGreaterThan(0);
   });
 
-  it("displays background section", () => {
+  it("displays background section with highlights", () => {
     render(<VicePresidentPage />);
     expect(screen.getByText(/Background/i)).toBeDefined();
     expect(screen.getByText(/Hillbilly Elegy/i)).toBeDefined();
@@ -44,30 +44,52 @@ describe("VicePresidentPage", () => {
     expect(marineElements.length).toBeGreaterThan(0);
   });
 
-  it("shows previous role as Senator", () => {
+  it("shows Senate record section with date range", () => {
     render(<VicePresidentPage />);
-    expect(screen.getByText("U.S. Senator")).toBeDefined();
-    expect(screen.getByText(/2023-2025/i)).toBeDefined();
+    expect(screen.getByText(/Senate Record \(2023-2025\)/i)).toBeDefined();
   });
 
-  it("displays Senate voting record section", () => {
+  it("displays voting statistics", () => {
     render(<VicePresidentPage />);
-    expect(screen.getByText(/Senate Record/i)).toBeDefined();
+    expect(screen.getByText("412")).toBeDefined(); // votes cast
+    expect(screen.getByText("Votes Cast")).toBeDefined();
+    expect(screen.getByText("Party Alignment")).toBeDefined();
+    expect(screen.getByText("Missed Votes")).toBeDefined();
   });
 
-  it("shows key positions and quotes", () => {
+  it("displays committees served on", () => {
     render(<VicePresidentPage />);
-    expect(screen.getByText(/Key Positions/i)).toBeDefined();
+    expect(screen.getByText(/Commerce, Science, and Transportation/i)).toBeDefined();
+    expect(screen.getByText(/Banking, Housing, and Urban Affairs/i)).toBeDefined();
   });
 
-  it("displays at least one policy position", () => {
+  it("shows key votes with bill numbers", () => {
     render(<VicePresidentPage />);
-    expect(screen.getByText(/Trade Policy/i)).toBeDefined();
+    expect(screen.getByText(/Key Votes/i)).toBeDefined();
+    expect(screen.getByText(/H\.R\.815/i)).toBeDefined(); // Ukraine bill
+  });
+
+  it("displays vote results (Yea/Nay)", () => {
+    render(<VicePresidentPage />);
+    const yeaElements = screen.getAllByText(/✓ Yea/i);
+    const nayElements = screen.getAllByText(/✗ Nay/i);
+    expect(yeaElements.length + nayElements.length).toBeGreaterThan(0);
+  });
+
+  it("links to Congress.gov for votes", () => {
+    render(<VicePresidentPage />);
+    const congressLinks = document.querySelectorAll('a[href*="congress.gov"]');
+    expect(congressLinks.length).toBeGreaterThan(0);
+  });
+
+  it("shows sponsored legislation section", () => {
+    render(<VicePresidentPage />);
+    expect(screen.getByText(/Sponsored Legislation/i)).toBeDefined();
+    expect(screen.getByText(/Railway Safety Act/i)).toBeDefined();
   });
 
   it("is mobile responsive with proper grid classes", () => {
     render(<VicePresidentPage />);
-    // Check that responsive classes are present in the page structure
     const container = document.querySelector(".max-w-5xl");
     expect(container).toBeDefined();
   });
@@ -77,15 +99,5 @@ describe("VicePresidentPage", () => {
     const link = screen.getByText(/Back to Executive Branch/i);
     expect(link).toBeDefined();
     expect(link.closest("a")?.getAttribute("href")).toBe("/executive");
-  });
-
-  it("displays committees served on", () => {
-    render(<VicePresidentPage />);
-    expect(screen.getByText(/Commerce, Science, and Transportation/i)).toBeDefined();
-  });
-
-  it("shows multiple key votes", () => {
-    render(<VicePresidentPage />);
-    expect(screen.getByText(/Ukraine Aid/i)).toBeDefined();
   });
 });

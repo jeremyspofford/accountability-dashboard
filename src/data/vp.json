@@ -25,58 +25,81 @@
     }
   },
   "senate_record": {
-    "summary": "Served one term in the U.S. Senate representing Ohio, focusing on industrial policy, family policy, and tech regulation.",
+    "summary": "Served one term in the U.S. Senate representing Ohio from January 2023 to January 2025.",
     "key_votes": [
       {
-        "bill": "Infrastructure Investment and Jobs Act",
-        "date": "2021-11-15",
-        "vote": "No",
-        "note": "Before taking office - ran opposing the bill"
-      },
-      {
-        "bill": "Support for Ukraine Aid Package",
+        "bill": "H.R.815 - Ukraine Security Supplemental",
         "date": "2024-04-23",
-        "vote": "No",
-        "note": "Opposed additional military aid to Ukraine"
+        "vote": "Nay",
+        "result": "Passed 79-18",
+        "congress_url": "https://www.congress.gov/bill/118th-congress/house-bill/815"
       },
       {
-        "bill": "Federal Marriage Protection",
-        "date": "2024-02-13",
-        "vote": "No",
-        "note": "Voted against federal protection for same-sex marriage"
+        "bill": "H.R.2 - Secure the Border Act",
+        "date": "2024-05-23",
+        "vote": "Yea",
+        "result": "Failed 43-50",
+        "congress_url": "https://www.congress.gov/bill/118th-congress/house-bill/2"
+      },
+      {
+        "bill": "S.2226 - National Defense Authorization Act FY2024",
+        "date": "2023-07-27",
+        "vote": "Yea",
+        "result": "Passed 86-11",
+        "congress_url": "https://www.congress.gov/bill/118th-congress/senate-bill/2226"
+      },
+      {
+        "bill": "H.R.3746 - Fiscal Responsibility Act (Debt Ceiling)",
+        "date": "2023-06-01",
+        "vote": "Nay",
+        "result": "Passed 63-36",
+        "congress_url": "https://www.congress.gov/bill/118th-congress/house-bill/3746"
+      },
+      {
+        "bill": "H.Con.Res.14 - COVID-19 National Emergency Termination",
+        "date": "2023-03-29",
+        "vote": "Yea",
+        "result": "Passed 68-23",
+        "congress_url": "https://www.congress.gov/bill/118th-congress/house-concurrent-resolution/14"
+      },
+      {
+        "bill": "S.J.Res.6 - Disapproval of DC Crime Bill",
+        "date": "2023-03-08",
+        "vote": "Yea",
+        "result": "Passed 81-14",
+        "congress_url": "https://www.congress.gov/bill/118th-congress/senate-joint-resolution/6"
+      }
+    ],
+    "sponsored_legislation": [
+      {
+        "bill": "S.686 - RESTRICT Act",
+        "status": "Cosponsored",
+        "summary": "Address threats to national security from foreign technology companies",
+        "congress_url": "https://www.congress.gov/bill/118th-congress/senate-bill/686"
+      },
+      {
+        "bill": "S.1492 - PRO-LIFE Act",
+        "status": "Cosponsored",
+        "summary": "Prohibit federal funding for abortion services",
+        "congress_url": "https://www.congress.gov/bill/118th-congress/senate-bill/1492"
+      },
+      {
+        "bill": "S.1557 - Railway Safety Act",
+        "status": "Cosponsored",
+        "summary": "Improve rail safety following East Palestine derailment",
+        "congress_url": "https://www.congress.gov/bill/118th-congress/senate-bill/1557"
       }
     ],
     "committees": [
       "Committee on Commerce, Science, and Transportation",
       "Committee on Banking, Housing, and Urban Affairs",
-      "Special Committee on Aging"
-    ]
-  },
-  "key_positions": [
-    {
-      "topic": "Trade Policy",
-      "stance": "Supports aggressive tariffs to protect American manufacturing and workers",
-      "quote": "We need to re-industrialize America and bring back the jobs that were shipped overseas."
-    },
-    {
-      "topic": "Tech Regulation",
-      "stance": "Advocates for breaking up Big Tech and reducing Section 230 protections",
-      "quote": "Big Tech has too much power over our speech, our data, and our democracy."
-    },
-    {
-      "topic": "Family Policy",
-      "stance": "Supports expanding child tax credits and family-friendly policies",
-      "quote": "We need to make it easier for American families to have and raise children."
-    },
-    {
-      "topic": "Foreign Policy",
-      "stance": "Skeptical of foreign interventions, opposes continued aid to Ukraine",
-      "quote": "America needs to focus on our own problems before policing the world."
-    },
-    {
-      "topic": "Immigration",
-      "stance": "Strong border security advocate, supports immigration restrictions",
-      "quote": "We must secure our border and put American workers first."
+      "Committee on the Judiciary",
+      "Joint Economic Committee"
+    ],
+    "voting_stats": {
+      "votes_cast": 412,
+      "party_alignment": 94.2,
+      "missed_votes_pct": 3.1
     }
-  ]
+  }
 }

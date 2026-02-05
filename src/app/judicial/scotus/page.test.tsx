@@ -22,11 +22,11 @@ describe("SCOTUS Grid Page", () => {
   it("shows justice name and appointing president", () => {
     render(<ScotusPage />);
     
-    // Check that appointing presidents are displayed
-    expect(screen.getByText(/George W. Bush/)).toBeDefined();
-    expect(screen.getByText(/Barack Obama/)).toBeDefined();
-    expect(screen.getByText(/Donald Trump/)).toBeDefined();
-    expect(screen.getByText(/Joe Biden/)).toBeDefined();
+    // Check that appointing presidents are displayed (use getAllByText since presidents may appear multiple times)
+    expect(screen.getAllByText(/George W. Bush/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Barack Obama/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Donald Trump/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Joe Biden/).length).toBeGreaterThan(0);
   });
 
   it("displays Chief Justice designation", () => {
@@ -40,8 +40,8 @@ describe("SCOTUS Grid Page", () => {
     render(<ScotusPage />);
     
     // Check for some confirmation years
-    expect(screen.getByText(/2005/)).toBeDefined();
-    expect(screen.getByText(/2022/)).toBeDefined();
+    expect(screen.getAllByText(/2005/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/2022/).length).toBeGreaterThan(0);
   });
 
   it("displays ideology indicators for all justices", () => {

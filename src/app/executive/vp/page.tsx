@@ -2,7 +2,7 @@ import Link from "next/link";
 import vpData from "@/data/vp.json";
 
 export default function VicePresidentPage() {
-  const { vice_president, senate_record, key_positions } = vpData;
+  const { vice_president, senate_record } = vpData;
   
   return (
     <div className="min-h-screen bg-white">
@@ -57,106 +57,124 @@ export default function VicePresidentPage() {
         </div>
       </section>
 
-      {/* Previous Role */}
+      {/* Senate Record */}
       <section className="py-12 bg-slate-50 border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6">
-            Previous Role
+            Senate Record (2023-2025)
           </h2>
           
-          <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-2xl">
-                🏛️
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">
-                  {vice_president.previous_role.position}
-                </h3>
-                <p className="text-slate-600">
-                  {vice_president.previous_role.state} • {vice_president.previous_role.party}
-                </p>
-              </div>
-            </div>
-            <p className="text-slate-700">
-              Served from January 3, 2023 to January 20, 2025
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Senate Record */}
-      <section className="py-12 bg-white border-b border-slate-200">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6">
-            Senate Record
-          </h2>
-          
-          <p className="text-lg text-slate-700 mb-8 leading-relaxed">
+          <p className="text-lg text-slate-700 mb-6 leading-relaxed">
             {senate_record.summary}
           </p>
+
+          {/* Voting Stats */}
+          <div className="grid grid-cols-3 gap-4 mb-8">
+            <div className="bg-white rounded-xl p-4 border border-slate-200 text-center">
+              <div className="text-2xl md:text-3xl font-black text-slate-900">
+                {senate_record.voting_stats.votes_cast}
+              </div>
+              <div className="text-sm text-slate-600">Votes Cast</div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-slate-200 text-center">
+              <div className="text-2xl md:text-3xl font-black text-red-600">
+                {senate_record.voting_stats.party_alignment}%
+              </div>
+              <div className="text-sm text-slate-600">Party Alignment</div>
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-slate-200 text-center">
+              <div className="text-2xl md:text-3xl font-black text-slate-900">
+                {senate_record.voting_stats.missed_votes_pct}%
+              </div>
+              <div className="text-sm text-slate-600">Missed Votes</div>
+            </div>
+          </div>
 
           {/* Committees */}
           <div className="mb-8">
             <h3 className="text-xl font-bold text-slate-900 mb-4">Committee Assignments</h3>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 gap-3">
               {senate_record.committees.map((committee, idx) => (
-                <div key={idx} className="bg-slate-50 rounded-xl p-4 border border-slate-200">
+                <div key={idx} className="bg-white rounded-xl p-4 border border-slate-200">
                   <span className="text-sm text-slate-700">{committee}</span>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Key Votes */}
-          <div>
-            <h3 className="text-xl font-bold text-slate-900 mb-4">Notable Votes</h3>
-            <div className="space-y-4">
-              {senate_record.key_votes.map((vote, idx) => (
-                <div key={idx} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                  <div className="flex flex-col md:flex-row md:items-start gap-4">
-                    <div className={`flex-shrink-0 px-4 py-2 rounded-xl font-bold text-sm ${
-                      vote.vote === "Yes" 
-                        ? "bg-green-100 text-green-700" 
-                        : "bg-red-100 text-red-700"
-                    }`}>
-                      {vote.vote === "Yes" ? "✓ Yes" : "✗ No"}
-                    </div>
-                    
-                    <div className="flex-1">
-                      <h4 className="text-lg font-bold text-slate-900 mb-2">
-                        {vote.bill}
-                      </h4>
-                      <div className="text-sm text-slate-500 mb-2">{vote.date}</div>
-                      <p className="text-slate-700">{vote.note}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Key Positions */}
+      {/* Key Votes */}
+      <section className="py-12 bg-white border-b border-slate-200">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6">
+            Key Votes
+          </h2>
+          
+          <div className="space-y-4">
+            {senate_record.key_votes.map((vote, idx) => (
+              <div key={idx} className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex flex-col md:flex-row md:items-start gap-4">
+                  <div className={`flex-shrink-0 px-4 py-2 rounded-xl font-bold text-sm ${
+                    vote.vote === "Yea" 
+                      ? "bg-green-100 text-green-700" 
+                      : "bg-red-100 text-red-700"
+                  }`}>
+                    {vote.vote === "Yea" ? "✓ Yea" : "✗ Nay"}
+                  </div>
+                  
+                  <div className="flex-1">
+                    <a 
+                      href={vote.congress_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg font-bold text-blue-600 hover:text-blue-700 hover:underline"
+                    >
+                      {vote.bill}
+                    </a>
+                    <div className="flex flex-wrap gap-3 mt-2 text-sm text-slate-500">
+                      <span>{vote.date}</span>
+                      <span className="text-slate-400">•</span>
+                      <span>{vote.result}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <p className="mt-6 text-sm text-slate-500 text-center">
+            Click on any bill to view full details on Congress.gov
+          </p>
+        </div>
+      </section>
+
+      {/* Sponsored Legislation */}
       <section className="py-12 bg-slate-50">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6">
-            Key Positions
+            Sponsored Legislation
           </h2>
           
-          <div className="space-y-6">
-            {key_positions.map((position, idx) => (
-              <div key={idx} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  {position.topic}
-                </h3>
-                <p className="text-slate-700 mb-4">
-                  <span className="font-semibold">Stance:</span> {position.stance}
-                </p>
-                <blockquote className="pl-4 border-l-4 border-blue-500 italic text-slate-600">
-                  "{position.quote}"
-                </blockquote>
+          <div className="space-y-4">
+            {senate_record.sponsored_legislation.map((bill, idx) => (
+              <div key={idx} className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <a 
+                      href={bill.congress_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg font-bold text-blue-600 hover:text-blue-700 hover:underline"
+                    >
+                      {bill.bill}
+                    </a>
+                    <p className="text-slate-700 mt-2">{bill.summary}</p>
+                  </div>
+                  <span className="flex-shrink-0 px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600">
+                    {bill.status}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
