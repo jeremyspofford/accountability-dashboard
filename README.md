@@ -1,5 +1,7 @@
 # Accountability Dashboard
 
+[![Deploy](https://github.com/jeremyspofford/accountability-dashboard/actions/workflows/deploy.yml/badge.svg)](https://github.com/jeremyspofford/accountability-dashboard/actions/workflows/deploy.yml)
+
 **Track what politicians say vs what they do.**
 
 Built for citizens who demand transparency from their elected representatives.
