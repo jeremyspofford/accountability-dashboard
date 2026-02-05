@@ -1,28 +1,46 @@
 /**
  * Fetch campaign finance data from FEC API
  * 
- * Data includes:
- * - Total receipts (money raised)
- * - Total disbursements (money spent)
- * - Cash on hand
+ * Fetches:
+ * - Total receipts/disbursements
+ * - Individual vs PAC contributions
+ * - Small donor (<$200) vs large donor breakdown
+ * - Top contributors
  * 
  * Docs: https://api.open.fec.gov/developers/
  */
 
 const FEC_API_BASE = "https://api.open.fec.gov/v1";
-const API_KEY = process.env.FEC_API_KEY || "DEMO_KEY"; // DEMO_KEY has lower rate limits
+const API_KEY = process.env.FEC_API_KEY || "DEMO_KEY";
 const CURRENT_CYCLE = 2024;
 
-export interface FECCandidate {
+export interface FECFinanceData {
   candidate_id: string;
-  name: string;
-  party: string;
-  state: string;
-  district: string | null;
-  office: string; // H = House, S = Senate
-  receipts: number;
-  disbursements: number;
+  cycle: number;
+  total_raised: number;
+  total_spent: number;
   cash_on_hand: number;
+  individual_contributions: number;
+  pac_contributions: number;
+  party_contributions: number;
+  candidate_self_funding: number;
+  small_donors: number;
+  large_donors: number;
+  pac_percentage: number;
+  small_donor_percentage: number;
+  large_donor_percentage: number;
+  top_contributors: Array<{
+    name: string;
+    total: number;
+    count: number;
+    type: 'individual' | 'pac' | 'party' | 'committee';
+  }>;
+  top_industries: Array<{
+    industry: string;
+    total: number;
+    pac_amount: number;
+    individual_amount: number;
+  }>;
 }
 
 interface FECSearchResult {
@@ -34,14 +52,6 @@ interface FECSearchResult {
   office: string;
 }
 
-interface FECTotalsResult {
-  candidate_id: string;
-  name: string;
-  receipts: number;
-  disbursements: number;
-  cash_on_hand_end_period: string | number;
-}
-
 // Search for a candidate by name and state
 async function searchCandidate(
   name: string,
@@ -51,7 +61,7 @@ async function searchCandidate(
 ): Promise<FECSearchResult | null> {
   const lastName = name.split(" ").pop()?.toUpperCase() || name;
   
-  let url = `${FEC_API_BASE}/candidates/?api_key=${API_KEY}&name=${encodeURIComponent(lastName)}&state=${state}&office=${office}&is_active_candidate=true&sort=-election_years`;
+  let url = `${FEC_API_BASE}/candidates/search/?api_key=${API_KEY}&q=${encodeURIComponent(lastName)}&state=${state}&office=${office}&is_active_candidate=true&sort=-election_years&per_page=5`;
   
   if (office === "H" && district) {
     url += `&district=${String(district).padStart(2, '0')}`;
@@ -59,28 +69,35 @@ async function searchCandidate(
   
   try {
     const response = await fetch(url);
-    if (!response.ok) return null;
+    if (!response.ok) {
+      console.error(`FEC search failed: ${response.status}`);
+      return null;
+    }
     
     const data = await response.json();
+    const candidates = data.results || [];
     
     // Find best match by comparing names
-    const candidates = data.results || [];
+    const searchNameLower = name.toLowerCase();
+    const firstName = searchNameLower.split(" ")[0];
+    
     const match = candidates.find((c: FECSearchResult) => {
       const cName = c.name.toLowerCase();
-      const searchName = name.toLowerCase();
-      return cName.includes(searchName.split(" ")[0]) || 
-             searchName.includes(cName.split(",")[0].toLowerCase());
+      // FEC names are "LASTNAME, FIRSTNAME"
+      return cName.includes(firstName) || 
+             searchNameLower.includes(cName.split(",")[0]);
     });
     
     return match || candidates[0] || null;
-  } catch {
+  } catch (err) {
+    console.error(`FEC search error:`, err);
     return null;
   }
 }
 
-// Get financial totals for a candidate
-async function getCandidateTotals(candidateId: string): Promise<FECTotalsResult | null> {
-  const url = `${FEC_API_BASE}/candidates/totals/?api_key=${API_KEY}&candidate_id=${candidateId}&cycle=${CURRENT_CYCLE}`;
+// Get detailed financial totals for a candidate
+async function getCandidateTotals(candidateId: string): Promise<any | null> {
+  const url = `${FEC_API_BASE}/candidate/${candidateId}/totals/?api_key=${API_KEY}&cycle=${CURRENT_CYCLE}&sort=-cycle`;
   
   try {
     const response = await fetch(url);
@@ -93,29 +110,144 @@ async function getCandidateTotals(candidateId: string): Promise<FECTotalsResult 
   }
 }
 
-// Fetch finance data for a single member
-export async function fetchMemberFinance(
+// Get top contributors for a candidate
+async function getTopContributors(candidateId: string): Promise<any[]> {
+  const url = `${FEC_API_BASE}/schedules/schedule_a/by_contributor/?api_key=${API_KEY}&candidate_id=${candidateId}&cycle=${CURRENT_CYCLE}&sort=-total&per_page=15`;
+  
+  try {
+    const response = await fetch(url);
+    if (!response.ok) return [];
+    
+    const data = await response.json();
+    return data.results || [];
+  } catch {
+    return [];
+  }
+}
+
+// Fetch comprehensive finance data for a single member
+export async function fetchMemberFinanceDetailed(
   fullName: string,
   state: string,
   chamber: "house" | "senate",
-  district?: number | null
-): Promise<{ receipts: number; disbursements: number; cashOnHand: number } | null> {
+  district?: number | null,
+  bioguideId?: string
+): Promise<FECFinanceData | null> {
   const office = chamber === "house" ? "H" : "S";
   
   const candidate = await searchCandidate(fullName, state, office, district || undefined);
-  if (!candidate) return null;
+  if (!candidate) {
+    return null;
+  }
   
   const totals = await getCandidateTotals(candidate.candidate_id);
-  if (!totals) return null;
+  if (!totals) {
+    return null;
+  }
+  
+  // Fetch top contributors
+  const rawContributors = await getTopContributors(candidate.candidate_id);
+  
+  // Parse totals
+  const totalRaised = totals.receipts || 0;
+  const individualContributions = totals.individual_contributions || 0;
+  const pacContributions = totals.other_political_committee_contributions || 0;
+  const partyContributions = totals.political_party_committee_contributions || 0;
+  const candidateSelfFunding = totals.candidate_contribution || 0;
+  const smallDonors = totals.individual_unitemized_contributions || 0;  // <$200
+  const largeDonors = totals.individual_itemized_contributions || 0;    // >$200
+  
+  // Calculate percentages
+  const pacPercentage = totalRaised > 0 ? (pacContributions / totalRaised) * 100 : 0;
+  const smallDonorPercentage = totalRaised > 0 ? (smallDonors / totalRaised) * 100 : 0;
+  const largeDonorPercentage = totalRaised > 0 ? (largeDonors / totalRaised) * 100 : 0;
+  
+  // Process contributors
+  const topContributors = rawContributors.slice(0, 10).map((c: any) => ({
+    name: c.contributor_name || c.committee_name || 'Unknown',
+    total: c.total || 0,
+    count: c.count || 1,
+    type: c.committee_id ? 'pac' : 'individual' as const,
+  }));
   
   return {
-    receipts: totals.receipts || 0,
-    disbursements: totals.disbursements || 0,
-    cashOnHand: parseFloat(String(totals.cash_on_hand_end_period)) || 0,
+    candidate_id: candidate.candidate_id,
+    cycle: CURRENT_CYCLE,
+    total_raised: Math.round(totalRaised),
+    total_spent: Math.round(totals.disbursements || 0),
+    cash_on_hand: Math.round(parseFloat(String(totals.cash_on_hand_end_period)) || 0),
+    individual_contributions: Math.round(individualContributions),
+    pac_contributions: Math.round(pacContributions),
+    party_contributions: Math.round(partyContributions),
+    candidate_self_funding: Math.round(candidateSelfFunding),
+    small_donors: Math.round(smallDonors),
+    large_donors: Math.round(largeDonors),
+    pac_percentage: Math.round(pacPercentage * 10) / 10,
+    small_donor_percentage: Math.round(smallDonorPercentage * 10) / 10,
+    large_donor_percentage: Math.round(largeDonorPercentage * 10) / 10,
+    top_contributors: topContributors,
+    top_industries: [], // Would need OpenSecrets for industry data
   };
 }
 
-// Batch fetch for multiple members (with rate limiting)
+// Batch fetch for all members
+export async function fetchAllMemberFinance(
+  members: Array<{
+    bioguide_id: string;
+    full_name: string;
+    state: string;
+    chamber: "house" | "senate";
+    district: number | null;
+  }>,
+  batchSize = 3,
+  delayMs = 2000
+): Promise<Record<string, FECFinanceData>> {
+  const results: Record<string, FECFinanceData> = {};
+  
+  console.log(`\nFetching detailed FEC finance data for ${members.length} members...`);
+  console.log(`Using ${API_KEY === 'DEMO_KEY' ? 'DEMO_KEY (slow)' : 'production key'}`);
+  console.log(`Batch size: ${batchSize}, Delay: ${delayMs}ms\n`);
+  
+  let found = 0;
+  let errors = 0;
+  
+  for (let i = 0; i < members.length; i += batchSize) {
+    const batch = members.slice(i, i + batchSize);
+    
+    const promises = batch.map(async (member) => {
+      try {
+        const finance = await fetchMemberFinanceDetailed(
+          member.full_name,
+          member.state,
+          member.chamber,
+          member.district,
+          member.bioguide_id
+        );
+        
+        if (finance && finance.total_raised > 0) {
+          results[member.bioguide_id] = finance;
+          found++;
+        }
+      } catch (err) {
+        errors++;
+      }
+    });
+    
+    await Promise.all(promises);
+    
+    const progress = Math.min(i + batchSize, members.length);
+    process.stdout.write(`\r  Processed ${progress}/${members.length} (found ${found}, errors ${errors})...`);
+    
+    if (i + batchSize < members.length) {
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+    }
+  }
+  
+  console.log(`\n✓ Found finance data for ${found}/${members.length} members (${errors} errors)`);
+  return results;
+}
+
+// Legacy export for backward compatibility
 export async function enrichMembersWithFinance<T extends {
   full_name: string;
   state: string;
@@ -124,51 +256,46 @@ export async function enrichMembersWithFinance<T extends {
 }>(
   members: T[],
   batchSize = 5,
-  delayMs = 1000 // FEC DEMO_KEY has strict rate limits
+  delayMs = 1000
 ): Promise<Map<string, { receipts: number; disbursements: number; cashOnHand: number }>> {
   const results = new Map<string, { receipts: number; disbursements: number; cashOnHand: number }>();
   
-  console.log(`Fetching FEC finance data for ${members.length} members...`);
-  console.log(`  (Using ${API_KEY === 'DEMO_KEY' ? 'DEMO_KEY - limited rate' : 'production key'})`);
-  
-  let found = 0;
-  
-  for (let i = 0; i < members.length; i += batchSize) {
-    const batch = members.slice(i, i + batchSize);
+  for (const member of members) {
+    const finance = await fetchMemberFinanceDetailed(
+      member.full_name,
+      member.state,
+      member.chamber,
+      member.district
+    );
     
-    for (const member of batch) {
-      const finance = await fetchMemberFinance(
-        member.full_name,
-        member.state,
-        member.chamber,
-        member.district
-      );
-      
-      if (finance && finance.receipts > 0) {
-        results.set(member.full_name, finance);
-        found++;
-      }
-    }
-    
-    const progress = Math.min(i + batchSize, members.length);
-    process.stdout.write(`\r  Processed ${progress}/${members.length} (found ${found})...`);
-    
-    if (i + batchSize < members.length) {
-      await new Promise(resolve => setTimeout(resolve, delayMs));
+    if (finance) {
+      results.set(member.full_name, {
+        receipts: finance.total_raised,
+        disbursements: finance.total_spent,
+        cashOnHand: finance.cash_on_hand,
+      });
     }
   }
   
-  console.log(`\n✓ Found finance data for ${found}/${members.length} members`);
   return results;
 }
 
 // Run directly for testing
 if (import.meta.url === `file://${process.argv[1]}`) {
-  // Test with Bernie Sanders
-  fetchMemberFinance("Bernard Sanders", "VT", "senate")
+  console.log("Testing FEC API with Bernie Sanders...\n");
+  
+  fetchMemberFinanceDetailed("Bernard Sanders", "VT", "senate")
     .then(result => {
-      console.log("Bernie Sanders finance:");
-      console.log(JSON.stringify(result, null, 2));
+      if (result) {
+        console.log("\n✓ Bernie Sanders finance data:");
+        console.log(`  Total raised: $${(result.total_raised / 1000000).toFixed(1)}M`);
+        console.log(`  PAC %: ${result.pac_percentage}%`);
+        console.log(`  Small donor %: ${result.small_donor_percentage}%`);
+        console.log(`  Top contributors: ${result.top_contributors.length}`);
+        console.log(JSON.stringify(result, null, 2));
+      } else {
+        console.log("No data found");
+      }
     })
     .catch(console.error);
 }
