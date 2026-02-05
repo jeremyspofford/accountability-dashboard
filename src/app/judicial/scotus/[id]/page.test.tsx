@@ -1,0 +1,64 @@
+import React from "react";
+import { describe, it, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+import JusticePage from "./page";
+
+describe("Individual Justice Page", () => {
+  it("renders justice name", async () => {
+    const page = await JusticePage({ params: { id: "roberts" } });
+    render(page);
+    
+    expect(screen.getByText(/John G. Roberts Jr./)).toBeDefined();
+  });
+
+  it("shows appointing president", async () => {
+    const page = await JusticePage({ params: { id: "sotomayor" } });
+    render(page);
+    
+    expect(screen.getByText(/Barack Obama/)).toBeDefined();
+  });
+
+  it("displays ideology score", async () => {
+    const page = await JusticePage({ params: { id: "thomas" } });
+    render(page);
+    
+    expect(screen.getByText(/Ideology Score/)).toBeDefined();
+    expect(screen.getByText("3.28")).toBeDefined();
+  });
+
+  it("shows confirmation year", async () => {
+    const page = await JusticePage({ params: { id: "jackson" } });
+    render(page);
+    
+    expect(screen.getByText(/2022/)).toBeDefined();
+  });
+
+  it("displays justice biography", async () => {
+    const page = await JusticePage({ params: { id: "kagan" } });
+    render(page);
+    
+    expect(screen.getByText(/Harvard Law School/)).toBeDefined();
+  });
+
+  it("shows ideology visualization", async () => {
+    const page = await JusticePage({ params: { id: "gorsuch" } });
+    render(page);
+    
+    expect(screen.getByText(/Ideology/)).toBeDefined();
+    expect(screen.getByText(/Conservative/)).toBeDefined();
+  });
+
+  it("handles Chief Justice title correctly", async () => {
+    const page = await JusticePage({ params: { id: "roberts" } });
+    render(page);
+    
+    expect(screen.getByText("Chief Justice")).toBeDefined();
+  });
+
+  it("handles Associate Justice title correctly", async () => {
+    const page = await JusticePage({ params: { id: "barrett" } });
+    render(page);
+    
+    expect(screen.getByText("Associate Justice")).toBeDefined();
+  });
+});

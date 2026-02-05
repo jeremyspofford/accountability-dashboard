@@ -6,10 +6,11 @@
 import membersData from "../data/members.json";
 import financeData from "../data/finance.json";
 import tradesData from "../data/trades-by-member.json";
-import type { Member, CampaignFinance } from "./types";
+import scotusData from "../data/scotus.json";
+import type { Member, CampaignFinance, SupremeCourtJustice } from "./types";
 
 // Re-export types for convenience
-export type { Member, CampaignFinance } from "./types";
+export type { Member, CampaignFinance, SupremeCourtJustice } from "./types";
 
 // State name to abbreviation mapping
 const STATE_ABBREV: Record<string, string> = {
@@ -225,4 +226,36 @@ export function getMemberCommitteesForDisplay(bioguideId: string): Array<{
       subcommittees: subcommittees.length > 0 ? subcommittees : undefined,
     };
   });
+}
+
+// ==================== Supreme Court Data ====================
+
+// Cache for SCOTUS justices
+let _justices: SupremeCourtJustice[] | null = null;
+
+export function getSupremeCourtJustices(): SupremeCourtJustice[] {
+  if (!_justices) {
+    _justices = scotusData as SupremeCourtJustice[];
+  }
+  return _justices;
+}
+
+export function getSupremeCourtJustice(id: string): SupremeCourtJustice | undefined {
+  return getSupremeCourtJustices().find(j => j.id === id);
+}
+
+// Get justices sorted by ideology (liberal to conservative)
+export function getJusticesByIdeology(): SupremeCourtJustice[] {
+  return [...getSupremeCourtJustices()].sort((a, b) => a.ideology_score - b.ideology_score);
+}
+
+// Get ideology breakdown
+export function getIdeologyBreakdown() {
+  const justices = getSupremeCourtJustices();
+  return {
+    total: justices.length,
+    liberal: justices.filter(j => j.ideology_score < -1).length,
+    moderate: justices.filter(j => j.ideology_score >= -1 && j.ideology_score <= 1).length,
+    conservative: justices.filter(j => j.ideology_score > 1).length,
+  };
 }

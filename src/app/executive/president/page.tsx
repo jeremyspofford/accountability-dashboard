@@ -144,28 +144,33 @@ export default function PresidentPage() {
         </div>
       </section>
 
-      {/* Coming Soon Sections */}
+      {/* Executive Orders Section */}
       <section className="py-12 bg-slate-50">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">Coming Soon</h2>
+          <h2 className="text-2xl font-black text-slate-900 mb-8 text-center">Presidential Actions</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center">
-              <div className="text-4xl mb-3">📜</div>
-              <h3 className="font-bold text-slate-900 mb-2">Executive Orders</h3>
-              <p className="text-sm text-slate-600">Track all executive orders with summaries and impact analysis</p>
-            </div>
+            <Link href="/executive/president/orders" className="group">
+              <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-lg transition-all text-center h-full">
+                <div className="text-4xl mb-3">📜</div>
+                <h3 className="font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">Executive Orders</h3>
+                <p className="text-sm text-slate-600 mb-3">Track all executive orders with summaries and impact analysis</p>
+                <span className="text-blue-600 font-semibold text-sm group-hover:underline">View All Orders →</span>
+              </div>
+            </Link>
             
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center">
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center opacity-60">
               <div className="text-4xl mb-3">💰</div>
               <h3 className="font-bold text-slate-900 mb-2">Emoluments Watch</h3>
               <p className="text-sm text-slate-600">Foreign payments, business conflicts, and financial transparency</p>
+              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Coming Soon</span>
             </div>
             
-            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center">
+            <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm text-center opacity-60">
               <div className="text-4xl mb-3">👥</div>
               <h3 className="font-bold text-slate-900 mb-2">Cabinet & Appointments</h3>
               <p className="text-sm text-slate-600">Track who's running federal agencies</p>
+              <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Coming Soon</span>
             </div>
           </div>
         </div>

@@ -282,3 +282,17 @@ export interface ApiError {
   details?: unknown;
   retry_after?: number;
 }
+
+// ==================== Supreme Court ====================
+
+export interface SupremeCourtJustice {
+  id: string;
+  name: string;
+  title: "Chief Justice" | "Associate Justice";
+  appointed_by: string;
+  confirmation_year: number;
+  photo_url: string;
+  ideology_score: number;  // Martin-Quinn score: negative = liberal, positive = conservative
+  ideology_label: "Very Liberal" | "Liberal" | "Moderate" | "Conservative" | "Very Conservative";
+  bio: string;
+}

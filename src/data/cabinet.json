@@ -1,0 +1,148 @@
+{
+  "members": [
+    {
+      "id": "secretary-of-state",
+      "name": "Marco Rubio",
+      "role": "Secretary of State",
+      "department": "Department of State",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Marco_Rubio_Official_Portrait_%28cropped_2%29.jpg/800px-Marco_Rubio_Official_Portrait_%28cropped_2%29.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "99-0"
+    },
+    {
+      "id": "secretary-of-defense",
+      "name": "Pete Hegseth",
+      "role": "Secretary of Defense",
+      "department": "Department of Defense",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Pete_Hegseth_by_Gage_Skidmore.jpg/800px-Pete_Hegseth_by_Gage_Skidmore.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "51-50"
+    },
+    {
+      "id": "attorney-general",
+      "name": "Pam Bondi",
+      "role": "Attorney General",
+      "department": "Department of Justice",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Pam_Bondi_official_photo.jpg/800px-Pam_Bondi_official_photo.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "52-48"
+    },
+    {
+      "id": "secretary-of-treasury",
+      "name": "Scott Bessent",
+      "role": "Secretary of the Treasury",
+      "department": "Department of the Treasury",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Scott_Bessent_official_portrait.jpg/800px-Scott_Bessent_official_portrait.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "68-29"
+    },
+    {
+      "id": "secretary-of-hhs",
+      "name": "Robert F. Kennedy Jr.",
+      "role": "Secretary of Health and Human Services",
+      "department": "Department of Health and Human Services",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/RFK_Jr._by_Gage_Skidmore.jpg/800px-RFK_Jr._by_Gage_Skidmore.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "49-50"
+    },
+    {
+      "id": "secretary-of-homeland-security",
+      "name": "Kristi Noem",
+      "role": "Secretary of Homeland Security",
+      "department": "Department of Homeland Security",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Kristi_Noem_official_photo_%28cropped%29.jpg/800px-Kristi_Noem_official_photo_%28cropped%29.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "59-34"
+    },
+    {
+      "id": "epa-administrator",
+      "name": "Lee Zeldin",
+      "role": "EPA Administrator",
+      "department": "Environmental Protection Agency",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Lee_Zeldin_official_portrait_%28cropped%29.jpg/800px-Lee_Zeldin_official_portrait_%28cropped%29.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "56-42"
+    },
+    {
+      "id": "secretary-of-interior",
+      "name": "Doug Burgum",
+      "role": "Secretary of the Interior",
+      "department": "Department of the Interior",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Doug_Burgum_by_Gage_Skidmore.jpg/800px-Doug_Burgum_by_Gage_Skidmore.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "79-18"
+    },
+    {
+      "id": "secretary-of-agriculture",
+      "name": "Brooke Rollins",
+      "role": "Secretary of Agriculture",
+      "department": "Department of Agriculture",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Brooke_Rollins_official_portrait.jpg/800px-Brooke_Rollins_official_portrait.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "63-31"
+    },
+    {
+      "id": "secretary-of-commerce",
+      "name": "Howard Lutnick",
+      "role": "Secretary of Commerce",
+      "department": "Department of Commerce",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Howard_Lutnick_2024.jpg/800px-Howard_Lutnick_2024.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "53-46"
+    },
+    {
+      "id": "secretary-of-labor",
+      "name": "Lori Chavez-DeRemer",
+      "role": "Secretary of Labor",
+      "department": "Department of Labor",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Lori_Chavez-DeRemer_117th_Congress_portrait.jpg/800px-Lori_Chavez-DeRemer_117th_Congress_portrait.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "51-48"
+    },
+    {
+      "id": "secretary-of-transportation",
+      "name": "Sean Duffy",
+      "role": "Secretary of Transportation",
+      "department": "Department of Transportation",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Sean_Duffy_official_photo.jpg/800px-Sean_Duffy_official_photo.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "77-22"
+    },
+    {
+      "id": "secretary-of-energy",
+      "name": "Chris Wright",
+      "role": "Secretary of Energy",
+      "department": "Department of Energy",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Chris_Wright_DOE.jpg/800px-Chris_Wright_DOE.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "52-47"
+    },
+    {
+      "id": "secretary-of-education",
+      "name": "Linda McMahon",
+      "role": "Secretary of Education",
+      "department": "Department of Education",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Linda_McMahon_by_Gage_Skidmore_2.jpg/800px-Linda_McMahon_by_Gage_Skidmore_2.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "50-49"
+    },
+    {
+      "id": "secretary-of-veterans-affairs",
+      "name": "Doug Collins",
+      "role": "Secretary of Veterans Affairs",
+      "department": "Department of Veterans Affairs",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Doug_Collins_official_photo_%28cropped%29.jpg/800px-Doug_Collins_official_photo_%28cropped%29.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "91-7"
+    },
+    {
+      "id": "secretary-of-housing",
+      "name": "Scott Turner",
+      "role": "Secretary of Housing and Urban Development",
+      "department": "Department of Housing and Urban Development",
+      "photo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Scott_Turner_HUD.jpg/800px-Scott_Turner_HUD.jpg",
+      "appointed_date": "2025-01-20",
+      "confirmation_vote": "63-34"
+    }
+  ]
+}
