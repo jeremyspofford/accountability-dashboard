@@ -32,10 +32,12 @@ export default function ExecutiveBranch() {
             className="block bg-white rounded-3xl border-2 border-slate-200 p-8 shadow-sm hover:shadow-xl hover:border-red-300 transition-all duration-300 group"
           >
             <div className="flex flex-col md:flex-row items-center gap-6">
-              {/* Photo placeholder */}
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-red-200 to-red-300 flex items-center justify-center text-5xl shadow-lg border-4 border-white flex-shrink-0">
-                🏛️
-              </div>
+              {/* Photo */}
+              <img 
+                src={president.photo_url}
+                alt={president.name}
+                className="w-24 h-24 rounded-full object-cover shadow-lg border-4 border-white flex-shrink-0"
+              />
               
               <div className="flex-1 text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
