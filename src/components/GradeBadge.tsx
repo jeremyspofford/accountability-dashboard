@@ -42,7 +42,7 @@ export default function GradeBadge({ grade, score, size = 'md', showLabel = fals
         <span className={`${config.badge} font-bold`}>{grade}</span>
         <div className="flex flex-col">
           <span className={`${config.label} font-semibold uppercase tracking-wider`}>
-            Trust Score
+            Accountability Score
           </span>
           <span className={`${config.label} font-medium`}>
             {gradeLabels[grade]}
@@ -55,7 +55,7 @@ export default function GradeBadge({ grade, score, size = 'md', showLabel = fals
   return (
     <div 
       className={`grade-badge ${gradeClass} ${config.container}`}
-      title={`Trust Score: ${gradeLabels[grade]} (${score}/100)`}
+      title={`Accountability Score: ${gradeLabels[grade]} (${score}/100)`}
     >
       <span className={`${config.badge} font-bold`}>{grade}</span>
     </div>
