@@ -2,6 +2,7 @@ import { getMember, getMembers } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import VotingCharts from "@/components/VotingCharts";
+import GradeBadge from "@/components/GradeBadge";
 
 export function generateStaticParams() {
   return getMembers().map((member) => ({
@@ -28,6 +29,17 @@ export default function RepPage({ params }: { params: { id: string } }) {
       {/* Header */}
       <div className="card mb-8">
         <div className="flex gap-6 items-start">
+          {/* Corruption Grade - Most Prominent */}
+          <div className="flex-shrink-0">
+            <GradeBadge 
+              grade={member.corruption_grade} 
+              score={member.corruption_score}
+              size="lg"
+              showScore={true}
+            />
+            <p className="text-xs text-slate-400 text-center mt-2">Accountability<br/>Grade</p>
+          </div>
+          
           {member.photo_url ? (
             <img 
               src={member.photo_url} 
