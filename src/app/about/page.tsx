@@ -31,27 +31,17 @@ export default function About() {
           <h2 className="text-3xl md:text-4xl font-black mb-6 text-slate-900 tracking-tight">Grading Methodology</h2>
           <p className="text-lg text-slate-600 mb-8 leading-relaxed">
             Each representative receives a score from 0-100, converted to a letter grade.
-            The score is based on four weighted factors:
+            The score is based on four equally-weighted pillars:
           </p>
           
           <div className="space-y-8">
             <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-r-xl">
               <h3 className="text-xl font-bold text-amber-900 mb-3">
-                💰 Donor Influence (35%)
+                💰 Donor Influence (25%)
               </h3>
               <p className="text-base text-amber-800 leading-relaxed">
                 What percentage of their funding comes from PACs and large donors vs. small individual 
                 contributions? Representatives funded primarily by special interests score lower.
-              </p>
-            </div>
-            
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
-              <h3 className="text-xl font-bold text-blue-900 mb-3">
-                🗳️ Voting Independence (30%)
-              </h3>
-              <p className="text-base text-blue-800 leading-relaxed">
-                Do they vote their conscience or just follow the party line? We measure how often 
-                they break from their party on key votes. Independent thinkers score higher.
               </p>
             </div>
             
@@ -60,18 +50,28 @@ export default function About() {
                 📊 Financial Transparency (25%)
               </h3>
               <p className="text-base text-emerald-800 leading-relaxed">
-                Do they file complete financial disclosures on time? Are their stock trades 
-                properly reported? Full compliance with ethics rules earns higher scores.
+                Do they file complete financial disclosures on time? Compliance with disclosure 
+                requirements and timely reporting earn higher scores.
               </p>
             </div>
             
             <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-xl">
               <h3 className="text-xl font-bold text-purple-900 mb-3">
-                📈 Wealth Growth (10%)
+                📈 Wealth Growth (25%)
               </h3>
               <p className="text-base text-purple-800 leading-relaxed">
-                How much has their net worth increased since taking office? Suspicious wealth 
-                accumulation relative to their salary raises red flags.
+                How much has their net worth increased compared to their congressional salary? 
+                Excessive wealth accumulation relative to their salary raises red flags.
+              </p>
+            </div>
+            
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
+              <h3 className="text-xl font-bold text-blue-900 mb-3">
+                📉 Stock Trading Compliance (25%)
+              </h3>
+              <p className="text-base text-blue-800 leading-relaxed">
+                STOCK Act violations including late disclosures and committee-related trades. 
+                Members who trade stocks in sectors they oversee or fail to report on time score lower.
               </p>
             </div>
           </div>

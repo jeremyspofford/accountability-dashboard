@@ -101,6 +101,26 @@ async function runPipeline() {
       JSON.stringify(financeData, null, 2)
     );
     console.log(`✓ Wrote ${srcDataDir}/finance.json (${Object.keys(financeData).length} records)`);
+    
+    // Extract and write committees.json for easy querying
+    const committeesData: Record<string, any> = {};
+    for (const member of transformedMembers) {
+      if (member.committees && member.committees.length > 0) {
+        committeesData[member.bioguide_id] = {
+          name: member.full_name,
+          party: member.party,
+          state: member.state,
+          chamber: member.chamber,
+          committees: member.committees,
+        };
+      }
+    }
+    
+    fs.writeFileSync(
+      `${srcDataDir}/committees.json`,
+      JSON.stringify(committeesData, null, 2)
+    );
+    console.log(`✓ Wrote ${srcDataDir}/committees.json (${Object.keys(committeesData).length} members with committees)`);
 
     // Also copy to pipeline/output for reference
     fs.writeFileSync(
@@ -111,6 +131,14 @@ async function runPipeline() {
       `${outDir}/finance.json`,
       JSON.stringify(financeData, null, 2)
     );
+    fs.writeFileSync(
+      `${outDir}/committees.json`,
+      JSON.stringify(committeesData, null, 2)
+    );
+
+    // Count members with committee data
+    const membersWithCommittees = transformedMembers.filter(m => m.committees && m.committees.length > 0).length;
+    const totalCommittees = transformedMembers.reduce((sum, m) => sum + (m.committees?.length || 0), 0);
 
     // Summary
     console.log("\n" + "=".repeat(60));
@@ -120,6 +148,8 @@ async function runPipeline() {
     console.log(`  Members: ${transformedMembers.length}`);
     console.log(`  With voting data: ${membersWithVotes}`);
     console.log(`  With finance data: ${Object.keys(financeData).length}`);
+    console.log(`  With committee data: ${membersWithCommittees}`);
+    console.log(`  Total committee assignments: ${totalCommittees}`);
     console.log(`\nRun 'pnpm build' to rebuild the site with new data.`);
 
   } catch (error) {

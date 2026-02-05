@@ -39,6 +39,7 @@ describe('data utilities', () => {
       expect(first).toHaveProperty('chamber');
       expect(first).toHaveProperty('bills_sponsored');
       expect(first).toHaveProperty('bills_cosponsored');
+      expect(first).toHaveProperty('committees');
       expect(first).toHaveProperty('party_alignment_pct');
       expect(first).toHaveProperty('votes_cast');
     });

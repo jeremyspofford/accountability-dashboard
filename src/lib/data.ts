@@ -42,6 +42,21 @@ interface RawMember {
   photo_url: string | null;
   bills_sponsored: number;
   bills_cosponsored: number;
+  committees: Array<{
+    name: string;
+    code: string;
+    chamber: "house" | "senate" | "joint";
+    rank?: number;
+    is_chair: boolean;
+    is_ranking_member: boolean;
+    subcommittees?: Array<{
+      name: string;
+      code: string;
+      rank?: number;
+      is_chair: boolean;
+      is_ranking_member: boolean;
+    }>;
+  }>;
   party_loyalty_pct?: number | null;
   ideology_score?: number | null;
   votes_cast?: number;
@@ -61,6 +76,7 @@ function transformMember(raw: RawMember): Member {
     photo_url: raw.photo_url,
     bills_sponsored: raw.bills_sponsored || 0,
     bills_cosponsored: raw.bills_cosponsored || 0,
+    committees: raw.committees || [],
     party_alignment_pct: raw.party_loyalty_pct ?? 0,
     ideology_score: raw.ideology_score ?? null,
     votes_cast: raw.votes_cast || 0,
@@ -180,4 +196,33 @@ export function getMemberTrades(bioguideId: string) {
   return trades.sort((a, b) => 
     new Date(b.tradedDate).getTime() - new Date(a.tradedDate).getTime()
   );
+}
+
+// Convert committee data to format expected by CommitteeMemberships component
+export function getMemberCommitteesForDisplay(bioguideId: string): Array<{
+  name: string;
+  role: "Chair" | "Ranking Member" | "Member" | "Vice Chair";
+  subcommittees?: string[];
+}> {
+  const member = getMember(bioguideId);
+  if (!member || !member.committees) return [];
+  
+  return member.committees.map(committee => {
+    let role: "Chair" | "Ranking Member" | "Member" | "Vice Chair" = "Member";
+    
+    if (committee.is_chair) {
+      role = "Chair";
+    } else if (committee.is_ranking_member) {
+      role = "Ranking Member";
+    }
+    
+    // Extract subcommittee names
+    const subcommittees = committee.subcommittees?.map(sub => sub.name) || [];
+    
+    return {
+      name: committee.name,
+      role,
+      subcommittees: subcommittees.length > 0 ? subcommittees : undefined,
+    };
+  });
 }

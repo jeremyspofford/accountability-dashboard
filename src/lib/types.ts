@@ -20,10 +20,34 @@ export interface Member {
   bills_sponsored: number;
   bills_cosponsored: number;
   
+  // Committee assignments (Congress.gov)
+  committees: Committee[];
+  
   // Voting behavior (Voteview)
   party_alignment_pct: number;
   ideology_score: number | null;
   votes_cast: number;
+}
+
+// ==================== Committee Data ====================
+
+export interface Committee {
+  name: string;
+  code: string;
+  chamber: "house" | "senate" | "joint";
+  rank?: number;
+  is_chair: boolean;
+  is_ranking_member: boolean;
+  // Subcommittees
+  subcommittees?: Subcommittee[];
+}
+
+export interface Subcommittee {
+  name: string;
+  code: string;
+  rank?: number;
+  is_chair: boolean;
+  is_ranking_member: boolean;
 }
 
 // ==================== Campaign Finance (OpenFEC) ====================

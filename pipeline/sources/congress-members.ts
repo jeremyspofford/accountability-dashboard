@@ -36,6 +36,39 @@ interface CongressMemberRaw {
   // Enriched data from member detail endpoint
   sponsoredLegislation?: { count: number };
   cosponsoredLegislation?: { count: number };
+  committeeAssignments?: CommitteeAssignment[];
+}
+
+interface CommitteeAssignment {
+  name: string;
+  systemCode: string;
+  chamber: string;
+  rank?: number;
+  title?: string;
+  subcommittees?: Array<{
+    name: string;
+    systemCode: string;
+    rank?: number;
+    title?: string;
+  }>;
+}
+
+interface Committee {
+  name: string;
+  code: string;
+  chamber: "house" | "senate" | "joint";
+  rank?: number;
+  is_chair: boolean;
+  is_ranking_member: boolean;
+  subcommittees?: Subcommittee[];
+}
+
+interface Subcommittee {
+  name: string;
+  code: string;
+  rank?: number;
+  is_chair: boolean;
+  is_ranking_member: boolean;
 }
 
 interface CongressApiResponse {
@@ -58,6 +91,7 @@ export interface TransformedMember {
   photo_url: string | null;
   bills_sponsored: number;
   bills_cosponsored: number;
+  committees: Committee[];
   // Voting data (from Voteview, added in pipeline)
   party_loyalty_pct?: number | null;
   ideology_score?: number | null;
@@ -109,10 +143,11 @@ export async function fetchAllMembers(): Promise<CongressMemberRaw[]> {
   return fetchCurrentMembers();
 }
 
-// Fetch detailed info for a single member (includes bills counts)
+// Fetch detailed info for a single member (includes bills counts and committee assignments)
 async function fetchMemberDetail(bioguideId: string): Promise<{
   sponsoredCount: number;
   cosponsoredCount: number;
+  committees: CommitteeAssignment[];
 } | null> {
   try {
     const url = `${CONGRESS_API_BASE}/member/${bioguideId}?format=json&api_key=${API_KEY}`;
@@ -120,22 +155,45 @@ async function fetchMemberDetail(bioguideId: string): Promise<{
     if (!response.ok) return null;
     
     const data = await response.json();
+    
+    // Extract committee assignments
+    const committees: CommitteeAssignment[] = [];
+    const committeeData = data.member?.committeeMemberships;
+    
+    if (committeeData && Array.isArray(committeeData)) {
+      for (const item of committeeData) {
+        // Only include current assignments (no endDate)
+        if (!item.endDate) {
+          committees.push({
+            name: item.name,
+            systemCode: item.systemCode,
+            chamber: item.chamber?.toLowerCase() || 'unknown',
+            rank: item.rank,
+            title: item.title,
+            subcommittees: item.subcommittees || [],
+          });
+        }
+      }
+    }
+    
     return {
       sponsoredCount: data.member?.sponsoredLegislation?.count || 0,
       cosponsoredCount: data.member?.cosponsoredLegislation?.count || 0,
+      committees,
     };
-  } catch {
+  } catch (error) {
+    console.error(`Error fetching member detail for ${bioguideId}:`, error);
     return null;
   }
 }
 
-// Enrich members with bills data (batched to respect rate limits)
+// Enrich members with bills data and committee assignments (batched to respect rate limits)
 export async function enrichMembersWithBills(
   members: CongressMemberRaw[],
   batchSize = 10,
   delayMs = 500
 ): Promise<CongressMemberRaw[]> {
-  console.log(`Enriching ${members.length} members with bills data...`);
+  console.log(`Enriching ${members.length} members with bills and committee data...`);
   
   const enriched = [...members];
   
@@ -152,6 +210,7 @@ export async function enrichMembersWithBills(
           ...enriched[i + j],
           sponsoredLegislation: { count: details[j]!.sponsoredCount },
           cosponsoredLegislation: { count: details[j]!.cosponsoredCount },
+          committeeAssignments: details[j]!.committees,
         };
       }
     }
@@ -164,7 +223,7 @@ export async function enrichMembersWithBills(
     }
   }
   
-  console.log('\n✓ Bills data enrichment complete');
+  console.log('\n✓ Bills and committee data enrichment complete');
   return enriched;
 }
 
@@ -187,6 +246,34 @@ export function transformMember(member: CongressMemberRaw): TransformedMember {
   const currentTerm = member.terms?.item?.find(t => !t.endYear) || member.terms?.item?.[0];
   const chamber = currentTerm?.chamber === "Senate" ? "senate" : "house";
 
+  // Transform committee assignments
+  const committees: Committee[] = (member.committeeAssignments || []).map(c => {
+    const isChair = c.title?.toLowerCase().includes('chair') && !c.title?.toLowerCase().includes('ranking');
+    const isRankingMember = c.title?.toLowerCase().includes('ranking');
+    
+    return {
+      name: c.name,
+      code: c.systemCode,
+      chamber: (c.chamber?.toLowerCase() === 'senate' ? 'senate' : 
+               c.chamber?.toLowerCase() === 'house' ? 'house' : 'joint') as "house" | "senate" | "joint",
+      rank: c.rank,
+      is_chair: isChair,
+      is_ranking_member: isRankingMember,
+      subcommittees: (c.subcommittees || []).map(s => {
+        const subIsChair = s.title?.toLowerCase().includes('chair') && !s.title?.toLowerCase().includes('ranking');
+        const subIsRanking = s.title?.toLowerCase().includes('ranking');
+        
+        return {
+          name: s.name,
+          code: s.systemCode,
+          rank: s.rank,
+          is_chair: subIsChair,
+          is_ranking_member: subIsRanking,
+        };
+      }),
+    };
+  });
+
   return {
     bioguide_id: member.bioguideId,
     first_name: firstName,
@@ -200,6 +287,7 @@ export function transformMember(member: CongressMemberRaw): TransformedMember {
     // Real data from API (or 0 if not enriched)
     bills_sponsored: member.sponsoredLegislation?.count || 0,
     bills_cosponsored: member.cosponsoredLegislation?.count || 0,
+    committees,
   };
 }
 
