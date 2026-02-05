@@ -37,6 +37,36 @@
       ]
     },
     {
+      "id": "tariffs-mexico-canada",
+      "text": "Impose 25% tariffs on Mexico and Canada",
+      "category": "Trade",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-02-01",
+          "note": "Threatened but delayed implementation pending negotiations",
+          "source": "White House statements"
+        }
+      ]
+    },
+    {
+      "id": "end-trade-deficits",
+      "text": "Eliminate the US trade deficit",
+      "category": "Trade",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "bring-jobs-back",
+      "text": "Bring millions of manufacturing jobs back to America",
+      "category": "Economy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
       "id": "border-wall",
       "text": "Complete the border wall",
       "category": "Immigration",
@@ -65,6 +95,66 @@
       ]
     },
     {
+      "id": "end-birthright-citizenship",
+      "text": "End birthright citizenship via executive order",
+      "category": "Immigration",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Executive order signed, facing legal challenges",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "remain-in-mexico",
+      "text": "Reinstate 'Remain in Mexico' policy",
+      "category": "Immigration",
+      "status": "kept",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Reinstated via executive order",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "end-catch-and-release",
+      "text": "End catch and release",
+      "category": "Immigration",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "death-penalty-traffickers",
+      "text": "Implement death penalty for drug traffickers and human traffickers",
+      "category": "Immigration",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "extreme-vetting",
+      "text": "Institute ideological screening for immigrants",
+      "category": "Immigration",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "ban-sanctuary-cities",
+      "text": "Cut federal funding to sanctuary cities",
+      "category": "Immigration",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
       "id": "end-ukraine-war",
       "text": "End the war in Ukraine in 24 hours",
       "category": "Foreign Policy",
@@ -79,18 +169,44 @@
       ]
     },
     {
-      "id": "drain-swamp",
-      "text": "Drain the swamp - fire federal bureaucrats",
-      "category": "Government",
+      "id": "nato-funding",
+      "text": "Force NATO allies to pay their fair share or withdraw US support",
+      "category": "Foreign Policy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": [
-        {
-          "date": "2025-01-20",
-          "note": "Executive order on Schedule F reclassification",
-          "source": "Executive Order"
-        }
-      ]
+      "updates": []
+    },
+    {
+      "id": "china-tough",
+      "text": "Take the toughest ever approach to China",
+      "category": "Foreign Policy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "middle-east-peace",
+      "text": "Restore peace in the Middle East",
+      "category": "Foreign Policy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "iran-deal",
+      "text": "Prevent Iran from obtaining nuclear weapons",
+      "category": "Foreign Policy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "strengthen-alliances",
+      "text": "Strengthen relationships with Israel and Arab partners",
+      "category": "Foreign Policy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
     },
     {
       "id": "lower-prices",
@@ -107,6 +223,62 @@
       ]
     },
     {
+      "id": "no-tax-tips",
+      "text": "Eliminate taxes on tips",
+      "category": "Economy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "no-tax-overtime",
+      "text": "Eliminate taxes on overtime pay",
+      "category": "Economy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "no-tax-social-security",
+      "text": "Eliminate taxes on Social Security benefits",
+      "category": "Economy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "extend-tax-cuts",
+      "text": "Make the 2017 tax cuts permanent",
+      "category": "Economy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "corporate-tax-cut",
+      "text": "Cut corporate tax rate to 15% for companies that make products in America",
+      "category": "Economy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "deregulation",
+      "text": "Cut 10 old regulations for every 1 new regulation",
+      "category": "Economy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "interest-rates-lower",
+      "text": "Bring down interest rates",
+      "category": "Economy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
       "id": "energy-dominance",
       "text": "Unleash American energy - drill baby drill",
       "category": "Energy",
@@ -121,9 +293,199 @@
       ]
     },
     {
-      "id": "free-speech",
-      "text": "Protect free speech and end censorship",
-      "category": "Civil Liberties",
+      "id": "paris-climate-exit",
+      "text": "Withdraw from Paris Climate Agreement",
+      "category": "Energy",
+      "status": "kept",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Executive order signed to withdraw",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "anwr-drilling",
+      "text": "Open ANWR (Arctic National Wildlife Refuge) for drilling",
+      "category": "Energy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "end-ev-mandate",
+      "text": "End the electric vehicle mandate",
+      "category": "Energy",
+      "status": "kept",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Revoked Biden-era EV mandates",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "energy-independence",
+      "text": "Achieve complete energy independence",
+      "category": "Energy",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "abolish-dept-education",
+      "text": "Abolish the Department of Education",
+      "category": "Education",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "end-woke-education",
+      "text": "End woke indoctrination in schools",
+      "category": "Education",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "patriotic-education",
+      "text": "Promote patriotic education and restore parental rights",
+      "category": "Education",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "end-tenure",
+      "text": "End teacher tenure and implement merit pay",
+      "category": "Education",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "school-choice",
+      "text": "Universal school choice - education freedom",
+      "category": "Education",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "end-dei",
+      "text": "End DEI programs in federal government and federally funded institutions",
+      "category": "Education",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Executive order signed to dismantle federal DEI programs",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "repeal-obamacare",
+      "text": "Repeal and replace Obamacare",
+      "category": "Healthcare",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "lower-drug-prices",
+      "text": "Lower prescription drug prices",
+      "category": "Healthcare",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "health-transparency",
+      "text": "Require price transparency in healthcare",
+      "category": "Healthcare",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "protect-medicare",
+      "text": "Protect Medicare and Social Security with no cuts",
+      "category": "Healthcare",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "drain-swamp",
+      "text": "Drain the swamp - fire federal bureaucrats",
+      "category": "Government",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Executive order on Schedule F reclassification",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "schedule-f",
+      "text": "Reinstate Schedule F to fire federal workers",
+      "category": "Government",
+      "status": "kept",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Schedule F reinstated via executive order",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "term-limits-congress",
+      "text": "Implement term limits for Congress",
+      "category": "Government",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "ban-lobbying",
+      "text": "Ban members of Congress from becoming lobbyists",
+      "category": "Government",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "downsize-bureaucracy",
+      "text": "Massively downsize federal bureaucracy",
+      "category": "Government",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "relocate-agencies",
+      "text": "Relocate federal agencies out of Washington DC",
+      "category": "Government",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "end-weaponization-doj",
+      "text": "End weaponization of DOJ and FBI",
+      "category": "Government",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
       "updates": []
@@ -141,13 +503,155 @@
           "source": "Presidential Pardons"
         }
       ]
+    },
+    {
+      "id": "war-on-cartels",
+      "text": "Declare war on drug cartels and designate them as terrorist organizations",
+      "category": "Justice",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "law-and-order",
+      "text": "Restore law and order to cities",
+      "category": "Justice",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "end-crime-wave",
+      "text": "End the violent crime wave",
+      "category": "Justice",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "police-immunity",
+      "text": "Restore qualified immunity for police officers",
+      "category": "Justice",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "military-spending-increase",
+      "text": "Increase military spending and rebuild the military",
+      "category": "Military",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "end-woke-military",
+      "text": "Eliminate woke policies from the military",
+      "category": "Military",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "missile-defense",
+      "text": "Build an Iron Dome missile defense system for America",
+      "category": "Military",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "space-force",
+      "text": "Expand and strengthen Space Force",
+      "category": "Military",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "veteran-healthcare",
+      "text": "Improve VA healthcare and eliminate wait times",
+      "category": "Military",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "free-speech",
+      "text": "Protect free speech and end censorship",
+      "category": "Civil Liberties",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "section-230",
+      "text": "Reform or eliminate Section 230 to stop Big Tech censorship",
+      "category": "Civil Liberties",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "protect-2a",
+      "text": "Protect Second Amendment rights",
+      "category": "Civil Liberties",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "ban-transgender-sports",
+      "text": "Keep men out of women's sports",
+      "category": "Social Issues",
+      "status": "kept",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": [
+        {
+          "date": "2025-01-20",
+          "note": "Executive order signed banning transgender athletes from women's sports",
+          "source": "Executive Order"
+        }
+      ]
+    },
+    {
+      "id": "end-transgender-youth",
+      "text": "Stop transgender surgeries and hormone treatments for minors",
+      "category": "Social Issues",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "protect-religious-liberty",
+      "text": "Protect religious liberty",
+      "category": "Social Issues",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "ban-critical-race-theory",
+      "text": "Ban critical race theory in schools and government",
+      "category": "Social Issues",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
+    },
+    {
+      "id": "baby-bonuses",
+      "text": "Provide baby bonuses to encourage families",
+      "category": "Social Issues",
+      "status": "in_progress",
+      "source_url": "https://www.donaldjtrump.com/agenda47",
+      "updates": []
     }
   ],
   "summary": {
-    "total": 10,
-    "kept": 2,
+    "total": 70,
+    "kept": 7,
     "broken": 2,
-    "in_progress": 6,
+    "in_progress": 61,
     "compromised": 0
   }
 }
