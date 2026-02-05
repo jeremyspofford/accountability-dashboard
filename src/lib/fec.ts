@@ -3,44 +3,103 @@
  * Fetches campaign finance data for congressional candidates
  */
 
+import type {
+  FECCandidate,
+  FECFinancialSummary,
+  FECContributor,
+  FECDonorBreakdown,
+  PaginatedResponse,
+  CacheEntry,
+  ApiResponse,
+  ApiError,
+} from './types';
+
 const FEC_API_BASE = 'https://api.open.fec.gov/v1';
 const FEC_API_KEY = process.env.FEC_API_KEY || process.env.NEXT_PUBLIC_FEC_API_KEY;
 
-export interface FECCandidate {
-  candidate_id: string;
-  name: string;
-  party: string;
-  office: string;
-  state: string;
-  district?: string;
-  election_years: number[];
+// In-memory cache (5 minutes default TTL)
+const cache = new Map<string, CacheEntry<unknown>>();
+const DEFAULT_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+/**
+ * Generic fetch with caching and error handling
+ */
+async function fetchFECData<T>(
+  endpoint: string,
+  params: Record<string, string>,
+  cacheTTL = DEFAULT_CACHE_TTL
+): Promise<ApiResponse<T>> {
+  const cacheKey = `${endpoint}:${JSON.stringify(params)}`;
+  
+  // Check cache
+  const cached = cache.get(cacheKey) as CacheEntry<T> | undefined;
+  if (cached && Date.now() < cached.expires_at) {
+    return {
+      success: true,
+      data: cached.data,
+      cached: true,
+      cache_timestamp: cached.timestamp,
+    };
+  }
+
+  if (!FEC_API_KEY) {
+    return {
+      success: false,
+      error: 'FEC_API_KEY not configured',
+    };
+  }
+
+  try {
+    const url = new URL(`${FEC_API_BASE}${endpoint}`);
+    url.searchParams.set('api_key', FEC_API_KEY);
+    Object.entries(params).forEach(([key, value]) => {
+      url.searchParams.set(key, value);
+    });
+
+    const response = await fetch(url.toString(), {
+      headers: {
+        'Accept': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => response.statusText);
+      
+      let errorCode: ApiError['code'] = 'SERVER_ERROR';
+      if (response.status === 429) errorCode = 'RATE_LIMIT';
+      else if (response.status === 404) errorCode = 'NOT_FOUND';
+      else if (response.status === 400) errorCode = 'INVALID_REQUEST';
+      
+      return {
+        success: false,
+        error: `FEC API error (${response.status}): ${errorText}`,
+      };
+    }
+
+    const data = await response.json() as T;
+    
+    // Cache successful response
+    const now = Date.now();
+    cache.set(cacheKey, {
+      data,
+      timestamp: now,
+      expires_at: now + cacheTTL,
+    });
+
+    return {
+      success: true,
+      data,
+      cached: false,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
+  }
 }
 
-export interface FECFinancialSummary {
-  candidate_id: string;
-  cycle: number;
-  total_receipts: number;
-  total_disbursements: number;
-  cash_on_hand: number;
-  individual_contributions: number;
-  pac_contributions: number;
-  party_contributions: number;
-  candidate_contributions: number;
-  other_receipts: number;
-  // Detailed breakdown
-  individual_itemized: number;      // Donations >$200
-  individual_unitemized: number;    // Donations ≤$200
-}
-
-interface FECApiResponse<T> {
-  results: T[];
-  pagination: {
-    count: number;
-    page: number;
-    pages: number;
-    per_page: number;
-  };
-}
+type FECApiResponse<T> = PaginatedResponse<T>;
 
 /**
  * Search for a candidate by name
@@ -50,38 +109,25 @@ export async function searchCandidateByName(
   lastName: string,
   office: 'H' | 'S' = 'H'
 ): Promise<FECCandidate | null> {
-  if (!FEC_API_KEY) {
-    console.warn('FEC_API_KEY not configured');
+  const name = `${lastName}, ${firstName}`;
+  
+  const response = await fetchFECData<FECApiResponse<FECCandidate>>(
+    '/candidates/search/',
+    {
+      q: name,
+      office,
+      sort: '-election_years',
+      per_page: '5',
+    }
+  );
+
+  if (!response.success || !response.data?.results) {
+    console.error('Error searching FEC candidate:', response.error);
     return null;
   }
 
-  try {
-    const name = `${lastName}, ${firstName}`;
-    const url = new URL(`${FEC_API_BASE}/candidates/search/`);
-    url.searchParams.set('api_key', FEC_API_KEY);
-    url.searchParams.set('q', name);
-    url.searchParams.set('office', office);
-    url.searchParams.set('sort', '-election_years');
-    url.searchParams.set('per_page', '5');
-
-    const response = await fetch(url.toString());
-    if (!response.ok) {
-      console.error(`FEC API error: ${response.status} ${response.statusText}`);
-      return null;
-    }
-
-    const data: FECApiResponse<FECCandidate> = await response.json();
-    
-    // Return the most recent candidate match
-    if (data.results && data.results.length > 0) {
-      return data.results[0];
-    }
-
-    return null;
-  } catch (error) {
-    console.error('Error searching FEC candidate:', error);
-    return null;
-  }
+  // Return the most recent candidate match
+  return response.data.results.length > 0 ? response.data.results[0] : null;
 }
 
 /**
@@ -91,52 +137,116 @@ export async function getCandidateFinancials(
   candidateId: string,
   cycle?: number
 ): Promise<FECFinancialSummary | null> {
-  if (!FEC_API_KEY) {
-    console.warn('FEC_API_KEY not configured');
+  const targetCycle = cycle || new Date().getFullYear();
+  
+  const response = await fetchFECData<FECApiResponse<any>>(
+    `/candidate/${candidateId}/totals/`,
+    {
+      cycle: targetCycle.toString(),
+      sort: '-cycle',
+    }
+  );
+
+  if (!response.success || !response.data?.results) {
+    console.error('Error fetching FEC financials:', response.error);
     return null;
   }
 
-  try {
-    // Use current cycle if not specified
-    const targetCycle = cycle || new Date().getFullYear();
-    
-    const url = new URL(`${FEC_API_BASE}/candidate/${candidateId}/totals/`);
-    url.searchParams.set('api_key', FEC_API_KEY);
-    url.searchParams.set('cycle', targetCycle.toString());
-    url.searchParams.set('sort', '-cycle');
-
-    const response = await fetch(url.toString());
-    if (!response.ok) {
-      console.error(`FEC API error: ${response.status} ${response.statusText}`);
-      return null;
-    }
-
-    const data: FECApiResponse<any> = await response.json();
-    
-    if (data.results && data.results.length > 0) {
-      const totals = data.results[0];
-      
-      return {
-        candidate_id: candidateId,
-        cycle: totals.cycle || targetCycle,
-        total_receipts: totals.receipts || 0,
-        total_disbursements: totals.disbursements || 0,
-        cash_on_hand: totals.cash_on_hand_end_period || 0,
-        individual_contributions: totals.individual_contributions || 0,
-        pac_contributions: (totals.other_political_committee_contributions || 0),
-        party_contributions: totals.political_party_committee_contributions || 0,
-        candidate_contributions: totals.candidate_contribution || 0,
-        other_receipts: totals.other_receipts || 0,
-        individual_itemized: totals.individual_itemized_contributions || 0,
-        individual_unitemized: totals.individual_unitemized_contributions || 0,
-      };
-    }
-
-    return null;
-  } catch (error) {
-    console.error('Error fetching FEC financials:', error);
+  if (response.data.results.length === 0) {
     return null;
   }
+
+  const totals = response.data.results[0];
+  
+  return {
+    candidate_id: candidateId,
+    cycle: totals.cycle || targetCycle,
+    total_receipts: totals.receipts || 0,
+    total_disbursements: totals.disbursements || 0,
+    cash_on_hand: totals.cash_on_hand_end_period || 0,
+    individual_contributions: totals.individual_contributions || 0,
+    pac_contributions: (totals.other_political_committee_contributions || 0),
+    party_contributions: totals.political_party_committee_contributions || 0,
+    candidate_contributions: totals.candidate_contribution || 0,
+    other_receipts: totals.other_receipts || 0,
+    individual_itemized: totals.individual_itemized_contributions || 0,
+    individual_unitemized: totals.individual_unitemized_contributions || 0,
+  };
+}
+
+/**
+ * Get top contributors for a candidate
+ */
+export async function getTopContributors(
+  candidateId: string,
+  cycle?: number,
+  limit = 10
+): Promise<FECContributor[]> {
+  const targetCycle = cycle || new Date().getFullYear();
+  
+  const response = await fetchFECData<FECApiResponse<any>>(
+    `/candidate/${candidateId}/schedules/schedule_a/by_contributor/`,
+    {
+      cycle: targetCycle.toString(),
+      sort: '-total',
+      per_page: limit.toString(),
+    }
+  );
+
+  if (!response.success || !response.data?.results) {
+    console.error('Error fetching top contributors:', response.error);
+    return [];
+  }
+
+  return response.data.results.map((contrib: any) => ({
+    name: contrib.contributor_name || 'Unknown',
+    total: contrib.total || 0,
+    count: contrib.count || 0,
+    type: contrib.contributor_type === 'individual' ? 'individual' : 'pac',
+  }));
+}
+
+/**
+ * Get comprehensive donor breakdown for a candidate
+ */
+export async function getDonorBreakdown(
+  candidateId: string,
+  cycle?: number
+): Promise<FECDonorBreakdown | null> {
+  const financials = await getCandidateFinancials(candidateId, cycle);
+  
+  if (!financials) {
+    return null;
+  }
+
+  const topContributors = await getTopContributors(candidateId, cycle, 10);
+  
+  const totalRaised = financials.total_receipts;
+  const pacTotal = financials.pac_contributions;
+  const individualTotal = financials.individual_contributions;
+  const smallDonorTotal = financials.individual_unitemized;
+  const largeDonorTotal = financials.individual_itemized;
+  
+  // Calculate percentages
+  const pacPercentage = totalRaised > 0 ? (pacTotal / totalRaised) * 100 : 0;
+  const individualPercentage = totalRaised > 0 ? (individualTotal / totalRaised) * 100 : 0;
+  const smallDonorPercentage = totalRaised > 0 ? (smallDonorTotal / totalRaised) * 100 : 0;
+  const largeDonorPercentage = totalRaised > 0 ? (largeDonorTotal / totalRaised) * 100 : 0;
+  
+  return {
+    candidate_id: candidateId,
+    cycle: financials.cycle,
+    pac_percentage: Math.round(pacPercentage * 10) / 10,
+    individual_percentage: Math.round(individualPercentage * 10) / 10,
+    small_donor_percentage: Math.round(smallDonorPercentage * 10) / 10,
+    large_donor_percentage: Math.round(largeDonorPercentage * 10) / 10,
+    top_contributors: topContributors,
+    total_raised: totalRaised,
+    pac_total: pacTotal,
+    individual_total: individualTotal,
+    small_donor_total: smallDonorTotal,
+    large_donor_total: largeDonorTotal,
+  };
 }
 
 /**
@@ -160,4 +270,11 @@ export async function getMemberFECData(
   const financials = await getCandidateFinancials(candidate.candidate_id);
   
   return { candidate, financials };
+}
+
+/**
+ * Clear the FEC data cache (useful for testing or forced refresh)
+ */
+export function clearFECCache(): void {
+  cache.clear();
 }
