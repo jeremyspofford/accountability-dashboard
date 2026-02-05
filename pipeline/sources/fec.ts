@@ -61,7 +61,7 @@ async function searchCandidate(
 ): Promise<FECSearchResult | null> {
   const lastName = name.split(" ").pop()?.toUpperCase() || name;
   
-  let url = `${FEC_API_BASE}/candidates/search/?api_key=${API_KEY}&q=${encodeURIComponent(lastName)}&state=${state}&office=${office}&is_active_candidate=true&sort=-election_years&per_page=5`;
+  let url = `${FEC_API_BASE}/candidates/search/?api_key=${API_KEY}&q=${encodeURIComponent(lastName)}&state=${state}&office=${office}&cycle=2024&sort=-election_years&per_page=5`;
   
   if (office === "H" && district) {
     url += `&district=${String(district).padStart(2, '0')}`;
