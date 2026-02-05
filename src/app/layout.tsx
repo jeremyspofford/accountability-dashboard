@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rep Accountability Dashboard",
-  description: "Grade your representatives based on voting records, campaign finance, and transparency",
+  title: "Accountability Dashboard",
+  description: "Tracking power. Protecting democracy. Monitor all three branches of government with transparent data.",
   icons: {
     icon: "/favicon.svg",
   },
@@ -21,11 +21,13 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16 items-center">
               <a href="/" className="text-lg sm:text-xl font-bold text-slate-900 hover:text-blue-600 transition truncate">
-                🏛️ <span className="hidden xs:inline">Rep Accountability</span><span className="inline xs:hidden">Reps</span>
+                🏛️ <span className="hidden xs:inline">Accountability Dashboard</span><span className="inline xs:hidden">Dashboard</span>
               </a>
               <div className="flex gap-3 sm:gap-6 text-sm font-medium">
                 <a href="/" className="text-slate-600 hover:text-slate-900 transition min-w-[44px] min-h-[44px] flex items-center justify-center">Home</a>
-                <a href="/congress" className="text-slate-600 hover:text-slate-900 transition min-w-[44px] min-h-[44px] flex items-center justify-center">Congress</a>
+                <a href="/congress" className="text-slate-600 hover:text-slate-900 transition min-w-[44px] min-h-[44px] flex items-center justify-center">Legislative</a>
+                <a href="/executive" className="text-slate-600 hover:text-slate-900 transition min-w-[44px] min-h-[44px] flex items-center justify-center">Executive</a>
+                <a href="/judicial" className="text-slate-600 hover:text-slate-900 transition min-w-[44px] min-h-[44px] flex items-center justify-center">Judicial</a>
                 <a href="/about" className="text-slate-600 hover:text-slate-900 transition min-w-[44px] min-h-[44px] flex items-center justify-center">About</a>
               </div>
             </div>
