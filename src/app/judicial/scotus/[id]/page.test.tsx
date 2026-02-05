@@ -30,7 +30,7 @@ describe("Individual Justice Page", () => {
     const page = await JusticePage({ params: { id: "jackson" } });
     render(page);
     
-    expect(screen.getByText(/2022/)).toBeDefined();
+    expect(screen.getByText(/Confirmed in 2022/)).toBeDefined();
   });
 
   it("displays justice biography", async () => {
@@ -44,8 +44,10 @@ describe("Individual Justice Page", () => {
     const page = await JusticePage({ params: { id: "gorsuch" } });
     render(page);
     
-    expect(screen.getByText(/Ideology/)).toBeDefined();
-    expect(screen.getByText(/Conservative/)).toBeDefined();
+    expect(screen.getByText("Ideology Score")).toBeDefined();
+    // Conservative appears multiple times, so use getAllByText
+    const conservativeElements = screen.getAllByText(/Conservative/);
+    expect(conservativeElements.length).toBeGreaterThan(0);
   });
 
   it("handles Chief Justice title correctly", async () => {

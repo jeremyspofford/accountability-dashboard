@@ -27,7 +27,7 @@ describe("CabinetMemberPage", () => {
   it("renders appointed date", async () => {
     const page = await CabinetMemberPage({ params: Promise.resolve(mockParams) });
     render(page);
-    expect(screen.getByText(/January 20, 2025/)).toBeDefined();
+    expect(screen.getByText("January 20, 2025")).toBeDefined();
   });
 
   it("renders confirmation vote", async () => {

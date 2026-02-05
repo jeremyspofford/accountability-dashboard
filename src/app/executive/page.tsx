@@ -89,34 +89,51 @@ export default function ExecutiveBranch() {
         </div>
       </section>
 
-      {/* Cabinet Grid - Coming Soon */}
+      {/* Cabinet */}
       <section className="py-12 bg-slate-50">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-slate-900 mb-8">Cabinet</h2>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-black text-slate-900">Cabinet</h2>
+            <Link 
+              href="/executive/cabinet"
+              className="text-blue-600 hover:text-blue-700 font-semibold text-sm"
+            >
+              View All →
+            </Link>
+          </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {[
-              { role: "Secretary of State", name: "Marco Rubio" },
-              { role: "Secretary of Defense", name: "Pete Hegseth" },
-              { role: "Attorney General", name: "Pam Bondi" },
-              { role: "Secretary of Treasury", name: "Scott Bessent" },
-              { role: "Secretary of HHS", name: "Robert F. Kennedy Jr." },
-              { role: "Secretary of Homeland Security", name: "Kristi Noem" },
-              { role: "EPA Administrator", name: "Lee Zeldin" },
-              { role: "DOGE", name: "Elon Musk" },
-            ].map((cabinet, idx) => (
-              <div 
-                key={idx}
-                className="bg-white rounded-xl border border-slate-200 p-4 text-center opacity-60"
+              { role: "Secretary of State", name: "Marco Rubio", id: "secretary-of-state" },
+              { role: "Secretary of Defense", name: "Pete Hegseth", id: "secretary-of-defense" },
+              { role: "Attorney General", name: "Pam Bondi", id: "attorney-general" },
+              { role: "Secretary of Treasury", name: "Scott Bessent", id: "secretary-of-treasury" },
+              { role: "Secretary of HHS", name: "RFK Jr.", id: "secretary-of-hhs" },
+              { role: "Secretary of Homeland Security", name: "Kristi Noem", id: "secretary-of-homeland-security" },
+              { role: "EPA Administrator", name: "Lee Zeldin", id: "epa-administrator" },
+              { role: "Secretary of Interior", name: "Doug Burgum", id: "secretary-of-interior" },
+            ].map((cabinet) => (
+              <Link
+                key={cabinet.id}
+                href={`/executive/cabinet/${cabinet.id}`}
+                className="bg-white rounded-xl border border-slate-200 p-4 text-center hover:shadow-lg hover:border-blue-300 transition-all group"
               >
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-xl mx-auto mb-2">
+                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-xl mx-auto mb-2 group-hover:bg-blue-50">
                   👤
                 </div>
                 <div className="text-xs text-slate-500 mb-1">{cabinet.role}</div>
-                <div className="text-sm font-semibold text-slate-700">{cabinet.name}</div>
-                <div className="text-xs text-slate-400 mt-1">Coming soon</div>
-              </div>
+                <div className="text-sm font-semibold text-slate-700 group-hover:text-blue-600 transition-colors">{cabinet.name}</div>
+              </Link>
             ))}
+          </div>
+          
+          <div className="text-center">
+            <Link 
+              href="/executive/cabinet"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+            >
+              View Full Cabinet
+            </Link>
           </div>
         </div>
       </section>
@@ -151,11 +168,11 @@ export default function ExecutiveBranch() {
               </div>
             </div>
             
-            <div className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <div className="flex gap-4 p-4 rounded-xl bg-green-50 border border-green-200">
               <div className="text-2xl">👥</div>
               <div>
-                <h3 className="font-bold text-slate-700">Appointments</h3>
-                <p className="text-sm text-slate-500">Coming soon — Cabinet and judiciary tracker</p>
+                <h3 className="font-bold text-green-900">Cabinet Appointments</h3>
+                <p className="text-sm text-green-700">Track all cabinet members and their departments</p>
               </div>
             </div>
           </div>

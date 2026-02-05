@@ -6,6 +6,12 @@ interface CabinetMemberPageProps {
   params: Promise<{ role: string }>;
 }
 
+export function generateStaticParams() {
+  return cabinetData.members.map((member) => ({
+    role: member.id,
+  }));
+}
+
 export default async function CabinetMemberPage({ params }: CabinetMemberPageProps) {
   const { role } = await params;
   const member = cabinetData.members.find((m) => m.id === role);
@@ -15,7 +21,10 @@ export default async function CabinetMemberPage({ params }: CabinetMemberPagePro
   }
 
   const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString("en-US", {
+    // Parse as local date to avoid timezone issues
+    const [year, month, day] = dateStr.split("-").map(Number);
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",

@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { getSupremeCourtJustices, getIdeologyBreakdown } from "@/lib/data";
 
 export default function JudicialBranch() {
+  const justices = getSupremeCourtJustices();
+  const breakdown = getIdeologyBreakdown();
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -13,12 +17,63 @@ export default function JudicialBranch() {
             Judicial Branch
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 leading-relaxed mb-8">
-            Coming Soon
+            Supreme Court Transparency & Analysis
           </p>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            We're building transparency tools for the Judicial Branch — tracking Supreme Court justices, 
-            federal judges, financial disclosures, case histories, and conflicts of interest.
+            Track all {justices.length} Supreme Court justices with ideology scores, 
+            voting patterns, and appointment histories.
           </p>
+        </div>
+      </section>
+
+      {/* SCOTUS Overview */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+              Current Supreme Court
+            </h2>
+            <p className="text-lg text-slate-600">
+              Ideological breakdown of the nine justices
+            </p>
+          </div>
+
+          {/* Ideology Stats */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-blue-50 rounded-2xl p-8 border border-blue-200 text-center">
+              <div className="text-5xl font-black text-blue-700 mb-2">
+                {breakdown.liberal}
+              </div>
+              <div className="text-lg font-bold text-blue-900">Liberal</div>
+              <div className="text-sm text-blue-600 mt-1">Justices</div>
+            </div>
+
+            <div className="bg-purple-50 rounded-2xl p-8 border border-purple-200 text-center">
+              <div className="text-5xl font-black text-purple-700 mb-2">
+                {breakdown.moderate}
+              </div>
+              <div className="text-lg font-bold text-purple-900">Moderate</div>
+              <div className="text-sm text-purple-600 mt-1">Justices</div>
+            </div>
+
+            <div className="bg-red-50 rounded-2xl p-8 border border-red-200 text-center">
+              <div className="text-5xl font-black text-red-700 mb-2">
+                {breakdown.conservative}
+              </div>
+              <div className="text-lg font-bold text-red-900">Conservative</div>
+              <div className="text-sm text-red-600 mt-1">Justices</div>
+            </div>
+          </div>
+
+          {/* View All Justices CTA */}
+          <div className="text-center">
+            <Link
+              href="/judicial/scotus"
+              className="inline-flex items-center justify-center px-10 py-4 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+            >
+              View All Justices →
+            </Link>
+          </div>
         </div>
       </section>
 
