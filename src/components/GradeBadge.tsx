@@ -2,30 +2,62 @@ interface GradeBadgeProps {
   grade: 'A' | 'B' | 'C' | 'D' | 'F';
   score: number;
   size?: 'sm' | 'md' | 'lg';
-  showScore?: boolean;
+  showLabel?: boolean;
 }
 
-export default function GradeBadge({ grade, score, size = 'md', showScore = false }: GradeBadgeProps) {
+export default function GradeBadge({ grade, score, size = 'md', showLabel = false }: GradeBadgeProps) {
   const gradeClass = `grade-${grade.toLowerCase()}`;
-  const sizeClasses = {
-    sm: 'w-10 h-10 text-xl border-2',
-    md: 'w-12 h-12 text-2xl border-3',
-    lg: 'w-16 h-16 text-3xl border-4',
+  
+  const gradeLabels = {
+    A: 'Transparent',
+    B: 'Trustworthy',
+    C: 'Concerning',
+    D: 'Questionable',
+    F: 'Corrupt'
   };
   
-  return (
-    <div className="flex flex-col items-center gap-1">
-      <div 
-        className={`grade-badge ${gradeClass} ${sizeClasses[size]} inline-flex items-center justify-center rounded-full font-bold`}
-        title={`Accountability Score: ${score}/100`}
-      >
-        {grade}
+  const sizeConfig = {
+    sm: {
+      badge: 'text-xl',
+      container: 'px-3 py-1.5',
+      label: 'text-xs'
+    },
+    md: {
+      badge: 'text-3xl',
+      container: 'px-4 py-2',
+      label: 'text-xs'
+    },
+    lg: {
+      badge: 'text-4xl',
+      container: 'px-6 py-3',
+      label: 'text-sm'
+    }
+  };
+  
+  const config = sizeConfig[size];
+  
+  if (showLabel) {
+    return (
+      <div className={`grade-badge ${gradeClass} ${config.container}`}>
+        <span className={`${config.badge} font-bold`}>{grade}</span>
+        <div className="flex flex-col">
+          <span className={`${config.label} font-semibold uppercase tracking-wider`}>
+            Trust Score
+          </span>
+          <span className={`${config.label} font-medium`}>
+            {gradeLabels[grade]}
+          </span>
+        </div>
       </div>
-      {showScore && (
-        <span className="text-xs text-slate-400">
-          {score}/100
-        </span>
-      )}
+    );
+  }
+  
+  return (
+    <div 
+      className={`grade-badge ${gradeClass} ${config.container}`}
+      title={`Trust Score: ${gradeLabels[grade]} (${score}/100)`}
+    >
+      <span className={`${config.badge} font-bold`}>{grade}</span>
     </div>
   );
 }

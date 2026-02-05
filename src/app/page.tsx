@@ -20,7 +20,6 @@ export default function Home() {
     if (/^\d{5}$/.test(input)) {
       setLoading(true);
       try {
-        // Use Zippopotam.us directly (free, no CORS issues)
         const res = await fetch(`https://api.zippopotam.us/us/${input}`);
         
         if (!res.ok) {
@@ -53,125 +52,137 @@ export default function Home() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="text-center py-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-          Grade Your Representatives
-        </h1>
-        <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-4">
-          Who do they <span className="font-semibold text-blue-400">really</span> represent? You or their donors?
-        </p>
-        <p className="text-base text-white/70 max-w-2xl mx-auto mb-8">
-          Clear A-F grades based on voting records, campaign finance, and transparency.
-          No spin. Just facts.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/congress" className="btn-primary text-lg px-8 py-3">
-            View All Grades →
-          </Link>
-          <Link href="/about" className="text-slate-300 hover:text-white py-2 px-4 transition">
-            How We Grade
-          </Link>
+      <section className="relative bg-gradient-to-b from-slate-50 to-white py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6">
+            Track Congressional <span className="text-blue-600">Accountability</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            See how your representatives vote, who funds them, and whether they're working for you or special interests.
+          </p>
+          
+          {/* Search CTA */}
+          <div className="max-w-2xl mx-auto mb-6">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search by name, state, or ZIP code..."
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+                className="w-full px-6 py-4 text-lg border-2 border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm"
+              />
+              <button 
+                onClick={handleSearch}
+                disabled={loading}
+                className="absolute right-2 top-2 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 disabled:opacity-50 transition"
+              >
+                {loading ? "Searching..." : "Search"}
+              </button>
+            </div>
+            {error && (
+              <p className="text-red-600 text-sm mt-2">{error}</p>
+            )}
+          </div>
+          
+          {/* Quick Links */}
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link href="/congress?grade=F" className="px-4 py-2 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium text-sm transition">
+              View All F-Rated
+            </Link>
+            <Link href="/congress" className="px-4 py-2 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium text-sm transition">
+              Browse All Members
+            </Link>
+            <Link href="/about" className="px-4 py-2 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200 font-medium text-sm transition">
+              How We Grade
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Find Your Rep - Featured */}
-      <section className="card text-center py-10 mb-12 bg-gradient-to-r from-slate-900 to-slate-800 border-blue-900/50">
-        <h2 className="text-2xl font-bold mb-4 text-white">🔍 Find Your Representatives</h2>
-        <p className="text-white/70 mb-6">
-          Enter your ZIP code or state to see who represents you.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto px-4">
-          <input
-            type="text"
-            placeholder="ZIP code or state (e.g., 10001 or NY)"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-            className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button 
-            onClick={handleSearch}
-            disabled={loading}
-            className="btn-primary px-6 py-3 disabled:opacity-50"
-          >
-            {loading ? "Looking up..." : "Search"}
-          </button>
-        </div>
-        {error && (
-          <p className="text-red-400 text-sm mt-3">{error}</p>
-        )}
-        <p className="text-slate-400 text-xs mt-4">
-          Shows all representatives from your state. For exact district, visit{" "}
-          <a href="https://www.house.gov/representatives/find-your-representative" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             className="text-blue-400 hover:underline">
-            house.gov
-          </a>
-        </p>
-      </section>
-
-      {/* Stats Preview */}
-      <section className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 py-8">
-        <div className="card text-center py-6">
-          <div className="text-3xl md:text-4xl font-bold text-blue-400">538</div>
-          <div className="text-white/80 mt-2 text-sm md:text-base">Members of Congress</div>
-          <div className="text-xs text-white/70 mt-1">435 House + 100 Senate + 3 Delegates</div>
-        </div>
-        <div className="card text-center py-6">
-          <div className="text-3xl md:text-4xl font-bold text-green-400">50</div>
-          <div className="text-white/80 mt-2 text-sm md:text-base">States Represented</div>
-          <div className="text-xs text-white/70 mt-1">Plus DC & territories</div>
-        </div>
-        <div className="card text-center py-6 col-span-2 md:col-span-1">
-          <div className="text-3xl md:text-4xl font-bold text-purple-400">Real Data</div>
-          <div className="text-white/80 mt-2 text-sm md:text-base">From Official Sources</div>
-          <div className="text-xs text-white/70 mt-1">Congress.gov + Voteview + FEC</div>
+      {/* Key Stats */}
+      <section className="bg-white py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">538</div>
+              <div className="text-slate-600 font-medium">Members Tracked</div>
+              <div className="text-sm text-slate-500 mt-1">House + Senate</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">50</div>
+              <div className="text-slate-600 font-medium">States</div>
+              <div className="text-sm text-slate-500 mt-1">Plus territories</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-emerald-600 mb-2">A-F</div>
+              <div className="text-slate-600 font-medium">Grade Scale</div>
+              <div className="text-sm text-slate-500 mt-1">Clear ratings</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold text-slate-900 mb-2">100%</div>
+              <div className="text-slate-600 font-medium">Open Source</div>
+              <div className="text-sm text-slate-500 mt-1">Public data</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* What We Track */}
-      <section className="py-12">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-white">How We Grade Accountability</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          <div className="card">
-            <div className="text-3xl mb-3">💰</div>
-            <h3 className="font-semibold text-lg mb-2 text-white">Campaign Finance</h3>
-            <p className="text-white/70 text-sm">
-              Who funds them? PACs, corporations, or small donors? OpenFEC data reveals the truth.
-            </p>
-          </div>
-          <div className="card">
-            <div className="text-3xl mb-3">🗳️</div>
-            <h3 className="font-semibold text-lg mb-2 text-white">Voting Independence</h3>
-            <p className="text-white/70 text-sm">
-              Do they think for themselves or just vote party line? Voteview DW-NOMINATE analysis.
-            </p>
-          </div>
-          <div className="card">
-            <div className="text-3xl mb-3">📊</div>
-            <h3 className="font-semibold text-lg mb-2 text-white">Financial Transparency</h3>
-            <p className="text-white/70 text-sm">
-              Do they disclose everything? Track net worth changes and compliance.
-            </p>
-          </div>
-          <div className="card">
-            <div className="text-3xl mb-3">📈</div>
-            <h3 className="font-semibold text-lg mb-2 text-white">Wealth Growth</h3>
-            <p className="text-white/70 text-sm">
-              Sudden wealth spikes raise red flags. We track suspicious patterns.
-            </p>
+      <section className="bg-slate-50 py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-12 text-center">
+            How We Grade Accountability
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="card hover:shadow-lg transition-shadow">
+              <div className="text-4xl mb-4">💰</div>
+              <h3 className="text-xl font-semibold text-slate-800 mb-3">Campaign Finance</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Who funds them? Track donations from PACs, corporations, and individuals to see who really has influence.
+              </p>
+            </div>
+            <div className="card hover:shadow-lg transition-shadow">
+              <div className="text-4xl mb-4">🗳️</div>
+              <h3 className="text-xl font-semibold text-slate-800 mb-3">Voting Record</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Independent voting or party line? We analyze voting patterns to measure true independence.
+              </p>
+            </div>
+            <div className="card hover:shadow-lg transition-shadow">
+              <div className="text-4xl mb-4">📊</div>
+              <h3 className="text-xl font-semibold text-slate-800 mb-3">Transparency</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Full disclosure matters. We track financial reporting compliance and public accessibility.
+              </p>
+            </div>
+            <div className="card hover:shadow-lg transition-shadow">
+              <div className="text-4xl mb-4">📈</div>
+              <h3 className="text-xl font-semibold text-slate-800 mb-3">Wealth Growth</h3>
+              <p className="text-slate-600 leading-relaxed">
+                Suspicious wealth spikes raise red flags. We monitor net worth changes during tenure.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="text-center py-12">
-        <Link href="/congress" className="btn-primary text-lg px-8 py-3">
-          Browse All 538 Members →
-        </Link>
+      {/* CTA Section */}
+      <section className="bg-white py-16">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            Ready to Hold Your Representatives Accountable?
+          </h2>
+          <p className="text-lg text-slate-600 mb-8">
+            Browse all 538 members of Congress with clear, data-driven accountability grades.
+          </p>
+          <Link href="/congress" className="btn-primary text-lg px-8 py-3 inline-block">
+            View All Grades →
+          </Link>
+        </div>
       </section>
     </div>
   );

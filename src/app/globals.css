@@ -1,107 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply antialiased;
-    color: #f1f5f9; /* slate-100 - high contrast default */
-    background: linear-gradient(180deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
-    background-attachment: fixed;
+    @apply antialiased bg-white text-slate-600;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
   
-  /* DO NOT add global element selectors - let Tailwind classes control colors */
-  
-  /* Celestial stars background - subtle, behind content */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
-      radial-gradient(2px 2px at 60px 70px, rgba(255, 255, 255, 0.2), transparent),
-      radial-gradient(1px 1px at 50px 50px, rgba(255, 255, 255, 0.4), transparent),
-      radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.3), transparent),
-      radial-gradient(2px 2px at 90px 10px, rgba(255, 255, 255, 0.2), transparent);
-    background-size: 200px 200px;
-    background-repeat: repeat;
-    pointer-events: none;
-    opacity: 0.3;
-    z-index: -1;
-  }
-  
-  main, nav, footer {
-    position: relative;
-    z-index: 1;
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-slate-900;
   }
 }
 
 @layer components {
+  /* Card Component - Light Theme */
   .card {
-    @apply bg-slate-900/80 backdrop-blur-sm border border-slate-800/50 rounded-xl p-6;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    @apply bg-white border border-slate-200 rounded-xl p-6 transition-shadow duration-200;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
   }
   
   .card:hover {
-    @apply border-slate-700/70;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
   }
   
+  /* Primary Button */
   .btn-primary {
-    @apply bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition shadow-lg shadow-blue-900/50;
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors shadow-sm;
   }
   
+  /* Party Badges - Muted */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
   }
   
   .badge-dem {
-    @apply bg-blue-900/50 text-blue-300 border border-blue-800;
+    @apply bg-blue-100 text-blue-700;
   }
   
   .badge-rep {
-    @apply bg-red-900/50 text-red-300 border border-red-800;
+    @apply bg-red-100 text-red-700;
   }
   
   .badge-ind {
-    @apply bg-purple-900/50 text-purple-300 border border-purple-800;
+    @apply bg-purple-100 text-purple-700;
   }
   
-  /* Corruption Grade Badge */
+  /* Grade Badge Component - Semantic Colors */
   .grade-badge {
-    @apply inline-flex items-center justify-center w-16 h-16 rounded-full text-3xl font-bold border-4;
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 font-mono font-bold;
   }
   
-  .grade-badge-sm {
-    @apply inline-flex items-center justify-center w-12 h-12 rounded-full text-2xl font-bold border-3;
+  .grade-badge-lg {
+    @apply inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 font-mono;
   }
   
-  /* Grade colors */
+  /* Grade A - Emerald (Transparent) */
   .grade-a {
-    @apply bg-green-900/30 text-green-400 border-green-700;
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+    @apply bg-emerald-50 border-emerald-500 text-emerald-700;
   }
   
+  /* Grade B - Lime (Trustworthy) */
   .grade-b {
-    @apply bg-blue-900/30 text-blue-400 border-blue-700;
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    @apply bg-lime-50 border-lime-500 text-lime-700;
   }
   
+  /* Grade C - Amber (Concerning) */
   .grade-c {
-    @apply bg-yellow-900/30 text-yellow-400 border-yellow-700;
-    box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+    @apply bg-amber-50 border-amber-500 text-amber-700;
   }
   
+  /* Grade D - Orange (Questionable) */
   .grade-d {
-    @apply bg-orange-900/30 text-orange-400 border-orange-700;
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    @apply bg-orange-50 border-orange-500 text-orange-700;
   }
   
+  /* Grade F - Red (Corrupt) */
   .grade-f {
-    @apply bg-red-900/30 text-red-400 border-red-700;
-    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    @apply bg-red-50 border-red-500 text-red-700;
+  }
+  
+  /* Stat Card Component */
+  .stat-card {
+    @apply bg-slate-50 rounded-lg py-3 px-2 text-center;
+  }
+  
+  .stat-label {
+    @apply text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1;
+  }
+  
+  .stat-value {
+    @apply font-mono text-lg font-bold text-slate-900;
+  }
+  
+  .stat-context {
+    @apply text-xs text-slate-500;
   }
 }
