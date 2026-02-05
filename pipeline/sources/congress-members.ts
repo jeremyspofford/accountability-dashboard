@@ -248,8 +248,8 @@ export function transformMember(member: CongressMemberRaw): TransformedMember {
 
   // Transform committee assignments
   const committees: Committee[] = (member.committeeAssignments || []).map(c => {
-    const isChair = c.title?.toLowerCase().includes('chair') && !c.title?.toLowerCase().includes('ranking');
-    const isRankingMember = c.title?.toLowerCase().includes('ranking');
+    const isChair = !!(c.title?.toLowerCase().includes('chair') && !c.title?.toLowerCase().includes('ranking'));
+    const isRankingMember = !!(c.title?.toLowerCase().includes('ranking'));
     
     return {
       name: c.name,
@@ -260,8 +260,8 @@ export function transformMember(member: CongressMemberRaw): TransformedMember {
       is_chair: isChair,
       is_ranking_member: isRankingMember,
       subcommittees: (c.subcommittees || []).map(s => {
-        const subIsChair = s.title?.toLowerCase().includes('chair') && !s.title?.toLowerCase().includes('ranking');
-        const subIsRanking = s.title?.toLowerCase().includes('ranking');
+        const subIsChair = !!(s.title?.toLowerCase().includes('chair') && !s.title?.toLowerCase().includes('ranking'));
+        const subIsRanking = !!(s.title?.toLowerCase().includes('ranking'));
         
         return {
           name: s.name,

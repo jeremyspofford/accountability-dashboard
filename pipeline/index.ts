@@ -13,6 +13,7 @@
 import { fetchAllMembers, transformMember, enrichMembersWithBills } from "./sources/congress-members.js";
 import { fetchVoteviewData, calculatePartyLoyalty } from "./sources/voteview.js";
 import { fetchAllMemberFinance } from "./sources/fec.js";
+import { enrichWithCommittees } from "./sources/propublica-committees.js";
 import * as fs from "fs";
 
 async function runPipeline() {
@@ -23,18 +24,40 @@ async function runPipeline() {
 
   try {
     // Step 1: Fetch members
-    console.log("\n[1/4] Fetching Congress members...");
+    console.log("\n[1/5] Fetching Congress members...");
     const members = await fetchAllMembers();
     console.log(`✓ Got ${members.length} members\n`);
     
     // Step 1b: Enrich with bills data
-    console.log("[1b/4] Enriching with bills data...");
+    console.log("[1b/5] Enriching with bills data...");
     const enrichedMembers = await enrichMembersWithBills(members);
-    const transformedMembers = enrichedMembers.map(transformMember);
+    let transformedMembers = enrichedMembers.map(transformMember);
     console.log(`✓ Transformed ${transformedMembers.length} members\n`);
 
+    // Step 1c: Enrich with committee data from ProPublica
+    console.log("[1c/5] Fetching committee assignments from ProPublica...");
+    if (process.env.PROPUBLICA_API_KEY) {
+      const committeesMap = await enrichWithCommittees(
+        transformedMembers.map(m => ({ bioguide_id: m.bioguide_id, full_name: m.full_name })),
+        10,   // batch size
+        200   // delay between batches (ms)
+      );
+      
+      // Merge committee data into members
+      transformedMembers = transformedMembers.map(m => ({
+        ...m,
+        committees: committeesMap.get(m.bioguide_id) || [],
+      }));
+      
+      const membersWithCommittees = transformedMembers.filter(m => m.committees.length > 0).length;
+      console.log(`✓ Added committee data for ${membersWithCommittees}/${transformedMembers.length} members\n`);
+    } else {
+      console.log("⚠️  Skipping committee data (set PROPUBLICA_API_KEY)");
+      console.log("   Get one at: https://www.propublica.org/datastore/api/propublica-congress-api\n");
+    }
+
     // Step 2: Fetch voting data from Voteview
-    console.log("\n[2/4] Fetching voting records from Voteview...");
+    console.log("\n[2/5] Fetching voting records from Voteview...");
     const voteviewData = await fetchVoteviewData();
     
     // Merge Voteview data
@@ -52,7 +75,7 @@ async function runPipeline() {
     console.log(`✓ Merged voting data for ${membersWithVotes}/${transformedMembers.length} members`);
 
     // Step 3: Fetch campaign finance from FEC
-    console.log("\n[3/4] Fetching campaign finance from FEC...");
+    console.log("\n[3/5] Fetching campaign finance from FEC...");
     
     let financeData: Record<string, any> = {};
     
@@ -76,7 +99,7 @@ async function runPipeline() {
     }
 
     // Step 4: Write output files
-    console.log("\n[4/4] Writing output files...");
+    console.log("\n[4/5] Writing output files...");
     
     const outDir = "./pipeline/output";
     const srcDataDir = "./src/data";
