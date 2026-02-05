@@ -38,7 +38,7 @@ function CongressContent() {
       if (chamber && m.chamber !== chamber) return false;
       if (party && m.party !== party) return false;
       if (state && m.state !== state) return false;
-      if (rubberStampOnly && m.party_alignment_pct !== 100) return false;
+      if (rubberStampOnly && !(m.party_alignment_pct === 100 && m.votes_cast > 100)) return false;
       if (search) {
         const q = search.toLowerCase();
         if (!m.full_name.toLowerCase().includes(q) && 
@@ -58,8 +58,9 @@ function CongressContent() {
   
   const isFiltered = chamber || party || state || search || rubberStampOnly;
   
-  // Count rubber stamps
-  const rubberStampCount = allMembers.filter(m => m.party_alignment_pct === 100).length;
+  // Count rubber stamps (100% party alignment AND >100 votes cast)
+  const isRubberStamp = (m: Member) => m.party_alignment_pct === 100 && m.votes_cast > 100;
+  const rubberStampCount = allMembers.filter(isRubberStamp).length;
   
   return (
     <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 space-y-8">
@@ -146,7 +147,7 @@ function CongressContent() {
               </span>
             </label>
             <p className="text-sm text-slate-500 mt-2 ml-8">
-              Show only members who vote 100% with their party — no independent judgment, no constituent input.
+              Members who vote 100% with their party on 100+ votes — no independent judgment, no constituent input.
             </p>
           </div>
         </div>
@@ -206,9 +207,9 @@ function CongressContent() {
                 <div className="flex-1 min-w-0">
                   <h3 className="text-xl font-bold leading-tight text-slate-900 mb-1 group-hover:text-blue-600 transition truncate flex items-center gap-2">
                     {member.full_name}
-                    {member.party_alignment_pct === 100 && (
+                    {member.party_alignment_pct === 100 && member.votes_cast > 100 && (
                       <span 
-                        title="Rubber Stamp: Votes 100% with party — no independent judgment"
+                        title={`Rubber Stamp: Votes 100% with party on ${member.votes_cast} votes — no independent judgment`}
                         className="inline-flex items-center justify-center w-6 h-6 bg-red-100 rounded-full border-2 border-red-300 text-red-700 font-black text-[10px] transform -rotate-12 ml-1 cursor-help"
                       >
                         ✓

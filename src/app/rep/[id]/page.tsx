@@ -106,9 +106,9 @@ export default function RepPage({ params }: { params: { id: string } }) {
               {/* Name */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 mb-3 leading-tight flex items-center gap-3">
                 {member.full_name}
-                {member.party_alignment_pct === 100 && (
+                {member.party_alignment_pct === 100 && member.votes_cast > 100 && (
                   <span 
-                    title="Rubber Stamp: Votes 100% with party — no independent judgment"
+                    title={`Rubber Stamp: Votes 100% with party on ${member.votes_cast} votes — no independent judgment`}
                     className="inline-flex items-center justify-center w-12 h-12 bg-red-100 rounded-full border-3 border-red-300 text-red-700 font-black text-lg transform -rotate-12 cursor-help"
                   >
                     ✓
