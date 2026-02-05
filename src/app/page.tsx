@@ -102,7 +102,7 @@ export default function Home() {
         {error && (
           <p className="text-red-400 text-sm mt-3">{error}</p>
         )}
-        <p className="text-slate-500 text-xs mt-4">
+        <p className="text-slate-400 text-xs mt-4">
           Shows all representatives from your state. For exact district, visit{" "}
           <a href="https://www.house.gov/representatives/find-your-representative" 
              target="_blank" 

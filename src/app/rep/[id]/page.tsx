@@ -70,26 +70,26 @@ export default function RepPage({ params }: { params: { id: string } }) {
         <div className="card text-center">
           <div className="text-3xl font-bold text-green-400">{member.party_alignment_pct}%</div>
           <div className="text-slate-400 mt-1">Party Alignment</div>
-          <div className="text-xs text-slate-500 mt-1">
+          <div className="text-xs text-slate-400 mt-1">
             Votes with {member.party === "D" ? "Democrats" : member.party === "R" ? "Republicans" : "caucus"}
           </div>
         </div>
         <div className="card text-center">
           <div className="text-3xl font-bold text-yellow-400">{member.votes_cast}</div>
           <div className="text-slate-400 mt-1">Votes Cast</div>
-          <div className="text-xs text-slate-500 mt-1">
+          <div className="text-xs text-slate-400 mt-1">
             119th Congress roll calls
           </div>
         </div>
         <div className="card text-center">
           <div className="text-3xl font-bold text-blue-400">{member.bills_sponsored}</div>
           <div className="text-slate-400 mt-1">Bills Sponsored</div>
-          <div className="text-xs text-slate-500 mt-1">119th Congress</div>
+          <div className="text-xs text-slate-400 mt-1">119th Congress</div>
         </div>
         <div className="card text-center">
           <div className="text-3xl font-bold text-purple-400">${(member.total_raised / 1000000).toFixed(1)}M</div>
           <div className="text-slate-400 mt-1">Total Raised</div>
-          <div className="text-xs text-slate-500 mt-1">2024 cycle</div>
+          <div className="text-xs text-slate-400 mt-1">2024 cycle</div>
         </div>
       </div>
 
@@ -114,7 +114,7 @@ export default function RepPage({ params }: { params: { id: string } }) {
           <h2 className="text-xl font-semibold mb-4">Top Donors</h2>
           <div className="text-slate-400 text-sm py-8 text-center">
             Campaign finance data coming soon...
-            <p className="text-xs text-slate-500 mt-2">
+            <p className="text-xs text-slate-400 mt-2">
               Will include data from OpenSecrets/FEC
             </p>
           </div>

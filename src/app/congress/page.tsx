@@ -205,7 +205,7 @@ function CongressContent() {
                     <span className={`badge ${member.party === "D" ? "badge-dem" : member.party === "R" ? "badge-rep" : "badge-ind"}`}>
                       {member.party === "D" ? "D" : member.party === "R" ? "R" : "I"}
                     </span>
-                    <span className="text-slate-500 text-xs">
+                    <span className="text-slate-400 text-xs">
                       {member.state}{member.district ? `-${member.district}` : ""} • {member.chamber === "house" ? "House" : "Senate"}
                     </span>
                   </div>
@@ -216,15 +216,15 @@ function CongressContent() {
               <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-slate-800/50">
                 <div className="text-center">
                   <div className="text-sm font-semibold text-slate-300">{member.party_alignment_pct}%</div>
-                  <div className="text-xs text-slate-500">Party Align</div>
+                  <div className="text-xs text-slate-400">Party Align</div>
                 </div>
                 <div className="text-center">
                   <div className="text-sm font-semibold text-slate-300">{member.votes_cast}</div>
-                  <div className="text-xs text-slate-500">Votes</div>
+                  <div className="text-xs text-slate-400">Votes</div>
                 </div>
                 <div className="text-center">
                   <div className="text-sm font-semibold text-slate-300">{member.bills_sponsored}</div>
-                  <div className="text-xs text-slate-500">Bills</div>
+                  <div className="text-xs text-slate-400">Bills</div>
                 </div>
               </div>
             </Link>
