@@ -84,19 +84,19 @@ function CongressContent() {
         </div>
         
         {/* Search + Filters */}
-        <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-          <div className="flex flex-wrap gap-4">
+        <div className="bg-white rounded-xl border border-slate-200 p-4 sm:p-6 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
             <input
               type="text"
               placeholder="Search by name..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="flex-1 min-w-[200px] px-4 py-3 border border-slate-300 rounded-lg text-base leading-relaxed focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              className="w-full sm:flex-1 sm:min-w-[180px] px-4 py-3 border border-slate-300 rounded-lg text-base leading-relaxed focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition min-h-[44px]"
             />
             <select 
               value={grade}
               onChange={(e) => setGrade(e.target.value)}
-              className="px-4 py-3 border border-slate-300 rounded-lg bg-white text-slate-700 font-medium text-base leading-relaxed focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full sm:w-auto px-4 py-3 border border-slate-300 rounded-lg bg-white text-slate-700 font-medium text-base leading-relaxed focus:ring-2 focus:ring-blue-500 transition min-h-[44px]"
             >
               <option value="">All Grades</option>
               <option value="A">Grade A - Transparent</option>
@@ -108,7 +108,7 @@ function CongressContent() {
             <select 
               value={chamber}
               onChange={(e) => setChamber(e.target.value)}
-              className="px-4 py-3 border border-slate-300 rounded-lg bg-white text-slate-700 font-medium text-base leading-relaxed focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full sm:w-auto px-4 py-3 border border-slate-300 rounded-lg bg-white text-slate-700 font-medium text-base leading-relaxed focus:ring-2 focus:ring-blue-500 transition min-h-[44px]"
             >
               <option value="">All Chambers</option>
               <option value="house">House ({stats.house})</option>
@@ -117,7 +117,7 @@ function CongressContent() {
             <select 
               value={party}
               onChange={(e) => setParty(e.target.value)}
-              className="px-4 py-3 border border-slate-300 rounded-lg bg-white text-slate-700 font-medium text-base leading-relaxed focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full sm:w-auto px-4 py-3 border border-slate-300 rounded-lg bg-white text-slate-700 font-medium text-base leading-relaxed focus:ring-2 focus:ring-blue-500 transition min-h-[44px]"
             >
               <option value="">All Parties</option>
               <option value="D">Democrat ({stats.democrats})</option>
@@ -127,7 +127,7 @@ function CongressContent() {
             <select 
               value={state}
               onChange={(e) => setState(e.target.value)}
-              className="px-4 py-3 border border-slate-300 rounded-lg bg-white text-slate-700 font-medium text-base leading-relaxed focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full sm:w-auto px-4 py-3 border border-slate-300 rounded-lg bg-white text-slate-700 font-medium text-base leading-relaxed focus:ring-2 focus:ring-blue-500 transition min-h-[44px]"
             >
               <option value="">All States</option>
               {states.map(s => (
@@ -141,24 +141,24 @@ function CongressContent() {
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div className="card text-center py-8">
-          <div className="text-5xl font-black text-slate-900 mb-3 tabular-nums leading-tight">{filteredStats.total}</div>
-          <div className="text-slate-600 font-semibold text-sm uppercase tracking-wider leading-relaxed">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <div className="card text-center py-6 sm:py-8">
+          <div className="text-4xl sm:text-5xl font-black text-slate-900 mb-2 sm:mb-3 tabular-nums leading-tight">{filteredStats.total}</div>
+          <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider leading-relaxed">
             {isFiltered ? "Showing" : "Total Members"}
           </div>
         </div>
-        <div className="card text-center py-8">
-          <div className="text-5xl font-black text-blue-600 mb-3 tabular-nums leading-tight">{filteredStats.democrats}</div>
-          <div className="text-slate-600 font-semibold text-sm uppercase tracking-wider leading-relaxed">Democrats</div>
+        <div className="card text-center py-6 sm:py-8">
+          <div className="text-4xl sm:text-5xl font-black text-blue-600 mb-2 sm:mb-3 tabular-nums leading-tight">{filteredStats.democrats}</div>
+          <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider leading-relaxed">Democrats</div>
         </div>
-        <div className="card text-center py-8">
-          <div className="text-5xl font-black text-red-600 mb-3 tabular-nums leading-tight">{filteredStats.republicans}</div>
-          <div className="text-slate-600 font-semibold text-sm uppercase tracking-wider leading-relaxed">Republicans</div>
+        <div className="card text-center py-6 sm:py-8">
+          <div className="text-4xl sm:text-5xl font-black text-red-600 mb-2 sm:mb-3 tabular-nums leading-tight">{filteredStats.republicans}</div>
+          <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider leading-relaxed">Republicans</div>
         </div>
-        <div className="card text-center py-8">
-          <div className="text-5xl font-black text-purple-600 mb-3 tabular-nums leading-tight">{filteredStats.independents}</div>
-          <div className="text-slate-600 font-semibold text-sm uppercase tracking-wider leading-relaxed">Independents</div>
+        <div className="card text-center py-6 sm:py-8">
+          <div className="text-4xl sm:text-5xl font-black text-purple-600 mb-2 sm:mb-3 tabular-nums leading-tight">{filteredStats.independents}</div>
+          <div className="text-slate-600 font-semibold text-xs sm:text-sm uppercase tracking-wider leading-relaxed">Independents</div>
         </div>
       </div>
 
@@ -216,20 +216,20 @@ function CongressContent() {
               </div>
               
               {/* Key Metrics Grid */}
-              <div className="grid grid-cols-3 gap-5 mb-6">
-                <div className="bg-slate-50 rounded-xl py-4 px-3 text-center">
-                  <div className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-2">Party Align</div>
-                  <div className="font-mono text-2xl font-bold text-slate-900 tabular-nums leading-tight">{member.party_alignment_pct}%</div>
+              <div className="grid grid-cols-3 gap-3 sm:gap-5 mb-6">
+                <div className="bg-slate-50 rounded-xl py-3 sm:py-4 px-2 sm:px-3 text-center">
+                  <div className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Party Align</div>
+                  <div className="font-mono text-xl sm:text-2xl font-bold text-slate-900 tabular-nums leading-tight">{member.party_alignment_pct}%</div>
                 </div>
                 
-                <div className="bg-slate-50 rounded-xl py-4 px-3 text-center">
-                  <div className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-2">Votes Cast</div>
-                  <div className="font-mono text-2xl font-bold text-slate-900 tabular-nums leading-tight">{member.votes_cast}</div>
+                <div className="bg-slate-50 rounded-xl py-3 sm:py-4 px-2 sm:px-3 text-center">
+                  <div className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Votes Cast</div>
+                  <div className="font-mono text-xl sm:text-2xl font-bold text-slate-900 tabular-nums leading-tight">{member.votes_cast}</div>
                 </div>
                 
-                <div className="bg-slate-50 rounded-xl py-4 px-3 text-center">
-                  <div className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-2">Bills</div>
-                  <div className="font-mono text-2xl font-bold text-slate-900 tabular-nums leading-tight">{member.bills_sponsored}</div>
+                <div className="bg-slate-50 rounded-xl py-3 sm:py-4 px-2 sm:px-3 text-center">
+                  <div className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-slate-500 mb-1 sm:mb-2">Bills</div>
+                  <div className="font-mono text-xl sm:text-2xl font-bold text-slate-900 tabular-nums leading-tight">{member.bills_sponsored}</div>
                 </div>
               </div>
               

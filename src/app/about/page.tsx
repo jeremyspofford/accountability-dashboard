@@ -67,7 +67,7 @@ export default function About() {
 
       <section className="card mb-8">
         <h2 className="text-2xl font-bold mb-4 text-white">Grade Scale</h2>
-        <div className="grid grid-cols-5 gap-4 text-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 text-center">
           <div>
             <div className="grade-badge grade-a mx-auto mb-2">A</div>
             <p className="text-white/80 text-sm">90-100</p>
@@ -88,7 +88,7 @@ export default function About() {
             <p className="text-white/80 text-sm">60-69</p>
             <p className="text-white/60 text-xs">Poor</p>
           </div>
-          <div>
+          <div className="col-span-2 sm:col-span-1">
             <div className="grade-badge grade-f mx-auto mb-2">F</div>
             <p className="text-white/80 text-sm">&lt;60</p>
             <p className="text-white/60 text-xs">Failing</p>

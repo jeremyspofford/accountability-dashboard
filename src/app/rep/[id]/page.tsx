@@ -216,21 +216,21 @@ export default function RepPage({ params }: { params: { id: string } }) {
               {/* PROMINENT Grade Badge - Now CENTERED and LARGER */}
               <div className="flex justify-center md:justify-start mb-8">
                 <div
-                  className={`inline-flex items-center gap-6 px-12 py-8 rounded-3xl border-4 shadow-2xl hover:shadow-3xl transition-all duration-300 ${getGradeBadgeClasses(
+                  className={`inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-6 px-8 sm:px-12 py-6 sm:py-8 rounded-3xl border-4 shadow-2xl hover:shadow-3xl transition-all duration-300 ${getGradeBadgeClasses(
                     member.corruption_grade
                   )}`}
                 >
-                  <span className="font-mono text-8xl md:text-9xl font-black leading-none">
+                  <span className="font-mono text-7xl sm:text-8xl md:text-9xl font-black leading-none">
                     {member.corruption_grade}
                   </span>
-                  <div className="flex flex-col gap-1">
-                    <span className="text-sm md:text-base font-black uppercase tracking-wider">
+                  <div className="flex flex-col gap-1 text-center sm:text-left">
+                    <span className="text-xs sm:text-sm md:text-base font-black uppercase tracking-wider">
                       Accountability Score
                     </span>
-                    <span className="text-2xl md:text-3xl font-black">
+                    <span className="text-xl sm:text-2xl md:text-3xl font-black">
                       {getGradeLabel(member.corruption_grade)}
                     </span>
-                    <span className="text-base md:text-lg opacity-75 font-mono font-bold">
+                    <span className="text-sm sm:text-base md:text-lg opacity-75 font-mono font-bold">
                       {member.corruption_score}/100
                     </span>
                   </div>
@@ -238,15 +238,15 @@ export default function RepPage({ params }: { params: { id: string } }) {
               </div>
 
               {/* Quick Actions */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <a
                   href={`https://www.congress.gov/member/${member.bioguide_id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 hover:scale-105 flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="px-6 sm:px-8 py-4 bg-blue-600 text-white font-bold rounded-2xl hover:bg-blue-700 hover:scale-105 flex items-center justify-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[44px]"
                 >
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5 sm:w-6 sm:h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -258,12 +258,12 @@ export default function RepPage({ params }: { params: { id: string } }) {
                       d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                     />
                   </svg>
-                  Official Profile
+                  <span className="text-sm sm:text-base">Official Profile</span>
                 </a>
 
-                <button className="px-8 py-4 border-2 border-slate-300 text-slate-700 font-bold rounded-2xl hover:bg-slate-50 hover:border-slate-400 hover:scale-105 flex items-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl">
+                <button className="px-6 sm:px-8 py-4 border-2 border-slate-300 text-slate-700 font-bold rounded-2xl hover:bg-slate-50 hover:border-slate-400 hover:scale-105 flex items-center justify-center gap-3 transition-all duration-300 shadow-lg hover:shadow-xl min-h-[44px]">
                   <svg
-                    className="w-6 h-6"
+                    className="w-5 h-5 sm:w-6 sm:h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -275,7 +275,7 @@ export default function RepPage({ params }: { params: { id: string } }) {
                       d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
                     />
                   </svg>
-                  Share
+                  <span className="text-sm sm:text-base">Share</span>
                 </button>
               </div>
             </div>

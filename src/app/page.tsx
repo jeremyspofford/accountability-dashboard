@@ -62,10 +62,10 @@ export default function Home() {
               { value: "A-F", label: "Grades", sublabel: "Clear ratings" },
               { value: "100%", label: "Open", sublabel: "Public data" },
             ].map((stat, i) => (
-              <div key={i} className="bg-white/80 backdrop-blur-xl border border-slate-200/60 rounded-2xl p-10 text-center shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-300/50 hover:border-slate-300/60 transition-all duration-300 hover:-translate-y-1">
-                <div className="text-5xl md:text-6xl font-black text-slate-900 mb-3 tabular-nums leading-tight">{stat.value}</div>
-                <div className="text-slate-700 font-bold text-sm uppercase tracking-wider mb-1">{stat.label}</div>
-                <div className="text-sm text-slate-500 leading-relaxed">{stat.sublabel}</div>
+              <div key={i} className="bg-white/80 backdrop-blur-xl border border-slate-200/60 rounded-2xl p-6 sm:p-8 md:p-10 text-center shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-300/50 hover:border-slate-300/60 transition-all duration-300 hover:-translate-y-1">
+                <div className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 mb-2 sm:mb-3 tabular-nums leading-tight">{stat.value}</div>
+                <div className="text-slate-700 font-bold text-xs sm:text-sm uppercase tracking-wider mb-1">{stat.label}</div>
+                <div className="text-xs sm:text-sm text-slate-500 leading-relaxed">{stat.sublabel}</div>
               </div>
             ))}
           </div>
@@ -111,15 +111,15 @@ export default function Home() {
                 color: "from-purple-500 to-pink-600"
               },
             ].map((feature, i) => (
-              <div key={i} className="group relative bg-white rounded-3xl p-10 transition-all duration-500 hover:-translate-y-2 border border-slate-200 hover:border-blue-200 overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-blue-500/10">
+              <div key={i} className="group relative bg-white rounded-3xl p-6 sm:p-8 md:p-10 transition-all duration-500 hover:-translate-y-2 border border-slate-200 hover:border-blue-200 overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-blue-500/10">
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/0 via-cyan-500/0 to-indigo-500/0 group-hover:from-blue-500/5 group-hover:via-cyan-500/5 group-hover:to-indigo-500/5 transition-all duration-500" />
                 
                 <div className="relative z-10">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-3xl mb-6 shadow-lg group-hover:shadow-2xl group-hover:scale-110 transition-all duration-300`}>
+                  <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-2xl sm:text-3xl mb-4 sm:mb-6 shadow-lg group-hover:shadow-2xl group-hover:scale-110 transition-all duration-300`}>
                     {feature.icon}
                   </div>
-                  <h3 className="text-2xl font-black text-slate-900 mb-4 leading-tight tracking-tight">{feature.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-3 sm:mb-4 leading-tight tracking-tight">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{feature.desc}</p>
                 </div>
               </div>
             ))}
