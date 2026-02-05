@@ -5,6 +5,8 @@
  * API Key required: https://api.congress.gov/sign-up/
  */
 
+import type { Committee } from "../../src/lib/types";
+
 const CONGRESS_API_BASE = "https://api.congress.gov/v3";
 
 // API key from environment (required)
