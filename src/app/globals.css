@@ -4,28 +4,13 @@
 
 @layer base {
   body {
-    @apply antialiased text-slate-100;
+    @apply antialiased;
+    color: #f1f5f9; /* slate-100 - high contrast default */
     background: linear-gradient(180deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
     background-attachment: fixed;
   }
   
-  /* Ensure all text is readable */
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-white;
-  }
-  
-  p, span, div {
-    @apply text-slate-200;
-  }
-  
-  a {
-    @apply text-blue-400 hover:text-blue-300;
-  }
-  
-  /* Muted text for secondary content */
-  .text-muted {
-    @apply text-slate-400;
-  }
+  /* DO NOT add global element selectors - let Tailwind classes control colors */
   
   /* Celestial stars background - subtle, behind content */
   body::before {

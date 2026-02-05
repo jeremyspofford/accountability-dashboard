@@ -118,17 +118,17 @@ export default function Home() {
         <div className="card text-center py-6">
           <div className="text-3xl md:text-4xl font-bold text-blue-400">538</div>
           <div className="text-white/80 mt-2 text-sm md:text-base">Members of Congress</div>
-          <div className="text-xs text-white/50 mt-1">435 House + 100 Senate + 3 Delegates</div>
+          <div className="text-xs text-white/70 mt-1">435 House + 100 Senate + 3 Delegates</div>
         </div>
         <div className="card text-center py-6">
           <div className="text-3xl md:text-4xl font-bold text-green-400">50</div>
           <div className="text-white/80 mt-2 text-sm md:text-base">States Represented</div>
-          <div className="text-xs text-white/50 mt-1">Plus DC & territories</div>
+          <div className="text-xs text-white/70 mt-1">Plus DC & territories</div>
         </div>
         <div className="card text-center py-6 col-span-2 md:col-span-1">
           <div className="text-3xl md:text-4xl font-bold text-purple-400">Real Data</div>
           <div className="text-white/80 mt-2 text-sm md:text-base">From Official Sources</div>
-          <div className="text-xs text-white/50 mt-1">Congress.gov + Voteview + FEC</div>
+          <div className="text-xs text-white/70 mt-1">Congress.gov + Voteview + FEC</div>
         </div>
       </section>
 

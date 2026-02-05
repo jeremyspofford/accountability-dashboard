@@ -30,7 +30,7 @@ export default function RootLayout({
         </nav>
         <main>{children}</main>
         <footer className="border-t border-slate-800 py-8 mt-16">
-          <div className="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+          <div className="max-w-7xl mx-auto px-4 text-center text-slate-300 text-sm">
             <p>Built by Aria Labs • Data from Congress.gov, ProPublica, OpenSecrets</p>
             <p className="mt-2">Democracy shouldnt be paywalled. This is open source.</p>
           </div>
