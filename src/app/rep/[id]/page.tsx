@@ -4,6 +4,7 @@ import Link from "next/link";
 import DonorAnalysisSection from "@/components/DonorAnalysisSection";
 import VotingRecordSection from "@/components/VotingRecordSection";
 import CommitteeMemberships from "@/components/CommitteeMemberships";
+import StockTradesSection from "@/components/StockTradesSection";
 
 export function generateStaticParams() {
   return getMembers().map((member) => ({
@@ -40,6 +41,17 @@ export default function RepPage({ params }: { params: { id: string } }) {
       aligned: true,
     },
   ];
+
+  // Placeholder stock trades (will be replaced with real Quiver data)
+  const stockTrades: Array<{
+    ticker: string;
+    company: string | null;
+    tradedDate: string;
+    filedDate: string;
+    transaction: "Purchase" | "Sale";
+    tradeSizeUsd: number;
+    excessReturn: number | null;
+  }> = [];
 
   const getPartyBadgeClass = (party: string) => {
     switch (party) {
@@ -104,16 +116,8 @@ export default function RepPage({ params }: { params: { id: string } }) {
 
             <div className="flex-1">
               {/* Name */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 mb-3 leading-tight flex items-center gap-3">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 mb-3 leading-tight">
                 {member.full_name}
-                {member.party_alignment_pct === 100 && member.votes_cast > 100 && (
-                  <span 
-                    title={`Rubber Stamp: Votes 100% with party on ${member.votes_cast} votes — no independent judgment`}
-                    className="inline-flex items-center justify-center w-12 h-12 bg-red-100 rounded-full border-3 border-red-300 text-red-700 font-black text-lg transform -rotate-12 cursor-help"
-                  >
-                    ✓
-                  </span>
-                )}
               </h1>
 
               {/* Party & District */}
@@ -192,6 +196,12 @@ export default function RepPage({ params }: { params: { id: string } }) {
               keyVotes={keyVotes}
             />
 
+            {/* Stock Trades */}
+            <StockTradesSection 
+              trades={stockTrades} 
+              memberName={member.full_name} 
+            />
+
             {/* Coming Soon sections */}
             <section className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
               <h3 className="text-2xl font-black uppercase tracking-tight text-slate-900 mb-4">
@@ -201,10 +211,6 @@ export default function RepPage({ params }: { params: { id: string } }) {
                 <div className="bg-slate-50 rounded-xl p-4">
                   <h4 className="font-bold text-slate-900 mb-2">💵 Wealth Tracking</h4>
                   <p className="text-sm text-slate-600">Net worth changes since taking office</p>
-                </div>
-                <div className="bg-slate-50 rounded-xl p-4">
-                  <h4 className="font-bold text-slate-900 mb-2">📊 Stock Trades</h4>
-                  <p className="text-sm text-slate-600">Committee assignments vs trading activity</p>
                 </div>
                 <div className="bg-slate-50 rounded-xl p-4">
                   <h4 className="font-bold text-slate-900 mb-2">🎯 Campaign Promises</h4>
