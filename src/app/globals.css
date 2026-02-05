@@ -4,12 +4,30 @@
 
 @layer base {
   body {
-    @apply antialiased;
+    @apply antialiased text-slate-100;
     background: linear-gradient(180deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
     background-attachment: fixed;
   }
   
-  /* Celestial stars background */
+  /* Ensure all text is readable */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white;
+  }
+  
+  p, span, div {
+    @apply text-slate-200;
+  }
+  
+  a {
+    @apply text-blue-400 hover:text-blue-300;
+  }
+  
+  /* Muted text for secondary content */
+  .text-muted {
+    @apply text-slate-400;
+  }
+  
+  /* Celestial stars background - subtle, behind content */
   body::before {
     content: '';
     position: fixed;
@@ -26,11 +44,11 @@
     background-size: 200px 200px;
     background-repeat: repeat;
     pointer-events: none;
-    opacity: 0.4;
-    z-index: 0;
+    opacity: 0.3;
+    z-index: -1;
   }
   
-  main {
+  main, nav, footer {
     position: relative;
     z-index: 1;
   }
