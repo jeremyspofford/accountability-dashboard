@@ -30,6 +30,10 @@ jobs:
         run: pnpm install
 
       - name: Build
+        env:
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+          FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
+          NEXT_PUBLIC_FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
         run: pnpm build
 
       - name: Deploy to Cloudflare Pages
