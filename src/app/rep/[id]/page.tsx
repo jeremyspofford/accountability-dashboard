@@ -1,4 +1,4 @@
-import { getMember, getMembers, getMemberFinance } from "@/lib/data";
+import { getMember, getMembers, getMemberFinance, getMemberTrades } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import DonorAnalysisSection from "@/components/DonorAnalysisSection";
@@ -42,8 +42,8 @@ export default function RepPage({ params }: { params: { id: string } }) {
     },
   ];
 
-  // Placeholder stock trades (will be replaced with real Quiver data)
-  const stockTrades: Array<{
+  // Real stock trades from Quiver Quant
+  const stockTrades = getMemberTrades(params.id) as Array<{
     ticker: string;
     company: string | null;
     tradedDate: string;
@@ -51,7 +51,7 @@ export default function RepPage({ params }: { params: { id: string } }) {
     transaction: "Purchase" | "Sale";
     tradeSizeUsd: number;
     excessReturn: number | null;
-  }> = [];
+  }>;
 
   const getPartyBadgeClass = (party: string) => {
     switch (party) {

@@ -5,6 +5,7 @@
 
 import membersData from "../data/members.json";
 import financeData from "../data/finance.json";
+import tradesData from "../data/trades-by-member.json";
 import type { Member, CampaignFinance } from "./types";
 
 // Re-export types for convenience
@@ -159,4 +160,24 @@ export function getMembersByFunding(): Array<Member & { finance: CampaignFinance
       const bRaised = b.finance?.total_raised || 0;
       return bRaised - aRaised;
     });
+}
+
+// Stock trades data (from Quiver Quant)
+const tradesMap = tradesData as Record<string, Array<{
+  ticker: string;
+  company: string | null;
+  tradedDate: string;
+  filedDate: string;
+  transaction: string;
+  tradeSizeUsd: number;
+  excessReturn: number | null;
+}>>;
+
+// Get stock trades for a member by bioguide_id
+export function getMemberTrades(bioguideId: string) {
+  const trades = tradesMap[bioguideId] || [];
+  // Sort by trade date, most recent first
+  return trades.sort((a, b) => 
+    new Date(b.tradedDate).getTime() - new Date(a.tradedDate).getTime()
+  );
 }
