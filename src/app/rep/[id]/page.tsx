@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import DonorAnalysisSection from "@/components/DonorAnalysisSection";
 import VotingRecordSection from "@/components/VotingRecordSection";
+import MemberVotingRecord from "@/components/MemberVotingRecord";
 import CommitteeMemberships from "@/components/CommitteeMemberships";
 import StockTradesSection from "@/components/StockTradesSection";
+import keyVotesData from "@/data/key-votes.json";
 
 export function generateStaticParams() {
   return getMembers().map((member) => ({
@@ -30,17 +32,16 @@ export default function RepPage({ params }: { params: { id: string } }) {
     },
   ];
 
-  // Placeholder key votes (will be replaced with real data)
-  const keyVotes = [
-    {
-      date: "2024-01-15",
-      bill: "H.R. 2847",
-      title: "Voting record data coming soon",
-      vote: "Yea" as const,
-      partyPosition: "Yea" as const,
-      aligned: true,
-    },
-  ];
+  // Key votes are now handled by MemberVotingRecord component using real VoteView data
+  // This empty array is just to satisfy VotingRecordSection's interface
+  const keyVotes: Array<{
+    date: string;
+    bill: string;
+    title: string;
+    vote: "Yea" | "Nay" | "Present" | "Not Voting";
+    partyPosition: "Yea" | "Nay";
+    aligned: boolean;
+  }> = [];
 
   // Real stock trades from Quiver Quant
   const stockTrades = getMemberTrades(params.id) as Array<{
@@ -189,7 +190,29 @@ export default function RepPage({ params }: { params: { id: string } }) {
             {/* Campaign Finance - Now the main focus */}
             <DonorAnalysisSection finance={finance} />
 
-            {/* Voting Record */}
+            {/* Key Votes Record */}
+            <MemberVotingRecord
+              bioguideId={member.bioguide_id}
+              memberName={member.full_name}
+              chamber={member.chamber === "house" ? "House" : "Senate"}
+              keyVotes={keyVotesData as Array<{
+                id: string;
+                congress: number;
+                chamber: "House" | "Senate";
+                rollnumber: number;
+                date: string;
+                bill: string;
+                title: string;
+                description: string;
+                category: string;
+                yea_count: number;
+                nay_count: number;
+                result: "Passed" | "Failed" | "Unknown";
+                votes: Record<string, string>;
+              }>}
+            />
+            
+            {/* Voting Record (Party Loyalty & Ideology) */}
             <VotingRecordSection
               partyLoyalty={member.party_alignment_pct}
               ideologyScore={member.ideology_score}
