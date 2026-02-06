@@ -1,6 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import VoteModal from "./VoteModal";
+
+interface BeneficiaryImpact {
+  group: string;
+  impact: "benefits" | "harms" | "mixed";
+}
 
 interface KeyVote {
   id: string;
@@ -15,6 +21,8 @@ interface KeyVote {
   yea_count: number;
   nay_count: number;
   result: "Passed" | "Failed" | "Unknown";
+  beneficiaries?: BeneficiaryImpact[];
+  publicBenefit?: "positive" | "negative" | "mixed";
 }
 
 interface KeyVotesProps {
@@ -46,6 +54,7 @@ export function KeyVotes({ votes, chamber, limit = 10, showFilters = true }: Key
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [selectedChamber, setSelectedChamber] = useState<string>(chamber || "All");
   const [expanded, setExpanded] = useState(false);
+  const [selectedVote, setSelectedVote] = useState<KeyVote | null>(null);
   
   // Get unique categories
   const categories = ["All", ...new Set(votes.map(v => v.category))];
@@ -109,7 +118,8 @@ export function KeyVotes({ votes, chamber, limit = 10, showFilters = true }: Key
         {displayVotes.map((vote) => (
           <div
             key={vote.id}
-            className="border border-slate-200 rounded-lg p-4 hover:border-slate-300 transition-colors"
+            className="border border-slate-200 rounded-lg p-4 hover:border-slate-300 hover:shadow-md transition-all cursor-pointer"
+            onClick={() => setSelectedVote(vote)}
           >
             <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
               <div className="flex flex-wrap items-center gap-2">
@@ -145,6 +155,20 @@ export function KeyVotes({ votes, chamber, limit = 10, showFilters = true }: Key
               </p>
             )}
             
+            {/* Who Benefits indicator */}
+            {vote.publicBenefit && vote.publicBenefit !== "mixed" && (
+              <div className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium mb-2 ${
+                vote.publicBenefit === "positive"
+                  ? "bg-emerald-50 text-emerald-700"
+                  : "bg-red-50 text-red-700"
+              }`}>
+                {vote.publicBenefit === "positive" ? "👍" : "👎"}
+                {vote.publicBenefit === "positive" 
+                  ? "Benefits working people" 
+                  : "Benefits special interests"}
+              </div>
+            )}
+            
             <div className="flex items-center gap-4 text-sm">
               <span className="text-emerald-600 font-medium">
                 ✓ {vote.yea_count} Yea
@@ -178,6 +202,9 @@ export function KeyVotes({ votes, chamber, limit = 10, showFilters = true }: Key
           No votes found for the selected filters.
         </p>
       )}
+      
+      {/* Vote Modal */}
+      <VoteModal vote={selectedVote} onClose={() => setSelectedVote(null)} />
     </div>
   );
 }

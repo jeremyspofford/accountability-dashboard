@@ -3,7 +3,7 @@
 /**
  * Stock Trades Section - Shows congressional stock trading activity
  */
-import React from "react";
+import React, { useState } from "react";
 
 export interface StockTrade {
   ticker: string;
@@ -24,6 +24,9 @@ interface StockTradesProps {
 const BUFFETT_ANNUAL_RETURN = 19.8; // ~20% annual average
 
 export default function StockTradesSection({ trades, memberName }: StockTradesProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const tradesPerPage = 10;
+  
   // Calculate summary stats
   const purchases = trades.filter(t => t.transaction === "Purchase");
   const sales = trades.filter(t => t.transaction === "Sale");
@@ -151,11 +154,16 @@ export default function StockTradesSection({ trades, memberName }: StockTradesPr
 
           {/* Recent Trades */}
           <div className="mb-6">
-            <div className="text-sm font-black uppercase tracking-wider text-slate-700 mb-4">
-              Recent Trades
+            <div className="flex items-center justify-between mb-4">
+              <div className="text-sm font-black uppercase tracking-wider text-slate-700">
+                Recent Trades
+              </div>
+              <div className="text-sm text-slate-500">
+                Showing {((currentPage - 1) * tradesPerPage) + 1} to {Math.min(currentPage * tradesPerPage, trades.length)} of {trades.length} trades
+              </div>
             </div>
             <div className="space-y-3">
-              {trades.slice(0, 10).map((trade, idx) => (
+              {trades.slice((currentPage - 1) * tradesPerPage, currentPage * tradesPerPage).map((trade, idx) => (
                 <div 
                   key={idx}
                   className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all ${
@@ -203,9 +211,26 @@ export default function StockTradesSection({ trades, memberName }: StockTradesPr
             </div>
           </div>
 
-          {trades.length > 10 && (
-            <div className="text-center text-slate-500 text-sm">
-              Showing 10 of {trades.length} trades
+          {/* Pagination */}
+          {trades.length > tradesPerPage && (
+            <div className="flex items-center justify-center gap-4">
+              <button
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="px-4 py-2 rounded-lg font-medium text-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed bg-slate-100 text-slate-700 hover:bg-slate-200 disabled:hover:bg-slate-100"
+              >
+                ← Previous
+              </button>
+              <div className="text-sm text-slate-600">
+                Page {currentPage} of {Math.ceil(trades.length / tradesPerPage)}
+              </div>
+              <button
+                onClick={() => setCurrentPage(p => Math.min(Math.ceil(trades.length / tradesPerPage), p + 1))}
+                disabled={currentPage === Math.ceil(trades.length / tradesPerPage)}
+                className="px-4 py-2 rounded-lg font-medium text-sm transition-colors disabled:opacity-40 disabled:cursor-not-allowed bg-slate-100 text-slate-700 hover:bg-slate-200 disabled:hover:bg-slate-100"
+              >
+                Next →
+              </button>
             </div>
           )}
 
