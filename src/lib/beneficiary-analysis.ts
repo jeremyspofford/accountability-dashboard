@@ -41,7 +41,7 @@ export interface LegislationAnalysis {
 }
 
 // Keywords and patterns for analyzing legislation
-const BENEFIT_PATTERNS: Record<string, { groups: BeneficiaryGroup[], impact: "benefits" | "harms" }[]> = {
+const BENEFIT_PATTERNS: Record<string, { groups: BeneficiaryGroup[], impact: "benefits" | "harms" | "mixed" }[]> = {
   // Tax-related
   "tax cut": [
     { groups: ["wealthy", "corporations"], impact: "benefits" },
