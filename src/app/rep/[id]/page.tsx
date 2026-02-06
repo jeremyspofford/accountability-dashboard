@@ -195,7 +195,7 @@ export default function RepPage({ params }: { params: { id: string } }) {
               bioguideId={member.bioguide_id}
               memberName={member.full_name}
               chamber={member.chamber === "house" ? "House" : "Senate"}
-              keyVotes={keyVotesData as Array<{
+              keyVotes={keyVotesData as unknown as Array<{
                 id: string;
                 congress: number;
                 chamber: "House" | "Senate";
