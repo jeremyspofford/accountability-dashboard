@@ -5,6 +5,318 @@
     "domestic_conflicts": 7,
     "family_involvement": 5
   },
+  "who_he_represents": {
+    "summary": {
+      "total_billionaires": 12,
+      "total_donors": 8,
+      "foreign_governments_count": 6,
+      "overview": "Analysis of who benefits from Trump's policies and who has financial relationships with his family and businesses"
+    },
+    "tech_billionaires": [
+      {
+        "name": "Elon Musk",
+        "company": "Tesla, SpaceX, X (Twitter)",
+        "net_worth": "$270+ billion",
+        "relationship": "Major campaign supporter, given informal White House advisory role",
+        "benefits": [
+          "Reduced EV regulation scrutiny",
+          "SpaceX government contracts",
+          "Minimal moderation requirements on X",
+          "Weakened labor protections",
+          "Tax cuts for ultra-wealthy"
+        ],
+        "policy_influence": [
+          "DOGE (Department of Government Efficiency) advisory role",
+          "Direct access to White House",
+          "Influence on tech policy"
+        ],
+        "conflicts": "SpaceX has $15B+ in government contracts while Musk advises on government spending cuts"
+      },
+      {
+        "name": "Peter Thiel",
+        "company": "Palantir, Founders Fund",
+        "net_worth": "$10+ billion",
+        "relationship": "Long-time supporter, mentored VP Vance",
+        "benefits": [
+          "Palantir government contracts",
+          "Crypto-friendly regulation",
+          "Weakened privacy protections",
+          "Tax advantages for tech founders"
+        ],
+        "policy_influence": [
+          "VP Vance is protégé",
+          "Influence on tech appointments",
+          "Defense contracts"
+        ],
+        "conflicts": "Palantir wins contracts while Thiel has policy access"
+      },
+      {
+        "name": "Mark Zuckerberg",
+        "company": "Meta (Facebook, Instagram)",
+        "net_worth": "$180+ billion",
+        "relationship": "Seeking favor after censorship disputes",
+        "benefits": [
+          "Reduced content moderation pressure",
+          "Weakened antitrust enforcement",
+          "Favorable AI regulation",
+          "Protection from breakup attempts"
+        ],
+        "policy_influence": [
+          "Regular White House meetings",
+          "Input on tech regulation"
+        ],
+        "conflicts": "Meta benefits from reduced regulation while maintaining government access"
+      },
+      {
+        "name": "Larry Ellison",
+        "company": "Oracle",
+        "net_worth": "$150+ billion",
+        "relationship": "Major donor, close advisor",
+        "benefits": [
+          "Oracle cloud government contracts",
+          "TikTok deal involvement",
+          "Favorable tax treatment",
+          "Reduced antitrust scrutiny"
+        ],
+        "policy_influence": [
+          "Major fundraiser",
+          "Regular Mar-a-Lago guest",
+          "Tech policy advisor"
+        ],
+        "conflicts": "Oracle pursues federal contracts while Ellison advises administration"
+      },
+      {
+        "name": "Bill Ackman",
+        "company": "Pershing Square Capital",
+        "net_worth": "$8+ billion",
+        "relationship": "Major donor and public defender",
+        "benefits": [
+          "Favorable financial regulation",
+          "Reduced hedge fund oversight",
+          "Tax advantages",
+          "Deregulation of banking sector"
+        ],
+        "policy_influence": [
+          "Campaign mega-donor",
+          "Public spokesperson",
+          "Wall Street liaison"
+        ],
+        "conflicts": "Hedge fund benefits from deregulation Ackman promotes"
+      }
+    ],
+    "campaign_donors": [
+      {
+        "name": "Miriam Adelson",
+        "amount": "$100+ million",
+        "industry": "Casino/Gaming",
+        "company": "Las Vegas Sands",
+        "policy_interests": [
+          "Pro-Israel policies",
+          "Embassy in Jerusalem",
+          "Settlement expansion support",
+          "Gaming regulation"
+        ],
+        "benefits": "Favorable Israel policy, reduced gaming oversight, tax cuts"
+      },
+      {
+        "name": "Timothy Mellon",
+        "amount": "$150+ million",
+        "industry": "Transportation/Logistics",
+        "company": "Pan Am Systems",
+        "policy_interests": [
+          "Immigration restriction",
+          "Border wall funding",
+          "Transportation deregulation",
+          "Anti-labor policies"
+        ],
+        "benefits": "Harsh immigration policies, deregulation, tax advantages"
+      },
+      {
+        "name": "Kelcy Warren",
+        "amount": "$50+ million",
+        "industry": "Energy/Pipelines",
+        "company": "Energy Transfer Partners",
+        "policy_interests": [
+          "Pipeline approvals",
+          "Environmental deregulation",
+          "Native American rights weakening",
+          "Climate policy rollback"
+        ],
+        "benefits": "Dakota Access Pipeline approval, reduced environmental rules"
+      },
+      {
+        "name": "Harold Hamm",
+        "amount": "$40+ million",
+        "industry": "Oil & Gas",
+        "company": "Continental Resources",
+        "policy_interests": [
+          "Drilling on public lands",
+          "Climate regulation rollback",
+          "International oil deals",
+          "Fossil fuel subsidies"
+        ],
+        "benefits": "Expanded drilling, reduced climate action, favorable tax treatment"
+      },
+      {
+        "name": "Linda McMahon",
+        "amount": "$30+ million",
+        "industry": "Entertainment (WWE)",
+        "company": "WWE",
+        "policy_interests": [
+          "Education privatization",
+          "Voucher programs",
+          "Reduced worker protections",
+          "Independent contractor classification"
+        ],
+        "benefits": "Education Secretary position (1st term), Commerce Secretary (2nd term)"
+      },
+      {
+        "name": "Charles Schwab",
+        "amount": "$25+ million",
+        "industry": "Finance",
+        "company": "Charles Schwab Corporation",
+        "policy_interests": [
+          "Financial deregulation",
+          "Capital gains tax cuts",
+          "Reduced SEC oversight",
+          "Crypto-friendly policy"
+        ],
+        "benefits": "Deregulation, tax advantages, favorable crypto environment"
+      },
+      {
+        "name": "Stephen Schwarzman",
+        "amount": "$20+ million",
+        "industry": "Private Equity",
+        "company": "Blackstone",
+        "policy_interests": [
+          "Tax cuts for wealthy",
+          "Carried interest loophole",
+          "Real estate favorable treatment",
+          "Reduced financial regulation"
+        ],
+        "benefits": "Tax cuts, continued carried interest advantage, deregulation"
+      },
+      {
+        "name": "Bernie Marcus",
+        "amount": "$15+ million",
+        "industry": "Retail",
+        "company": "Home Depot (founder)",
+        "policy_interests": [
+          "Business tax cuts",
+          "Anti-union policies",
+          "Reduced labor protections",
+          "Immigration restriction"
+        ],
+        "benefits": "Corporate tax cuts, weakened labor organizing"
+      }
+    ],
+    "business_partners": [
+      {
+        "entity": "Damac Properties (Dubai)",
+        "relationship_type": "Licensing deals for Trump-branded properties",
+        "financial_ties": "Ongoing revenue from Dubai golf courses and residential properties",
+        "policy_impact": "Favorable UAE relations, Middle East policy influenced by business ties",
+        "amount": "$10+ million annually"
+      },
+      {
+        "entity": "Russian Oligarchs",
+        "relationship_type": "Real estate sales, financing sources",
+        "financial_ties": "Numerous Trump property sales to Russian buyers, Deutsche Bank financing",
+        "policy_impact": "Reluctance to criticize Putin, resistance to Russia sanctions",
+        "amount": "$100+ million total"
+      },
+      {
+        "entity": "Trump Tower Tenants",
+        "relationship_type": "Commercial real estate leases",
+        "financial_ties": "Foreign governments and corporations leasing space in Trump properties",
+        "policy_impact": "Conflicts when tenants have policy interests",
+        "amount": "$50+ million annually"
+      },
+      {
+        "entity": "Golf Course Members",
+        "relationship_type": "Club memberships at Trump properties",
+        "financial_ties": "Membership fees, event hosting, access to president",
+        "policy_impact": "Pay-to-play concerns, policy access for wealthy members",
+        "amount": "$30+ million annually"
+      },
+      {
+        "entity": "Trump Media & Technology Group",
+        "relationship_type": "Social media platform (Truth Social)",
+        "financial_ties": "Stock holdings worth billions (on paper)",
+        "policy_impact": "Platform policies influenced by Trump's needs, conflicts with content moderation",
+        "amount": "$3+ billion valuation"
+      }
+    ],
+    "foreign_governments": [
+      {
+        "country": "Saudi Arabia",
+        "relationship": "LIV Golf deals, Kushner investment fund",
+        "financial_connections": "$2+ billion to Kushner fund, golf tournament fees, hotel bookings",
+        "policy_benefits": [
+          "Arms sales approval",
+          "Yemen war support",
+          "Khashoggi murder response minimized",
+          "Nuclear technology sharing"
+        ],
+        "human_rights_ignored": "Journalist murder, Yemen civilian casualties, women's rights violations"
+      },
+      {
+        "country": "China",
+        "relationship": "Trademarks for Ivanka, Trump Organization deals",
+        "financial_connections": "Bank of China loans, trademark approvals, licensing deals",
+        "policy_benefits": [
+          "Inconsistent trade policy",
+          "ZTE sanctions relief",
+          "Ivanka business advantages"
+        ],
+        "human_rights_ignored": "Uyghur genocide, Hong Kong crackdown, Taiwan pressure"
+      },
+      {
+        "country": "Turkey",
+        "relationship": "Trump Towers Istanbul licensing",
+        "financial_connections": "$1-5 million annual licensing fees",
+        "policy_benefits": [
+          "Syria policy favorable to Erdogan",
+          "Kurdish allies abandoned",
+          "Bank sanctions delayed"
+        ],
+        "human_rights_ignored": "Kurdish persecution, journalist imprisonment, democratic backsliding"
+      },
+      {
+        "country": "Qatar",
+        "relationship": "Kushner bailout, Trump hotel bookings",
+        "financial_connections": "$1.8 billion Kushner bailout via Brookfield",
+        "policy_benefits": [
+          "Blockade pressure removed",
+          "Military base relationship maintained",
+          "Favorable diplomatic treatment"
+        ],
+        "human_rights_ignored": "Migrant worker abuses, LGBT persecution, media restrictions"
+      },
+      {
+        "country": "United Arab Emirates",
+        "relationship": "Business partnerships, diplomatic access",
+        "financial_connections": "Trump golf courses, real estate deals",
+        "policy_benefits": [
+          "Abraham Accords",
+          "Arms sales",
+          "Iran policy alignment"
+        ],
+        "human_rights_ignored": "Yemen involvement, political repression, surveillance state"
+      },
+      {
+        "country": "Philippines",
+        "relationship": "Trump Tower Manila, Duterte envoy conflict",
+        "financial_connections": "$2+ million from Trump Tower partnership",
+        "policy_benefits": [
+          "Muted criticism of Duterte",
+          "Drug war overlooked",
+          "Business partner became envoy"
+        ],
+        "human_rights_ignored": "Extrajudicial killings, drug war deaths, press freedom violations"
+      }
+    ]
+  },
   "conflicts": [
     {
       "id": "saudi-liv-golf",

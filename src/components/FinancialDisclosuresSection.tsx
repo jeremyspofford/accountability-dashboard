@@ -1,0 +1,124 @@
+"use client";
+
+/**
+ * Financial Disclosures Section - Shows House member financial disclosure filings
+ */
+import React from "react";
+
+export interface FinancialDisclosure {
+  last: string;
+  first: string;
+  prefix: string;
+  suffix: string;
+  filingType: string;
+  stateDst: string;
+  year: number;
+  filingDate: string;
+  docId: string;
+  pdfUrl: string;
+}
+
+interface FinancialDisclosuresSectionProps {
+  disclosures: FinancialDisclosure[];
+  memberName: string;
+}
+
+export default function FinancialDisclosuresSection({ 
+  disclosures, 
+  memberName 
+}: FinancialDisclosuresSectionProps) {
+  const formatDate = (dateStr: string) => {
+    return new Date(dateStr).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+
+  const getFilingTypeLabel = (type: string) => {
+    switch (type) {
+      case "O": return "Original";
+      case "A": return "Amendment";
+      case "N": return "New Filer";
+      default: return type;
+    }
+  };
+
+  return (
+    <div className="bg-white rounded-3xl border border-slate-200 p-10 shadow-sm hover:shadow-xl transition-all duration-300">
+      <div className="flex items-center justify-between mb-8">
+        <h3 className="text-3xl font-black text-slate-900 tracking-tight">
+          💰 Financial Disclosures
+        </h3>
+        <div className="text-sm text-slate-500">
+          {disclosures.length} filing{disclosures.length !== 1 ? "s" : ""}
+        </div>
+      </div>
+      
+      {disclosures.length === 0 ? (
+        <div className="text-center py-12">
+          <div className="text-6xl mb-4">📋</div>
+          <div className="text-xl font-bold text-slate-700 mb-2">No Disclosures Found</div>
+          <div className="text-slate-500">
+            {memberName} has no financial disclosure filings in our database.
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* Filings List */}
+          <div className="space-y-3">
+            {disclosures.map((filing, idx) => (
+              <a
+                key={idx}
+                href={filing.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between p-5 rounded-xl border-2 border-slate-200 bg-slate-50 hover:border-blue-400 hover:bg-blue-50 transition-all group"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center font-bold text-blue-700 group-hover:bg-blue-200 transition-colors">
+                    📄
+                  </div>
+                  <div>
+                    <div className="font-bold text-slate-900 flex items-center gap-2">
+                      {filing.year} Annual Financial Disclosure
+                      <span className="text-xs px-2 py-1 bg-slate-200 text-slate-700 rounded-md font-medium">
+                        {getFilingTypeLabel(filing.filingType)}
+                      </span>
+                    </div>
+                    <div className="text-sm text-slate-600">
+                      Filed {formatDate(filing.filingDate)}
+                      <span className="text-slate-400 mx-2">•</span>
+                      Document ID: {filing.docId}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 text-blue-600 font-bold group-hover:gap-3 transition-all">
+                  View PDF
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {/* Data Source */}
+          <div className="mt-8 pt-6 border-t border-slate-200">
+            <div className="text-xs text-slate-400 text-center">
+              Data from House Clerk Financial Disclosures • 
+              <a 
+                href="https://disclosures-clerk.house.gov/PublicDisclosure/FinancialDisclosure" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="ml-1 text-blue-400 hover:text-blue-500 underline"
+              >
+                Official Source
+              </a>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}

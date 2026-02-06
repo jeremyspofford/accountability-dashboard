@@ -1,4 +1,4 @@
-import { getMember, getMembers, getMemberFinance, getMemberTrades } from "@/lib/data";
+import { getMember, getMembers, getMemberFinance, getMemberTrades, getMemberDisclosures } from "@/lib/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import DonorAnalysisSection from "@/components/DonorAnalysisSection";
@@ -6,6 +6,7 @@ import VotingRecordSection from "@/components/VotingRecordSection";
 import MemberVotingRecord from "@/components/MemberVotingRecord";
 import CommitteeMemberships from "@/components/CommitteeMemberships";
 import StockTradesSection from "@/components/StockTradesSection";
+import FinancialDisclosuresSection from "@/components/FinancialDisclosuresSection";
 import keyVotesData from "@/data/key-votes.json";
 
 export function generateStaticParams() {
@@ -53,6 +54,9 @@ export default function RepPage({ params }: { params: { id: string } }) {
     tradeSizeUsd: number;
     excessReturn: number | null;
   }>;
+
+  // Financial disclosures from House Clerk
+  const financialDisclosures = getMemberDisclosures(params.id);
 
   const getPartyBadgeClass = (party: string) => {
     switch (party) {
@@ -225,26 +229,11 @@ export default function RepPage({ params }: { params: { id: string } }) {
               memberName={member.full_name} 
             />
 
-            {/* Coming Soon sections */}
-            <section className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-              <h3 className="text-2xl font-black uppercase tracking-tight text-slate-900 mb-4">
-                📈 Coming Soon
-              </h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-slate-50 rounded-xl p-4">
-                  <h4 className="font-bold text-slate-900 mb-2">💵 Wealth Tracking</h4>
-                  <p className="text-sm text-slate-600">Net worth changes since taking office</p>
-                </div>
-                <div className="bg-slate-50 rounded-xl p-4">
-                  <h4 className="font-bold text-slate-900 mb-2">🎯 Campaign Promises</h4>
-                  <p className="text-sm text-slate-600">Stated positions vs actual votes</p>
-                </div>
-                <div className="bg-slate-50 rounded-xl p-4">
-                  <h4 className="font-bold text-slate-900 mb-2">👥 Who Benefits</h4>
-                  <p className="text-sm text-slate-600">Analysis of who their votes serve</p>
-                </div>
-              </div>
-            </section>
+            {/* Financial Disclosures */}
+            <FinancialDisclosuresSection 
+              disclosures={financialDisclosures} 
+              memberName={member.full_name} 
+            />
           </div>
 
           {/* Sidebar (1/3 width) */}

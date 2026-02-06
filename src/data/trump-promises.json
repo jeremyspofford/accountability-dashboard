@@ -31,7 +31,14 @@
         "Exporters",
         "Middle Class"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "mixed",
+        "environment": "neutral"
+      }
     },
     {
       "id": "tariffs-universal",
@@ -56,7 +63,14 @@
         "Exporters",
         "Middle Class"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "mixed",
+        "environment": "neutral"
+      }
     },
     {
       "id": "tariffs-mexico-canada",
@@ -81,7 +95,14 @@
         "Exporters",
         "Middle Class"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "mixed",
+        "environment": "neutral"
+      }
     },
     {
       "id": "end-trade-deficits",
@@ -96,7 +117,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "bring-jobs-back",
@@ -111,7 +139,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "border-wall",
@@ -135,7 +170,14 @@
         "Environment",
         "Taxpayers"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "negative",
+        "environment": "neutral"
+      }
     },
     {
       "id": "mass-deportation",
@@ -160,7 +202,14 @@
         "Agricultural Industry",
         "Service Industry"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "negative",
+        "environment": "neutral"
+      }
     },
     {
       "id": "end-birthright-citizenship",
@@ -185,7 +234,14 @@
         "Agricultural Industry",
         "Service Industry"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "negative",
+        "environment": "neutral"
+      }
     },
     {
       "id": "remain-in-mexico",
@@ -206,7 +262,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "negative",
+        "environment": "neutral"
+      }
     },
     {
       "id": "end-catch-and-release",
@@ -221,7 +284,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "negative",
+        "environment": "neutral"
+      }
     },
     {
       "id": "death-penalty-traffickers",
@@ -236,7 +306,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "extreme-vetting",
@@ -251,7 +328,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "negative",
+        "environment": "neutral"
+      }
     },
     {
       "id": "ban-sanctuary-cities",
@@ -266,7 +350,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "negative",
+        "environment": "neutral"
+      }
     },
     {
       "id": "end-ukraine-war",
@@ -287,7 +378,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "nato-funding",
@@ -305,7 +403,14 @@
         "US Global Leadership",
         "National Security"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "china-tough",
@@ -320,7 +425,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "middle-east-peace",
@@ -335,7 +447,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "iran-deal",
@@ -350,7 +469,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "strengthen-alliances",
@@ -365,7 +491,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "lower-prices",
@@ -386,7 +519,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "no-tax-tips",
@@ -401,7 +541,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "no-tax-overtime",
@@ -416,7 +563,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "no-tax-social-security",
@@ -431,7 +585,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "extend-tax-cuts",
@@ -447,7 +608,14 @@
       "who_harmed": [
         "Government Revenue"
       ],
-      "public_opinion": "positive"
+      "public_opinion": "positive",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "corporate-tax-cut",
@@ -467,7 +635,14 @@
         "Government Services",
         "National Debt"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "neutral"
+      }
     },
     {
       "id": "deregulation",
@@ -486,7 +661,14 @@
         "Public Safety",
         "Environment"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "interest-rates-lower",
@@ -501,7 +683,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "energy-dominance",
@@ -522,7 +711,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "paris-climate-exit",
@@ -547,7 +743,14 @@
         "Public Health",
         "Climate"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "anwr-drilling",
@@ -566,7 +769,14 @@
         "Public Health",
         "Climate"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "end-ev-mandate",
@@ -587,7 +797,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "energy-independence",
@@ -602,7 +819,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "abolish-dept-education",
@@ -617,7 +841,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "end-woke-education",
@@ -632,7 +863,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "mixed",
+        "wealthy": "neutral",
+        "corporations": "neutral",
+        "environment": "neutral"
+      }
     },
     {
       "id": "patriotic-education",
@@ -647,7 +885,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "end-tenure",
@@ -662,7 +907,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "school-choice",
@@ -677,7 +929,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "end-dei",
@@ -698,7 +957,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "mixed",
+        "wealthy": "neutral",
+        "corporations": "neutral",
+        "environment": "neutral"
+      }
     },
     {
       "id": "repeal-obamacare",
@@ -717,7 +983,14 @@
         "Pre-existing Conditions",
         "20+ Million People"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "neutral"
+      }
     },
     {
       "id": "lower-drug-prices",
@@ -732,7 +1005,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "health-transparency",
@@ -747,7 +1027,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "protect-medicare",
@@ -766,7 +1053,14 @@
         "Disabled",
         "Low Income"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "drain-swamp",
@@ -790,7 +1084,14 @@
         "Government Services",
         "Public Sector"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "schedule-f",
@@ -814,7 +1115,14 @@
         "Government Services",
         "Public Sector"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "term-limits-congress",
@@ -829,7 +1137,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "ban-lobbying",
@@ -844,7 +1159,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "downsize-bureaucracy",
@@ -859,7 +1181,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "negative",
+        "wealthy": "positive",
+        "corporations": "positive",
+        "environment": "negative"
+      }
     },
     {
       "id": "relocate-agencies",
@@ -874,7 +1203,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "end-weaponization-doj",
@@ -889,7 +1225,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "pardon-j6",
@@ -913,7 +1256,14 @@
         "Police Officers",
         "Democracy"
       ],
-      "public_opinion": "negative"
+      "public_opinion": "negative",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "mixed",
+        "wealthy": "neutral",
+        "corporations": "neutral",
+        "environment": "neutral"
+      }
     },
     {
       "id": "war-on-cartels",
@@ -928,7 +1278,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "law-and-order",
@@ -943,7 +1300,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "end-crime-wave",
@@ -958,7 +1322,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "police-immunity",
@@ -973,7 +1344,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "mixed",
+        "wealthy": "neutral",
+        "corporations": "neutral",
+        "environment": "neutral"
+      }
     },
     {
       "id": "military-spending-increase",
@@ -992,7 +1370,14 @@
         "Taxpayers",
         "National Debt"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "positive",
+        "environment": "neutral"
+      }
     },
     {
       "id": "end-woke-military",
@@ -1007,7 +1392,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "mixed",
+        "wealthy": "neutral",
+        "corporations": "neutral",
+        "environment": "neutral"
+      }
     },
     {
       "id": "missile-defense",
@@ -1022,7 +1414,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "positive",
+        "environment": "neutral"
+      }
     },
     {
       "id": "space-force",
@@ -1037,7 +1436,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "negative",
+        "wealthy": "neutral",
+        "corporations": "positive",
+        "environment": "neutral"
+      }
     },
     {
       "id": "veteran-healthcare",
@@ -1052,7 +1458,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "free-speech",
@@ -1067,7 +1480,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "section-230",
@@ -1082,7 +1502,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "protect-2a",
@@ -1097,7 +1524,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "ban-transgender-sports",
@@ -1118,7 +1552,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "mixed",
+        "wealthy": "neutral",
+        "corporations": "neutral",
+        "environment": "neutral"
+      }
     },
     {
       "id": "end-transgender-youth",
@@ -1133,7 +1574,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "mixed",
+        "wealthy": "neutral",
+        "corporations": "neutral",
+        "environment": "neutral"
+      }
     },
     {
       "id": "protect-religious-liberty",
@@ -1148,7 +1596,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     },
     {
       "id": "ban-critical-race-theory",
@@ -1163,7 +1618,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "negative",
+        "middle_class": "mixed",
+        "wealthy": "neutral",
+        "corporations": "neutral",
+        "environment": "neutral"
+      }
     },
     {
       "id": "baby-bonuses",
@@ -1178,7 +1640,14 @@
       "who_harmed": [
         "Critics"
       ],
-      "public_opinion": "mixed"
+      "public_opinion": "mixed",
+      "impact_analysis": {
+        "workers": "mixed",
+        "middle_class": "mixed",
+        "wealthy": "mixed",
+        "corporations": "mixed",
+        "environment": "mixed"
+      }
     }
   ],
   "summary": {

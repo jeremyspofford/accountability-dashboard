@@ -7,6 +7,7 @@ import membersData from "../data/members.json";
 import financeData from "../data/finance.json";
 import tradesData from "../data/trades-by-member.json";
 import scotusData from "../data/scotus.json";
+import houseDisclosuresData from "../data/house-disclosures.json";
 import type { Member, CampaignFinance, SupremeCourtJustice } from "./types";
 
 // Re-export types for convenience
@@ -258,4 +259,39 @@ export function getIdeologyBreakdown() {
     moderate: justices.filter(j => j.ideology_score >= -1 && j.ideology_score <= 1).length,
     conservative: justices.filter(j => j.ideology_score > 1).length,
   };
+}
+
+// ==================== Financial Disclosures Data ====================
+
+export interface FinancialDisclosure {
+  last: string;
+  first: string;
+  prefix: string;
+  suffix: string;
+  filingType: string;
+  stateDst: string;
+  year: number;
+  filingDate: string;
+  docId: string;
+  pdfUrl: string;
+}
+
+interface MemberDisclosures {
+  bioguideId: string;
+  name: string;
+  state: string;
+  district: string;
+  filings: FinancialDisclosure[];
+}
+
+// Financial disclosures data (from House Clerk)
+const disclosuresData = houseDisclosuresData as MemberDisclosures[];
+
+// Get financial disclosures for a member by bioguide_id
+export function getMemberDisclosures(bioguideId: string): FinancialDisclosure[] {
+  const memberData = disclosuresData.find(d => d.bioguideId === bioguideId);
+  if (!memberData) return [];
+  
+  // Sort by year, most recent first
+  return [...memberData.filings].sort((a, b) => b.year - a.year);
 }
