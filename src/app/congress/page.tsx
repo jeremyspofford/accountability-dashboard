@@ -234,34 +234,34 @@ function CongressContent() {
                   <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.donorScore)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
-                  <span className="w-16 text-slate-500 font-medium">Transp.</span>
+                  <span className="w-16 text-slate-500 font-medium">Voting</span>
                   <div className="flex-1 bg-slate-100 rounded-full h-2">
                     <div 
                       className="bg-emerald-500 h-2 rounded-full transition-all" 
-                      style={{ width: `${grade.breakdown.transparencyScore}%` }}
+                      style={{ width: `${grade.breakdown.votingScore}%` }}
                     />
                   </div>
-                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.transparencyScore)}</span>
+                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.votingScore)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
-                  <span className="w-16 text-slate-500 font-medium">Wealth</span>
+                  <span className="w-16 text-slate-500 font-medium">Trading</span>
                   <div className="flex-1 bg-slate-100 rounded-full h-2">
                     <div 
                       className="bg-purple-500 h-2 rounded-full transition-all" 
-                      style={{ width: `${grade.breakdown.wealthScore}%` }}
+                      style={{ width: `${grade.breakdown.tradingScore}%` }}
                     />
                   </div>
-                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.wealthScore)}</span>
+                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.tradingScore)}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
-                  <span className="w-16 text-slate-500 font-medium">Stocks</span>
+                  <span className="w-16 text-slate-500 font-medium">Disclosure</span>
                   <div className="flex-1 bg-slate-100 rounded-full h-2">
                     <div 
                       className="bg-blue-500 h-2 rounded-full transition-all" 
-                      style={{ width: `${grade.breakdown.stockScore}%` }}
+                      style={{ width: `${grade.breakdown.disclosureScore}%` }}
                     />
                   </div>
-                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.stockScore)}</span>
+                  <span className="w-8 text-right text-slate-600 font-mono">{Math.round(grade.breakdown.disclosureScore)}</span>
                 </div>
               </div>
               
