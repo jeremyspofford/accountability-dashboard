@@ -1,65 +1,73 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import DonorAnalysisSection from "./DonorAnalysisSection";
+import type { CampaignFinance } from "@/lib/types";
 
 describe("DonorAnalysisSection", () => {
-  const mockProps = {
-    pacAmount: 2800000,
-    individualAmount: 910000,
-    smallDonorAmount: 410000,
-    topDonors: [
-      { name: "Tech Industry PAC", amount: 450000, type: "PAC" as const },
-      { name: "Energy Corp Alliance", amount: 380000, type: "PAC" as const },
-      { name: "Finance Group", amount: 320000, type: "PAC" as const },
-    ],
-    industries: [
-      { name: "Technology", amount: 850000 },
-      { name: "Energy", amount: 720000 },
-    ],
+  const mockFinance: CampaignFinance = {
+    cycle: "2024",
+    total_raised: 2800000,
+    total_spent: 2500000,
+    cash_on_hand: 300000,
+    candidate_self_funding: 50000,
+    pac_contributions: 1200000,
+    pac_percentage: 42.9,
+    individual_contributions: 1550000,
+    individual_percentage: 55.4,
+    large_donors: 910000,
+    large_donor_percentage: 32.5,
+    small_donors: 640000,
+    small_donor_percentage: 22.9,
+    fec_candidate_id: "H0OH04000",
+    last_updated: "2024-01-01",
   };
 
-  it("renders funding sources title", () => {
-    render(<DonorAnalysisSection {...mockProps} />);
-    expect(screen.getByText("Funding Sources")).toBeInTheDocument();
+  it("renders the section title", () => {
+    render(<DonorAnalysisSection finance={mockFinance} />);
+    expect(screen.getByText("💰 Campaign Finance")).toBeInTheDocument();
   });
 
-  it("displays correct donor type labels", () => {
-    render(<DonorAnalysisSection {...mockProps} />);
-
-    expect(screen.getByText("Corporate PACs")).toBeInTheDocument();
-    expect(screen.getByText("Large Individual Donors")).toBeInTheDocument();
-    expect(screen.getByText(/Small Donors/)).toBeInTheDocument();
+  it("displays funding source labels", () => {
+    render(<DonorAnalysisSection finance={mockFinance} />);
+    expect(screen.getByText("PAC Contributions")).toBeInTheDocument();
+    expect(screen.getByText(/Large Individual Donors/)).toBeInTheDocument();
+    expect(screen.getByText(/Small Individual Donors/)).toBeInTheDocument();
   });
 
-  it("shows top contributors section", () => {
-    render(<DonorAnalysisSection {...mockProps} />);
-
-    expect(screen.getByText("Top 10 Contributors")).toBeInTheDocument();
-    expect(screen.getByText(/Tech Industry PAC/)).toBeInTheDocument();
-    expect(screen.getByText(/Energy Corp Alliance/)).toBeInTheDocument();
-  });
-
-  it("displays industry breakdown", () => {
-    render(<DonorAnalysisSection {...mockProps} />);
-
-    expect(screen.getByText("Top Industries")).toBeInTheDocument();
-    expect(screen.getByText("Technology")).toBeInTheDocument();
-    expect(screen.getByText("Energy")).toBeInTheDocument();
+  it("shows summary stats", () => {
+    render(<DonorAnalysisSection finance={mockFinance} />);
+    expect(screen.getByText("Total Raised")).toBeInTheDocument();
+    expect(screen.getByText("Total Spent")).toBeInTheDocument();
+    expect(screen.getByText("Cash on Hand")).toBeInTheDocument();
   });
 
   it("formats currency correctly", () => {
-    render(<DonorAnalysisSection {...mockProps} />);
-
-    // Check for formatted amounts
-    expect(screen.getByText(/\$2\.8M/)).toBeInTheDocument();
-    expect(screen.getByText(/\$910K/)).toBeInTheDocument();
+    render(<DonorAnalysisSection finance={mockFinance} />);
+    // Total raised should be $2.8M
+    expect(screen.getByText("$2.8M")).toBeInTheDocument();
+    // Total spent should be $2.5M
+    expect(screen.getByText("$2.5M")).toBeInTheDocument();
   });
 
-  it("renders stacked bar chart container", () => {
-    const { container } = render(<DonorAnalysisSection {...mockProps} />);
+  it("displays percentage breakdown", () => {
+    render(<DonorAnalysisSection finance={mockFinance} />);
+    expect(screen.getByText("42.9%")).toBeInTheDocument();
+    expect(screen.getByText("32.5%")).toBeInTheDocument();
+  });
 
-    // Check for the stacked bar chart
-    const barChart = container.querySelector(".h-20.flex.rounded-xl");
-    expect(barChart).toBeInTheDocument();
+  it("renders pie chart", () => {
+    const { container } = render(<DonorAnalysisSection finance={mockFinance} />);
+    const svg = container.querySelector("svg");
+    expect(svg).toBeInTheDocument();
+  });
+
+  it("shows election cycle", () => {
+    render(<DonorAnalysisSection finance={mockFinance} />);
+    expect(screen.getByText(/2024 Election Cycle/)).toBeInTheDocument();
+  });
+
+  it("handles null finance gracefully", () => {
+    render(<DonorAnalysisSection finance={null} />);
+    expect(screen.getByText(/Campaign finance data not yet available/)).toBeInTheDocument();
   });
 });
