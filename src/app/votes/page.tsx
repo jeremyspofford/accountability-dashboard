@@ -1,13 +1,13 @@
+"use client";
+
+import { useState, useMemo } from "react";
 import KeyVotes from "@/components/KeyVotes";
 import keyVotesData from "@/data/key-votes.json";
 import Link from "next/link";
 
-export const metadata = {
-  title: "Key Votes | Accountability Dashboard",
-  description: "Track important congressional votes on healthcare, climate, immigration, and more.",
-};
-
 export default function VotesPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
   const votes = keyVotesData as Array<{
     id: string;
     congress: number;
@@ -22,6 +22,12 @@ export default function VotesPage() {
     nay_count: number;
     result: "Passed" | "Failed" | "Unknown";
   }>;
+
+  // Filter votes by selected category
+  const filteredVotes = useMemo(() => {
+    if (selectedCategory === "All") return votes;
+    return votes.filter(v => v.category === selectedCategory);
+  }, [votes, selectedCategory]);
 
   // Stats
   const houseVotes = votes.filter(v => v.chamber === "House");
@@ -85,18 +91,33 @@ export default function VotesPage() {
         </div>
       </section>
 
-      {/* Category breakdown */}
+      {/* Category filter */}
       <section className="py-8 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <h2 className="text-xl font-bold text-slate-900 mb-4">By Category</h2>
           <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => setSelectedCategory("All")}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                selectedCategory === "All"
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+              }`}
+            >
+              All <span className="text-slate-400 ml-1">({votes.length})</span>
+            </button>
             {sortedCategories.map(([category, count]) => (
-              <span 
+              <button 
                 key={category}
-                className="px-3 py-1.5 rounded-full text-sm font-medium bg-slate-100 text-slate-700"
+                onClick={() => setSelectedCategory(category)}
+                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  selectedCategory === category
+                    ? "bg-blue-600 text-white"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                }`}
               >
-                {category} <span className="text-slate-400 ml-1">({count})</span>
-              </span>
+                {category} <span className={`ml-1 ${selectedCategory === category ? "text-blue-200" : "text-slate-400"}`}>({count})</span>
+              </button>
             ))}
           </div>
         </div>
@@ -105,8 +126,15 @@ export default function VotesPage() {
       {/* Vote list */}
       <section className="py-8">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <h2 className="text-xl font-bold text-slate-900 mb-6">All Key Votes</h2>
-          <KeyVotes votes={votes} limit={20} showFilters={true} />
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-bold text-slate-900">
+              {selectedCategory === "All" ? "All Key Votes" : `${selectedCategory} Votes`}
+            </h2>
+            <span className="text-sm text-slate-500">
+              {filteredVotes.length} vote{filteredVotes.length !== 1 ? "s" : ""}
+            </span>
+          </div>
+          <KeyVotes votes={filteredVotes} limit={20} showFilters={false} />
         </div>
       </section>
 

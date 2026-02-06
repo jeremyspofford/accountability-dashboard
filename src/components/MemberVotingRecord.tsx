@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import VoteModal from "./VoteModal";
 
 interface KeyVote {
   id: string;
@@ -16,6 +17,20 @@ interface KeyVote {
   nay_count: number;
   result: "Passed" | "Failed" | "Unknown";
   votes: Record<string, string>;
+  summary?: string;
+  beneficiaries?: Array<{
+    group: string;
+    impact: "benefits" | "harms" | "mixed";
+  }>;
+  publicBenefit?: "positive" | "negative" | "mixed";
+  party_breakdown?: {
+    dem_yea: number;
+    dem_nay: number;
+    rep_yea: number;
+    rep_nay: number;
+    other_yea: number;
+    other_nay: number;
+  };
 }
 
 interface MemberVotingRecordProps {
@@ -51,6 +66,7 @@ export function MemberVotingRecord({
 }: MemberVotingRecordProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [expanded, setExpanded] = useState(false);
+  const [selectedVote, setSelectedVote] = useState<KeyVote | null>(null);
   
   // Filter votes for this chamber and where this member has a vote record
   const memberVotes = useMemo(() => {
@@ -101,110 +117,130 @@ export function MemberVotingRecord({
   }
   
   return (
-    <section className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-      <h3 className="text-2xl font-black uppercase tracking-tight text-slate-900 mb-2">
-        🗳️ Key Vote Record
-      </h3>
-      <p className="text-slate-500 mb-6">
-        How {memberName.split(" ")[0]} voted on important legislation
-      </p>
-      
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-slate-50 rounded-xl p-4 text-center">
-          <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Key Votes</p>
-          <p className="text-2xl font-black text-slate-900">{stats.total}</p>
+    <>
+      <section className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
+        <h3 className="text-2xl font-black uppercase tracking-tight text-slate-900 mb-2">
+          🗳️ Key Vote Record
+        </h3>
+        <p className="text-slate-500 mb-6">
+          How {memberName.split(" ")[0]} voted on important legislation
+        </p>
+        
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="bg-slate-50 rounded-xl p-4 text-center">
+            <p className="text-sm font-semibold text-slate-500 uppercase tracking-wide">Key Votes</p>
+            <p className="text-2xl font-black text-slate-900">{stats.total}</p>
+          </div>
+          <div className="bg-emerald-50 rounded-xl p-4 text-center">
+            <p className="text-sm font-semibold text-emerald-600 uppercase tracking-wide">Yea</p>
+            <p className="text-2xl font-black text-emerald-700">{stats.yeas}</p>
+          </div>
+          <div className="bg-red-50 rounded-xl p-4 text-center">
+            <p className="text-sm font-semibold text-red-600 uppercase tracking-wide">Nay</p>
+            <p className="text-2xl font-black text-red-700">{stats.nays}</p>
+          </div>
+          <div className="bg-blue-50 rounded-xl p-4 text-center">
+            <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide">Participation</p>
+            <p className="text-2xl font-black text-blue-700">{stats.participationRate.toFixed(0)}%</p>
+          </div>
         </div>
-        <div className="bg-emerald-50 rounded-xl p-4 text-center">
-          <p className="text-sm font-semibold text-emerald-600 uppercase tracking-wide">Yea</p>
-          <p className="text-2xl font-black text-emerald-700">{stats.yeas}</p>
+        
+        {/* Category filter */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {categories.map(cat => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                selectedCategory === cat
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
-        <div className="bg-red-50 rounded-xl p-4 text-center">
-          <p className="text-sm font-semibold text-red-600 uppercase tracking-wide">Nay</p>
-          <p className="text-2xl font-black text-red-700">{stats.nays}</p>
-        </div>
-        <div className="bg-blue-50 rounded-xl p-4 text-center">
-          <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide">Participation</p>
-          <p className="text-2xl font-black text-blue-700">{stats.participationRate.toFixed(0)}%</p>
-        </div>
-      </div>
-      
-      {/* Category filter */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {categories.map(cat => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              selectedCategory === cat
-                ? "bg-blue-600 text-white"
-                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-      
-      {/* Vote list */}
-      <div className="space-y-3">
-        {displayVotes.map((vote) => (
-          <div
-            key={vote.id}
-            className="border border-slate-200 rounded-xl p-4 hover:border-slate-300 transition-colors"
-          >
-            <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className={`px-3 py-1 rounded-full text-sm font-bold border ${VOTE_STYLES[vote.memberVote]}`}>
-                  {vote.memberVote}
-                </span>
-                <span className={`px-2 py-0.5 rounded text-xs font-semibold ${CATEGORY_COLORS[vote.category] || CATEGORY_COLORS.Other}`}>
-                  {vote.category}
+        
+        {/* Vote list */}
+        <div className="space-y-3">
+          {displayVotes.map((vote) => (
+            <div
+              key={vote.id}
+              onClick={() => setSelectedVote(vote)}
+              className="border border-slate-200 rounded-xl p-4 hover:border-slate-300 hover:shadow-md transition-all cursor-pointer"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-2 mb-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className={`px-3 py-1 rounded-full text-sm font-bold border ${VOTE_STYLES[vote.memberVote]}`}>
+                    {vote.memberVote}
+                  </span>
+                  <span className={`px-2 py-0.5 rounded text-xs font-semibold ${CATEGORY_COLORS[vote.category] || CATEGORY_COLORS.Other}`}>
+                    {vote.category}
+                  </span>
+                </div>
+                <span className="text-xs text-slate-400">
+                  {new Date(vote.date).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric"
+                  })}
                 </span>
               </div>
-              <span className="text-xs text-slate-400">
-                {new Date(vote.date).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric"
-                })}
-              </span>
-            </div>
-            
-            <h4 className="font-semibold text-slate-900 mb-1">
-              {vote.bill && (
-                <span className="text-blue-600 mr-2">{vote.bill}</span>
+              
+              <h4 className="font-semibold text-slate-900 mb-1">
+                {vote.bill && (
+                  <span className="text-blue-600 mr-2">{vote.bill}</span>
+                )}
+                {vote.title || "Vote"}
+              </h4>
+              
+              {vote.description && (
+                <p className="text-sm text-slate-600 line-clamp-2 mb-2">
+                  {vote.description}
+                </p>
               )}
-              {vote.title || "Vote"}
-            </h4>
-            
-            {vote.description && (
-              <p className="text-sm text-slate-600 line-clamp-2">
-                {vote.description}
-              </p>
-            )}
-            
-            <div className="flex items-center gap-4 text-xs text-slate-400 mt-2">
-              <span>Result: {vote.yea_count} Yea - {vote.nay_count} Nay</span>
-              <span>Roll #{vote.rollnumber}</span>
+
+              {/* Who Benefits indicator */}
+              {vote.publicBenefit && vote.publicBenefit !== "mixed" && (
+                <div className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium mb-2 ${
+                  vote.publicBenefit === "positive"
+                    ? "bg-emerald-50 text-emerald-700"
+                    : "bg-red-50 text-red-700"
+                }`}>
+                  {vote.publicBenefit === "positive" ? "👍" : "👎"}
+                  {vote.publicBenefit === "positive" 
+                    ? "Benefits working people" 
+                    : "Benefits special interests"}
+                </div>
+              )}
+              
+              <div className="flex items-center gap-4 text-xs text-slate-400 mt-2">
+                <span>Result: {vote.yea_count} Yea - {vote.nay_count} Nay</span>
+                <span>Roll #{vote.rollnumber}</span>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-      
-      {/* Show more */}
-      {filteredVotes.length > 5 && (
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className="w-full mt-4 py-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
-        >
-          {expanded 
-            ? "Show Less ↑" 
-            : `Show ${filteredVotes.length - 5} More Votes ↓`
-          }
-        </button>
-      )}
-    </section>
+          ))}
+        </div>
+        
+        {/* Show more */}
+        {filteredVotes.length > 5 && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="w-full mt-4 py-2 text-sm text-blue-600 hover:text-blue-700 font-medium"
+          >
+            {expanded 
+              ? "Show Less ↑" 
+              : `Show ${filteredVotes.length - 5} More Votes ↓`
+            }
+          </button>
+        )}
+      </section>
+
+      {/* Vote Modal */}
+      <VoteModal vote={selectedVote} onClose={() => setSelectedVote(null)} />
+    </>
   );
 }
 
