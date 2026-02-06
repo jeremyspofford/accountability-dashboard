@@ -1,0 +1,489 @@
+#!/usr/bin/env node
+/**
+ * Enrich cabinet.json with detailed bio, prior positions, conflicts, net worth, and policy positions
+ */
+
+import * as fs from 'fs';
+import * as path from 'path';
+
+const cabinetPath = path.join(__dirname, '../src/data/cabinet.json');
+const data = JSON.parse(fs.readFileSync(cabinetPath, 'utf8'));
+
+// Enrichment data for each cabinet member
+const enrichmentData: Record<string, any> = {
+  'secretary-of-state': {
+    bio: 'Marco Rubio is a U.S. Senator from Florida since 2011. Son of Cuban immigrants, he served in the Florida House of Representatives (2000-2008), including as Speaker. Ran for president in 2016, losing to Trump in the primary after initially being a vocal critic. Known for hawkish foreign policy views, particularly regarding China, Cuba, and Venezuela.',
+    prior_positions: [
+      { title: 'U.S. Senator', organization: 'Florida', years: '2011-2025' },
+      { title: 'Speaker', organization: 'Florida House of Representatives', years: '2006-2008' },
+      { title: 'State Representative', organization: 'Florida House', years: '2000-2008' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Previously criticized Trump as dangerous and unfit, then became loyal supporter',
+        severity: 'medium',
+        category: 'political'
+      }
+    ],
+    net_worth: '$500,000 - $1 million',
+    policy_positions: [
+      { topic: 'China', stance: 'Extreme hawkish, supports confrontational approach' },
+      { topic: 'Cuba', stance: 'Hardline, opposes any normalization' },
+      { topic: 'Venezuela', stance: 'Regime change advocate' },
+      { topic: 'Climate', stance: 'Skeptical of climate action' }
+    ]
+  },
+  'secretary-of-defense': {
+    bio: 'Pete Hegseth is a Fox News host and Army veteran. Served in Iraq and Afghanistan with the National Guard. Co-founded Concerned Veterans for America. No prior government executive experience or military leadership beyond company grade officer. Known for defending troops accused of war crimes and opposing diversity initiatives in military.',
+    prior_positions: [
+      { title: 'Fox & Friends Weekend Co-Host', organization: 'Fox News', years: '2017-2025' },
+      { title: 'Co-founder', organization: 'Concerned Veterans for America', years: '2013-2016' },
+      { title: 'Infantry Officer', organization: 'U.S. Army National Guard', years: '2001-2021' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Multiple allegations of sexual misconduct and financial mismanagement at veterans organizations',
+        severity: 'high',
+        category: 'personal_conduct'
+      },
+      {
+        description: 'No Pentagon or large organization management experience',
+        severity: 'high',
+        category: 'qualifications'
+      },
+      {
+        description: 'Advocated for pardons of war criminals',
+        severity: 'critical',
+        category: 'policy'
+      }
+    ],
+    net_worth: '$2-5 million',
+    policy_positions: [
+      { topic: 'Military Diversity', stance: 'Opposes DEI programs, "woke" policies' },
+      { topic: 'War Crimes', stance: 'Defended troops accused of war crimes' },
+      { topic: 'Military Budget', stance: 'Increase spending' },
+      { topic: 'Women in Combat', stance: 'Skeptical of women in combat roles' }
+    ]
+  },
+  'attorney-general': {
+    bio: 'Pam Bondi served as Florida Attorney General (2011-2019). Trump personal attorney during first impeachment. Worked as lobbyist for Qatar and other foreign entities. Known for close relationship with Trump and loyalty-based approach to law enforcement. Received $25,000 Trump Foundation donation while investigating Trump University fraud claims.',
+    prior_positions: [
+      { title: 'Florida Attorney General', organization: 'State of Florida', years: '2011-2019' },
+      { title: 'Registered Lobbyist', organization: 'Ballard Partners', years: '2019-2025' },
+      { title: 'Assistant State Attorney', organization: 'Hillsborough County', years: '1992-2010' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Received $25,000 from Trump Foundation while investigating Trump University, then dropped investigation',
+        severity: 'critical',
+        category: 'corruption'
+      },
+      {
+        description: 'Lobbied for Qatar and other foreign governments',
+        severity: 'high',
+        category: 'foreign_influence'
+      },
+      {
+        description: 'Trump\'s personal attorney, extreme loyalty concerns',
+        severity: 'critical',
+        category: 'independence'
+      }
+    ],
+    net_worth: '$1.5-3 million',
+    policy_positions: [
+      { topic: 'Presidential Immunity', stance: 'Broad executive immunity' },
+      { topic: 'DOJ Independence', stance: 'President should direct prosecutions' },
+      { topic: 'January 6', stance: 'Defended Trump, minimized events' },
+      { topic: 'Civil Rights', stance: 'Opposed Obamacare, LGBTQ protections' }
+    ]
+  },
+  'secretary-of-treasury': {
+    bio: 'Scott Bessent is a billionaire hedge fund manager and founder of Key Square Group. Former chief investment officer at Soros Fund Management. Known for currency speculation and macroeconomic bets. First openly gay cabinet member in Republican administration. Transitioned from Democratic donor to Trump supporter.',
+    prior_positions: [
+      { title: 'Founder and CEO', organization: 'Key Square Group', years: '2015-present' },
+      { title: 'Chief Investment Officer', organization: 'Soros Fund Management', years: '2011-2015' },
+      { title: 'Partner', organization: 'Soros Fund Management', years: '1991-2000' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Hedge fund holdings that could benefit from Treasury policies',
+        severity: 'high',
+        category: 'financial'
+      },
+      {
+        description: 'Previously worked for George Soros, frequent Trump target',
+        severity: 'medium',
+        category: 'political'
+      }
+    ],
+    net_worth: '$500 million - $1 billion',
+    policy_positions: [
+      { topic: 'Tariffs', stance: 'Supports Trump tariff plans' },
+      { topic: 'Fiscal Policy', stance: 'Tax cuts for wealthy, deregulation' },
+      { topic: 'Dollar', stance: 'Strong dollar advocate' },
+      { topic: 'Debt', stance: 'Concerned about debt but favors tax cuts' }
+    ]
+  },
+  'secretary-of-hhs': {
+    bio: 'Robert F. Kennedy Jr. is an environmental lawyer and vaccine skeptic. Son of Robert F. Kennedy and nephew of JFK. Founded Children\'s Health Defense, anti-vaccine advocacy group. No medical degree or public health experience. Spread misinformation about vaccines, AIDS, COVID-19, and other health topics. Initially ran for president as Democrat, then independent, before endorsing Trump.',
+    prior_positions: [
+      { title: 'Founder and Chairman', organization: 'Children\'s Health Defense', years: '2016-present' },
+      { title: 'Environmental Attorney', organization: 'Various', years: '1986-present' },
+      { title: 'President', organization: 'Waterkeeper Alliance', years: '2010-2017' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Decades of anti-vaccine activism, spread dangerous medical misinformation',
+        severity: 'critical',
+        category: 'public_health'
+      },
+      {
+        description: 'Children\'s Health Defense profits from anti-vaccine fear',
+        severity: 'critical',
+        category: 'financial'
+      },
+      {
+        description: 'No medical or public health training',
+        severity: 'critical',
+        category: 'qualifications'
+      },
+      {
+        description: 'AIDS denialism and COVID misinformation',
+        severity: 'critical',
+        category: 'public_health'
+      }
+    ],
+    net_worth: '$15-50 million',
+    policy_positions: [
+      { topic: 'Vaccines', stance: 'Anti-vaccine activist, claims vaccines cause autism (debunked)' },
+      { topic: 'FDA', stance: 'Wants to "clean out" FDA, end pharmaceutical influence' },
+      { topic: 'Public Health', stance: 'Opposes fluoride, questions pasteurization' },
+      { topic: 'COVID-19', stance: 'Spread misinformation about vaccines and treatments' }
+    ]
+  },
+  'secretary-of-homeland-security': {
+    bio: 'Kristi Noem served as South Dakota Governor (2019-2025) and U.S. Representative (2011-2019). Known for refusing COVID-19 restrictions, controversy over shooting her dog, and alleged affair with Corey Lewandowski. Limited border security or immigration enforcement experience.',
+    prior_positions: [
+      { title: 'Governor', organization: 'South Dakota', years: '2019-2025' },
+      { title: 'U.S. Representative', organization: 'South Dakota At-Large', years: '2011-2019' },
+      { title: 'State Representative', organization: 'South Dakota House', years: '2007-2011' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Alleged affair with Trump campaign manager Corey Lewandowski',
+        severity: 'medium',
+        category: 'personal_conduct'
+      },
+      {
+        description: 'No border security or immigration enforcement experience',
+        severity: 'high',
+        category: 'qualifications'
+      },
+      {
+        description: 'Controversial memoir admitting to shooting own dog',
+        severity: 'medium',
+        category: 'judgment'
+      }
+    ],
+    net_worth: '$1-3 million',
+    policy_positions: [
+      { topic: 'Immigration', stance: 'Hardline, supports mass deportation' },
+      { topic: 'COVID-19', stance: 'Opposed restrictions, mask mandates' },
+      { topic: 'Border Wall', stance: 'Strong supporter' },
+      { topic: 'Native American Issues', stance: 'Contentious relationship with tribes' }
+    ]
+  },
+  'epa-administrator': {
+    bio: 'Lee Zeldin served as U.S. Representative from New York (2015-2023). No environmental or scientific background. Climate change skeptic. Lost 2022 New York gubernatorial race. Consistently voted against environmental protections.',
+    prior_positions: [
+      { title: 'U.S. Representative', organization: 'New York 1st District', years: '2015-2023' },
+      { title: 'New York State Senator', organization: 'New York Senate', years: '2011-2015' },
+      { title: 'Attorney', organization: 'Private Practice', years: '2008-2015' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'No environmental science or policy experience',
+        severity: 'high',
+        category: 'qualifications'
+      },
+      {
+        description: 'Climate change skeptic leading environmental agency',
+        severity: 'critical',
+        category: 'ideology'
+      },
+      {
+        description: 'Consistently voted against Clean Air and Water Act protections',
+        severity: 'high',
+        category: 'policy'
+      }
+    ],
+    net_worth: '$500,000 - $1 million',
+    policy_positions: [
+      { topic: 'Climate Change', stance: 'Skeptical, opposed Paris Agreement' },
+      { topic: 'Regulations', stance: 'Deregulation advocate' },
+      { topic: 'Clean Air Act', stance: 'Voted to weaken protections' },
+      { topic: 'Fossil Fuels', stance: 'Strong supporter of oil and gas' }
+    ]
+  },
+  'secretary-of-interior': {
+    bio: 'Doug Burgum served as North Dakota Governor (2016-2024) and CEO of Great Plains Software (acquired by Microsoft). Billionaire businessman. Strong ties to fossil fuel industry in energy-rich North Dakota. Ran for president in 2024 GOP primary.',
+    prior_positions: [
+      { title: 'Governor', organization: 'North Dakota', years: '2016-2024' },
+      { title: 'CEO', organization: 'Great Plains Software', years: '1983-2001' },
+      { title: 'Senior Vice President', organization: 'Microsoft Business Solutions', years: '2001-2007' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Oil and gas investments, strong fossil fuel industry ties',
+        severity: 'high',
+        category: 'financial'
+      },
+      {
+        description: 'Will oversee public lands with massive fossil fuel interests',
+        severity: 'high',
+        category: 'policy'
+      }
+    ],
+    net_worth: '$100 million - $1 billion',
+    policy_positions: [
+      { topic: 'Energy', stance: 'Expand oil and gas drilling on public lands' },
+      { topic: 'Conservation', stance: 'Balance with energy development' },
+      { topic: 'Climate', stance: 'Pragmatic but pro-fossil fuel' },
+      { topic: 'Native American Issues', stance: 'Mixed record in North Dakota' }
+    ]
+  },
+  'secretary-of-agriculture': {
+    bio: 'Brooke Rollins served in Trump\'s first administration as Director of Domestic Policy Council and Acting Director of Office of Management and Budget. Founded America First Policy Institute. Lawyer and conservative policy advisor. No agricultural background.',
+    prior_positions: [
+      { title: 'President and CEO', organization: 'America First Policy Institute', years: '2021-2025' },
+      { title: 'Acting Director', organization: 'Office of Management and Budget', years: '2020-2021' },
+      { title: 'Director', organization: 'Domestic Policy Council', years: '2020-2021' },
+      { title: 'President and CEO', organization: 'Texas Public Policy Foundation', years: '2003-2018' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'No agricultural experience or background',
+        severity: 'high',
+        category: 'qualifications'
+      },
+      {
+        description: 'Close ties to agricultural corporations through think tank work',
+        severity: 'medium',
+        category: 'corporate'
+      }
+    ],
+    net_worth: '$1-5 million',
+    policy_positions: [
+      { topic: 'Farm Subsidies', stance: 'Support for traditional farm programs' },
+      { topic: 'Food Assistance', stance: 'Work requirements, cut spending' },
+      { topic: 'Agriculture Regulation', stance: 'Deregulation' },
+      { topic: 'Trade', stance: 'America First, protect farmers from imports' }
+    ]
+  },
+  'secretary-of-commerce': {
+    bio: 'Howard Lutnick is CEO of Cantor Fitzgerald and BGC Group. Wall Street billionaire. Chair of Trump transition team, creating conflicts of interest. Lost 658 employees including brother on 9/11. Known for aggressive business tactics and loyalty to Trump.',
+    prior_positions: [
+      { title: 'CEO', organization: 'Cantor Fitzgerald', years: '1991-present' },
+      { title: 'CEO', organization: 'BGC Group', years: '1999-present' },
+      { title: 'Chair', organization: 'Trump 2024 Transition Team', years: '2024-2025' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Led Trump transition while being nominated for cabinet position',
+        severity: 'critical',
+        category: 'conflict'
+      },
+      {
+        description: 'Extensive Wall Street and financial industry ties',
+        severity: 'high',
+        category: 'financial'
+      },
+      {
+        description: 'Cantor Fitzgerald business interests overlap with Commerce Department policies',
+        severity: 'high',
+        category: 'corporate'
+      }
+    ],
+    net_worth: '$1.5 billion',
+    policy_positions: [
+      { topic: 'Tariffs', stance: 'Strong supporter of Trump tariff policies' },
+      { topic: 'China', stance: 'Hawkish on trade and competition' },
+      { topic: 'Cryptocurrency', stance: 'Advocate for crypto-friendly policies' },
+      { topic: 'Regulation', stance: 'Pro-business deregulation' }
+    ]
+  },
+  'secretary-of-labor': {
+    bio: 'Lori Chavez-DeRemer served one term as U.S. Representative from Oregon (2023-2025). One of few Republicans endorsed by major labor unions. Lost 2024 reelection. More moderate on labor issues than typical Trump cabinet member.',
+    prior_positions: [
+      { title: 'U.S. Representative', organization: 'Oregon 5th District', years: '2023-2025' },
+      { title: 'Mayor', organization: 'Happy Valley, Oregon', years: '2011-2018' },
+      { title: 'City Councilor', organization: 'Happy Valley, Oregon', years: '2010-2011' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Limited labor policy experience',
+        severity: 'medium',
+        category: 'qualifications'
+      }
+    ],
+    net_worth: '$500,000 - $1 million',
+    policy_positions: [
+      { topic: 'Labor Unions', stance: 'More supportive than typical Republican' },
+      { topic: 'PRO Act', stance: 'Co-sponsored pro-union legislation' },
+      { topic: 'Minimum Wage', stance: 'Mixed record' },
+      { topic: 'Worker Safety', stance: 'Generally supportive' }
+    ]
+  },
+  'secretary-of-transportation': {
+    bio: 'Sean Duffy served as U.S. Representative from Wisconsin (2011-2019), resigned to join Fox News. Former reality TV star (The Real World). District attorney before Congress. Known for loyalty to Trump.',
+    prior_positions: [
+      { title: 'Fox Business Host', organization: 'Fox News', years: '2020-2025' },
+      { title: 'U.S. Representative', organization: 'Wisconsin 7th District', years: '2011-2019' },
+      { title: 'District Attorney', organization: 'Ashland County, Wisconsin', years: '2002-2010' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Limited transportation policy expertise',
+        severity: 'medium',
+        category: 'qualifications'
+      },
+      {
+        description: 'Wife is Fox News host, media family connections',
+        severity: 'low',
+        category: 'media'
+      }
+    ],
+    net_worth: '$500,000 - $1 million',
+    policy_positions: [
+      { topic: 'Infrastructure', stance: 'Support for roads and bridges' },
+      { topic: 'Aviation', stance: 'Deregulation' },
+      { topic: 'Public Transit', stance: 'Limited federal role' },
+      { topic: 'EV Infrastructure', stance: 'Skeptical of federal investment' }
+    ]
+  },
+  'secretary-of-energy': {
+    bio: 'Chris Wright is CEO of Liberty Energy, a fracking services company. Oil and gas industry executive. Climate change skeptic. No government experience. Brings fossil fuel industry perspective to lead energy department with nuclear weapons and clean energy research responsibilities.',
+    prior_positions: [
+      { title: 'CEO', organization: 'Liberty Energy', years: '2011-present' },
+      { title: 'Various Roles', organization: 'Oil and Gas Industry', years: '1980s-present' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'CEO of fracking company overseeing energy policy',
+        severity: 'critical',
+        category: 'financial'
+      },
+      {
+        description: 'Climate change denier leading agency responsible for clean energy',
+        severity: 'critical',
+        category: 'ideology'
+      },
+      {
+        description: 'Will profit from pro-fossil fuel policies',
+        severity: 'critical',
+        category: 'corruption'
+      }
+    ],
+    net_worth: '$50-100 million',
+    policy_positions: [
+      { topic: 'Fossil Fuels', stance: 'Expand oil and gas production' },
+      { topic: 'Climate', stance: 'Climate change skeptic/denier' },
+      { topic: 'Renewable Energy', stance: 'Opposes subsidies, prefers fossil fuels' },
+      { topic: 'Fracking', stance: 'Strong advocate' }
+    ]
+  },
+  'secretary-of-education': {
+    bio: 'Linda McMahon co-founded WWE (World Wrestling Entertainment) with husband Vince McMahon. Served as Small Business Administrator in Trump\'s first term. Major Trump donor. No education policy experience. Oversaw company with serious worker safety issues.',
+    prior_positions: [
+      { title: 'Administrator', organization: 'Small Business Administration', years: '2017-2019' },
+      { title: 'CEO', organization: 'WWE', years: '1980-2009' },
+      { title: 'Chair', organization: 'America First Action Super PAC', years: '2019-2025' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'No education policy or teaching experience',
+        severity: 'high',
+        category: 'qualifications'
+      },
+      {
+        description: 'WWE worker safety record, wrestlers died young',
+        severity: 'high',
+        category: 'labor'
+      },
+      {
+        description: 'Major Trump donor seeking to dismantle department',
+        severity: 'high',
+        category: 'ideology'
+      }
+    ],
+    net_worth: '$500 million - $2 billion',
+    policy_positions: [
+      { topic: 'Department Abolition', stance: 'Supports abolishing Education Department' },
+      { topic: 'School Choice', stance: 'Strong advocate for vouchers' },
+      { topic: 'Federal Role', stance: 'Minimize federal involvement' },
+      { topic: 'Student Loans', stance: 'Reduce federal loan programs' }
+    ]
+  },
+  'secretary-of-veterans-affairs': {
+    bio: 'Doug Collins served as U.S. Representative from Georgia (2013-2021). House Judiciary Committee ranking member during Trump impeachment, aggressive defender. Chaplain in Air Force Reserve. Lost 2020 Senate race.',
+    prior_positions: [
+      { title: 'U.S. Representative', organization: 'Georgia 9th District', years: '2013-2021' },
+      { title: 'Chaplain', organization: 'U.S. Air Force Reserve', years: '2002-present' },
+      { title: 'Georgia State Representative', organization: 'Georgia House', years: '2007-2013' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Limited veterans policy experience beyond military service',
+        severity: 'medium',
+        category: 'qualifications'
+      }
+    ],
+    net_worth: '$500,000 - $1 million',
+    policy_positions: [
+      { topic: 'VA Healthcare', stance: 'Support privatization, VA Choice expansion' },
+      { topic: 'Veterans Benefits', stance: 'Generally supportive' },
+      { topic: 'Military', stance: 'Strong supporter of increased spending' },
+      { topic: 'VA Accountability', stance: 'Fire problem employees' }
+    ]
+  },
+  'secretary-of-housing': {
+    bio: 'Scott Turner is a former NFL player and Texas state legislator. Served as Executive Director of White House Opportunity and Revitalization Council in first Trump administration. Pastor and motivational speaker. Limited housing policy expertise.',
+    prior_positions: [
+      { title: 'Executive Director', organization: 'White House Opportunity and Revitalization Council', years: '2019-2021' },
+      { title: 'Texas State Representative', organization: 'Texas House', years: '2013-2017' },
+      { title: 'NFL Player', organization: 'Various Teams', years: '1995-2004' }
+    ],
+    conflicts_of_interest: [
+      {
+        description: 'Limited housing policy and urban development experience',
+        severity: 'high',
+        category: 'qualifications'
+      }
+    ],
+    net_worth: '$1-3 million',
+    policy_positions: [
+      { topic: 'Affordable Housing', stance: 'Opportunity zones, private sector solutions' },
+      { topic: 'Fair Housing', stance: 'Rolled back Obama-era protections in first term' },
+      { topic: 'Public Housing', stance: 'Work requirements, private sector involvement' },
+      { topic: 'Homelessness', stance: 'Faith-based and community solutions' }
+    ]
+  }
+};
+
+// Apply enrichments
+for (const member of data.members) {
+  const enrichment = enrichmentData[member.id];
+  if (enrichment) {
+    member.bio = enrichment.bio;
+    member.prior_positions = enrichment.prior_positions;
+    member.conflicts_of_interest = enrichment.conflicts_of_interest;
+    member.net_worth = enrichment.net_worth;
+    member.policy_positions = enrichment.policy_positions;
+  } else {
+    console.warn(`No enrichment data for ${member.id}`);
+  }
+}
+
+// Write back
+fs.writeFileSync(cabinetPath, JSON.stringify(data, null, 2));
+console.log('✅ Cabinet data enriched');

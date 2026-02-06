@@ -134,14 +134,6 @@ export default async function CabinetMemberPage({ params }: CabinetMemberPagePro
                 "Information about this department's responsibilities."}
             </p>
           </div>
-
-          {/* Coming Soon */}
-          <div className="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-6">
-            <h3 className="font-bold text-amber-900 mb-2">📋 Coming Soon</h3>
-            <p className="text-sm text-amber-800">
-              Key decisions, policy changes, controversies, and accountability metrics for this cabinet member.
-            </p>
-          </div>
         </div>
       </section>
 

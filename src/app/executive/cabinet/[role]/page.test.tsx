@@ -57,4 +57,11 @@ describe("CabinetMemberPage", () => {
     expect(screen.getByText("Pete Hegseth")).toBeDefined();
     expect(screen.getByText("Secretary of Defense")).toBeDefined();
   });
+
+  it("does not show Coming Soon placeholders", async () => {
+    const page = await CabinetMemberPage({ params: Promise.resolve(mockParams) });
+    render(page);
+    const comingSoon = screen.queryAllByText(/Coming Soon/i);
+    expect(comingSoon.length).toBe(0);
+  });
 });
