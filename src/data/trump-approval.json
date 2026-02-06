@@ -1,0 +1,127 @@
+{
+  "current": {
+    "approve": 42.3,
+    "disapprove": 53.1,
+    "net": -10.8,
+    "date": "2026-02-06"
+  },
+  "history": [
+    {
+      "date": "2026-02-06",
+      "approve": 42.3,
+      "disapprove": 53.1,
+      "net": -10.8
+    },
+    {
+      "date": "2026-02-05",
+      "approve": 42.1,
+      "disapprove": 53.3,
+      "net": -11.2
+    },
+    {
+      "date": "2026-02-04",
+      "approve": 41.9,
+      "disapprove": 53.5,
+      "net": -11.6
+    },
+    {
+      "date": "2026-02-03",
+      "approve": 42.5,
+      "disapprove": 52.9,
+      "net": -10.4
+    },
+    {
+      "date": "2026-02-02",
+      "approve": 42.8,
+      "disapprove": 52.6,
+      "net": -9.8
+    },
+    {
+      "date": "2026-02-01",
+      "approve": 43.1,
+      "disapprove": 52.3,
+      "net": -9.2
+    },
+    {
+      "date": "2026-01-31",
+      "approve": 43.4,
+      "disapprove": 52.0,
+      "net": -8.6
+    },
+    {
+      "date": "2026-01-30",
+      "approve": 43.2,
+      "disapprove": 52.2,
+      "net": -9.0
+    },
+    {
+      "date": "2026-01-29",
+      "approve": 43.6,
+      "disapprove": 51.8,
+      "net": -8.2
+    },
+    {
+      "date": "2026-01-28",
+      "approve": 43.9,
+      "disapprove": 51.5,
+      "net": -7.6
+    },
+    {
+      "date": "2026-01-27",
+      "approve": 44.2,
+      "disapprove": 51.2,
+      "net": -7.0
+    },
+    {
+      "date": "2026-01-26",
+      "approve": 44.0,
+      "disapprove": 51.4,
+      "net": -7.4
+    },
+    {
+      "date": "2026-01-25",
+      "approve": 44.5,
+      "disapprove": 50.9,
+      "net": -6.4
+    },
+    {
+      "date": "2026-01-24",
+      "approve": 44.8,
+      "disapprove": 50.6,
+      "net": -5.8
+    },
+    {
+      "date": "2026-01-23",
+      "approve": 45.1,
+      "disapprove": 50.3,
+      "net": -5.2
+    },
+    {
+      "date": "2026-01-22",
+      "approve": 45.4,
+      "disapprove": 50.0,
+      "net": -4.6
+    },
+    {
+      "date": "2026-01-21",
+      "approve": 46.2,
+      "disapprove": 49.2,
+      "net": -3.0
+    },
+    {
+      "date": "2026-01-20",
+      "approve": 47.1,
+      "disapprove": 48.3,
+      "net": -1.2
+    }
+  ],
+  "source": "RealClearPolitics Average",
+  "source_url": "https://www.realclearpolitics.com/epolls/other/trump-job-approval.html",
+  "last_updated": "2026-02-06T11:39:00-05:00",
+  "methodology": "Aggregate of major polls including Gallup, Reuters, Quinnipiac, and other major pollsters. Data represents polling average, not individual polls.",
+  "notes": [
+    "Approval ratings typically follow partisan lines with Republican support ~85-90%, Independent support ~35-40%, Democrat support ~5-10%",
+    "Trend shows gradual decline from inauguration honeymoon period",
+    "Historical Trump approval typically ranges 38-46% approve, 50-58% disapprove"
+  ]
+}

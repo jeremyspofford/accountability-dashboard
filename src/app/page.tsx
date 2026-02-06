@@ -77,11 +77,14 @@ export default function Home() {
             </Link>
 
             {/* Executive Branch */}
-            <div className="group relative bg-white rounded-3xl p-8 md:p-10 transition-all duration-500 border-2 border-slate-200 overflow-hidden shadow-lg opacity-75">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-slate-100/50 to-slate-200/50" />
+            <Link 
+              href="/executive"
+              className="group relative bg-white rounded-3xl p-8 md:p-10 transition-all duration-500 hover:-translate-y-2 border-2 border-slate-200 hover:border-blue-400 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-blue-500/20"
+            >
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/0 via-cyan-500/0 to-indigo-500/0 group-hover:from-blue-500/5 group-hover:via-cyan-500/5 group-hover:to-indigo-500/5 transition-all duration-500" />
               
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-400 to-slate-500 flex items-center justify-center text-3xl mb-6 shadow-lg">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-3xl mb-6 shadow-lg group-hover:shadow-2xl group-hover:scale-110 transition-all duration-300">
                   🏛️
                 </div>
                 <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 leading-tight tracking-tight">
@@ -92,18 +95,28 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-lg font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full inline-block">Coming Soon</div>
+                    <div className="text-4xl font-black text-slate-900 tabular-nums">26</div>
+                    <div className="text-sm text-slate-500 font-semibold">Cabinet + VP</div>
+                  </div>
+                  <div className="flex items-center gap-2 text-blue-600 font-bold group-hover:gap-3 transition-all">
+                    Explore
+                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Judicial Branch */}
-            <div className="group relative bg-white rounded-3xl p-8 md:p-10 transition-all duration-500 border-2 border-slate-200 overflow-hidden shadow-lg opacity-75">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-slate-100/50 to-slate-200/50" />
+            <Link 
+              href="/judicial"
+              className="group relative bg-white rounded-3xl p-8 md:p-10 transition-all duration-500 hover:-translate-y-2 border-2 border-slate-200 hover:border-blue-400 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-blue-500/20"
+            >
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/0 via-cyan-500/0 to-indigo-500/0 group-hover:from-blue-500/5 group-hover:via-cyan-500/5 group-hover:to-indigo-500/5 transition-all duration-500" />
               
               <div className="relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-400 to-slate-500 flex items-center justify-center text-3xl mb-6 shadow-lg">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-3xl mb-6 shadow-lg group-hover:shadow-2xl group-hover:scale-110 transition-all duration-300">
                   ⚖️
                 </div>
                 <h3 className="text-2xl md:text-3xl font-black text-slate-900 mb-3 leading-tight tracking-tight">
@@ -114,11 +127,18 @@ export default function Home() {
                 </p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="text-lg font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full inline-block">Coming Soon</div>
+                    <div className="text-4xl font-black text-slate-900 tabular-nums">9</div>
+                    <div className="text-sm text-slate-500 font-semibold">Justices</div>
+                  </div>
+                  <div className="flex items-center gap-2 text-blue-600 font-bold group-hover:gap-3 transition-all">
+                    Explore
+                    <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
