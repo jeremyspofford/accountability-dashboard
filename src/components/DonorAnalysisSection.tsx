@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { CampaignFinance, Contributor } from "@/lib/types";
 
 interface DonorAnalysisSectionProps {
@@ -17,6 +18,33 @@ function formatCurrency(amount: number): string {
 
 function formatPercent(value: number): string {
   return `${value.toFixed(1)}%`;
+}
+
+// Tooltip component for inline explanations
+function InfoTooltip({ text }: { text: string }) {
+  const [show, setShow] = useState(false);
+  
+  return (
+    <div className="relative inline-block ml-1">
+      <button
+        onClick={() => setShow(!show)}
+        onMouseEnter={() => setShow(true)}
+        onMouseLeave={() => setShow(false)}
+        className="text-slate-400 hover:text-blue-600 transition-colors align-middle"
+        aria-label="More information"
+      >
+        <svg className="w-4 h-4 inline-block" fill="currentColor" viewBox="0 0 20 20">
+          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
+        </svg>
+      </button>
+      {show && (
+        <div className="absolute left-0 top-6 z-10 w-72 p-3 bg-slate-900 text-white text-xs rounded-lg shadow-xl">
+          <p className="leading-relaxed">{text}</p>
+          <div className="absolute -top-1 left-2 w-2 h-2 bg-slate-900 transform rotate-45"></div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 // Simple SVG pie chart
@@ -121,6 +149,8 @@ function ContributorRow({ contributor, rank }: { contributor: Contributor; rank:
 }
 
 export default function DonorAnalysisSection({ finance }: DonorAnalysisSectionProps) {
+  const [showPacTooltip, setShowPacTooltip] = useState(false);
+  
   if (!finance) {
     return (
       <section className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
@@ -185,7 +215,10 @@ export default function DonorAnalysisSection({ finance }: DonorAnalysisSectionPr
           {/* Percentage breakdown */}
           <div className="mt-6 space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-slate-600">PAC Contributions</span>
+              <span className="text-slate-600 flex items-center">
+                PAC Contributions
+                <InfoTooltip text="Political Action Committees pool money from corporations, unions, or interest groups to donate to campaigns. High PAC funding may indicate special interest influence." />
+              </span>
               <div className="flex items-center gap-2">
                 <span className="font-mono font-bold text-red-600">{formatPercent(finance.pac_percentage)}</span>
                 <span className="text-slate-400">({formatCurrency(finance.pac_contributions)})</span>
