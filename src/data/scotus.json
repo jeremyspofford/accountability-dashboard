@@ -5,7 +5,7 @@
     "title": "Chief Justice",
     "appointed_by": "George W. Bush",
     "confirmation_year": 2005,
-    "photo_url": "https://www.supremecourt.gov/about/biographies/CurrentMembers/JohnRoberts.jpg",
+    "photo_url": "https://www.supremecourt.gov/about/justice_pictures/Roberts_8807-16_Crop.jpg",
     "ideology_score": 0.45,
     "ideology_label": "Conservative",
     "bio": "Chief Justice Roberts has served as the 17th Chief Justice of the United States since 2005. Before his appointment, he served on the U.S. Court of Appeals for the D.C. Circuit."
@@ -16,7 +16,7 @@
     "title": "Associate Justice",
     "appointed_by": "George H.W. Bush",
     "confirmation_year": 1991,
-    "photo_url": "https://www.supremecourt.gov/about/biographies/CurrentMembers/ClarenceThomas.jpg",
+    "photo_url": "https://www.supremecourt.gov/about/justice_pictures/Thomas_9366-024_Crop.jpg",
     "ideology_score": 3.28,
     "ideology_label": "Very Conservative",
     "bio": "Justice Thomas has served on the Supreme Court since 1991, making him the longest-serving current justice. He is known for his originalist interpretation of the Constitution."
@@ -27,7 +27,7 @@
     "title": "Associate Justice",
     "appointed_by": "George W. Bush",
     "confirmation_year": 2006,
-    "photo_url": "https://www.supremecourt.gov/about/biographies/CurrentMembers/SamuelAlito.jpg",
+    "photo_url": "https://www.supremecourt.gov/about/justice_pictures/Alito_9264-001-Crop.jpg",
     "ideology_score": 2.55,
     "ideology_label": "Very Conservative",
     "bio": "Justice Alito has served on the Supreme Court since 2006. Prior to his appointment, he served on the U.S. Court of Appeals for the Third Circuit."
@@ -38,7 +38,7 @@
     "title": "Associate Justice",
     "appointed_by": "Barack Obama",
     "confirmation_year": 2009,
-    "photo_url": "https://www.supremecourt.gov/about/biographies/CurrentMembers/SoniaSotomayor.jpg",
+    "photo_url": "https://www.supremecourt.gov/about/justice_pictures/Sotomayor_Official_2025.jpg",
     "ideology_score": -2.89,
     "ideology_label": "Very Liberal",
     "bio": "Justice Sotomayor became the first Latina Supreme Court Justice when she was appointed in 2009. She previously served on the U.S. Court of Appeals for the Second Circuit."
@@ -49,7 +49,7 @@
     "title": "Associate Justice",
     "appointed_by": "Barack Obama",
     "confirmation_year": 2010,
-    "photo_url": "https://www.supremecourt.gov/about/biographies/CurrentMembers/ElenaKagan.jpg",
+    "photo_url": "https://www.supremecourt.gov/about/justice_pictures/Kagan_10713-017-Crop.jpg",
     "ideology_score": -1.95,
     "ideology_label": "Liberal",
     "bio": "Justice Kagan has served on the Supreme Court since 2010. Before her appointment, she served as the U.S. Solicitor General and was the first woman to serve as Dean of Harvard Law School."
@@ -60,7 +60,7 @@
     "title": "Associate Justice",
     "appointed_by": "Donald Trump",
     "confirmation_year": 2017,
-    "photo_url": "https://www.supremecourt.gov/about/biographies/CurrentMembers/NeilGorsuch.jpg",
+    "photo_url": "https://www.supremecourt.gov/about/justice_pictures/Gorsuch2.jpg",
     "ideology_score": 1.65,
     "ideology_label": "Conservative",
     "bio": "Justice Gorsuch has served on the Supreme Court since 2017. He previously served on the U.S. Court of Appeals for the Tenth Circuit and is known for his textualist approach to statutory interpretation."
@@ -71,7 +71,7 @@
     "title": "Associate Justice",
     "appointed_by": "Donald Trump",
     "confirmation_year": 2018,
-    "photo_url": "https://www.supremecourt.gov/about/biographies/CurrentMembers/BrettKavanaugh.jpg",
+    "photo_url": "https://www.supremecourt.gov/about/justice_pictures/Kavanaugh 12221_005_crop.jpg",
     "ideology_score": 1.25,
     "ideology_label": "Conservative",
     "bio": "Justice Kavanaugh has served on the Supreme Court since 2018. He previously served on the U.S. Court of Appeals for the D.C. Circuit for 12 years."
@@ -82,7 +82,7 @@
     "title": "Associate Justice",
     "appointed_by": "Donald Trump",
     "confirmation_year": 2020,
-    "photo_url": "https://www.supremecourt.gov/about/biographies/CurrentMembers/AmyConeyBarrett.jpg",
+    "photo_url": "https://www.supremecourt.gov/about/justice_pictures/Barrett_102535_w151.jpg",
     "ideology_score": 1.85,
     "ideology_label": "Conservative",
     "bio": "Justice Barrett has served on the Supreme Court since 2020. She previously served on the U.S. Court of Appeals for the Seventh Circuit and taught at Notre Dame Law School."
@@ -93,7 +93,7 @@
     "title": "Associate Justice",
     "appointed_by": "Joe Biden",
     "confirmation_year": 2022,
-    "photo_url": "https://www.supremecourt.gov/about/biographies/CurrentMembers/KBJackson.jpg",
+    "photo_url": "https://www.supremecourt.gov/about/justice_pictures/KBJackson3.jpg",
     "ideology_score": -2.15,
     "ideology_label": "Liberal",
     "bio": "Justice Jackson became the first Black woman to serve on the Supreme Court when she was appointed in 2022. She previously served on the U.S. Court of Appeals for the D.C. Circuit and the U.S. District Court for D.C."
