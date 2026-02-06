@@ -20,7 +20,18 @@
           "note": "Announced 10% tariffs on China, far below promised 60%",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Domestic Manufacturers",
+        "Protected Industries"
+      ],
+      "who_harmed": [
+        "Consumers",
+        "Importers",
+        "Exporters",
+        "Middle Class"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "tariffs-universal",
@@ -34,7 +45,18 @@
           "note": "Initial tariffs announced, scope limited",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Domestic Manufacturers",
+        "Protected Industries"
+      ],
+      "who_harmed": [
+        "Consumers",
+        "Importers",
+        "Exporters",
+        "Middle Class"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "tariffs-mexico-canada",
@@ -48,7 +70,18 @@
           "note": "Threatened but delayed implementation pending negotiations",
           "source": "White House statements"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Domestic Manufacturers",
+        "Protected Industries"
+      ],
+      "who_harmed": [
+        "Consumers",
+        "Importers",
+        "Exporters",
+        "Middle Class"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "end-trade-deficits",
@@ -56,7 +89,14 @@
       "category": "Trade",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "bring-jobs-back",
@@ -64,7 +104,14 @@
       "category": "Economy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "border-wall",
@@ -78,7 +125,17 @@
           "note": "Signed executive order to resume wall construction",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Construction Contractors",
+        "Immigration Hardliners"
+      ],
+      "who_harmed": [
+        "Border Communities",
+        "Environment",
+        "Taxpayers"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "mass-deportation",
@@ -92,7 +149,18 @@
           "note": "Declared national emergency at border",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Immigration Restrictionists",
+        "Private Detention Companies"
+      ],
+      "who_harmed": [
+        "Immigrants",
+        "Immigrant Families",
+        "Agricultural Industry",
+        "Service Industry"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "end-birthright-citizenship",
@@ -106,7 +174,18 @@
           "note": "Executive order signed, facing legal challenges",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Immigration Restrictionists",
+        "Private Detention Companies"
+      ],
+      "who_harmed": [
+        "Immigrants",
+        "Immigrant Families",
+        "Agricultural Industry",
+        "Service Industry"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "remain-in-mexico",
@@ -120,7 +199,14 @@
           "note": "Reinstated via executive order",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "end-catch-and-release",
@@ -128,7 +214,14 @@
       "category": "Immigration",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "death-penalty-traffickers",
@@ -136,7 +229,14 @@
       "category": "Immigration",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "extreme-vetting",
@@ -144,7 +244,14 @@
       "category": "Immigration",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "ban-sanctuary-cities",
@@ -152,7 +259,14 @@
       "category": "Immigration",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "end-ukraine-war",
@@ -166,7 +280,14 @@
           "note": "War continues, no peace deal reached",
           "source": "Current events"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "nato-funding",
@@ -174,7 +295,17 @@
       "category": "Foreign Policy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Russia",
+        "Isolationists"
+      ],
+      "who_harmed": [
+        "NATO Allies",
+        "US Global Leadership",
+        "National Security"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "china-tough",
@@ -182,7 +313,14 @@
       "category": "Foreign Policy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "middle-east-peace",
@@ -190,7 +328,14 @@
       "category": "Foreign Policy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "iran-deal",
@@ -198,7 +343,14 @@
       "category": "Foreign Policy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "strengthen-alliances",
@@ -206,7 +358,14 @@
       "category": "Foreign Policy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "lower-prices",
@@ -220,7 +379,14 @@
           "note": "Inflation remains; tariffs may increase prices",
           "source": "Economic data"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "no-tax-tips",
@@ -228,7 +394,14 @@
       "category": "Economy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "no-tax-overtime",
@@ -236,7 +409,14 @@
       "category": "Economy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "no-tax-social-security",
@@ -244,7 +424,14 @@
       "category": "Economy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "extend-tax-cuts",
@@ -252,7 +439,15 @@
       "category": "Economy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Middle Class",
+        "Workers"
+      ],
+      "who_harmed": [
+        "Government Revenue"
+      ],
+      "public_opinion": "positive"
     },
     {
       "id": "corporate-tax-cut",
@@ -260,7 +455,19 @@
       "category": "Economy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Corporations",
+        "Wealthy",
+        "Top 1%"
+      ],
+      "who_harmed": [
+        "Middle Class",
+        "Low Income",
+        "Government Services",
+        "National Debt"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "deregulation",
@@ -268,7 +475,18 @@
       "category": "Economy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Corporations",
+        "Business Owners"
+      ],
+      "who_harmed": [
+        "Consumers",
+        "Workers",
+        "Public Safety",
+        "Environment"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "interest-rates-lower",
@@ -276,7 +494,14 @@
       "category": "Economy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "energy-dominance",
@@ -290,7 +515,14 @@
           "note": "Signed executive order expanding drilling on federal lands",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "paris-climate-exit",
@@ -304,7 +536,18 @@
           "note": "Executive order signed to withdraw",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Fossil Fuel Industry",
+        "Oil and Gas Companies"
+      ],
+      "who_harmed": [
+        "Environment",
+        "Future Generations",
+        "Public Health",
+        "Climate"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "anwr-drilling",
@@ -312,7 +555,18 @@
       "category": "Energy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Fossil Fuel Industry",
+        "Oil and Gas Companies"
+      ],
+      "who_harmed": [
+        "Environment",
+        "Future Generations",
+        "Public Health",
+        "Climate"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "end-ev-mandate",
@@ -326,7 +580,14 @@
           "note": "Revoked Biden-era EV mandates",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "energy-independence",
@@ -334,7 +595,14 @@
       "category": "Energy",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "abolish-dept-education",
@@ -342,7 +610,14 @@
       "category": "Education",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "end-woke-education",
@@ -350,7 +625,14 @@
       "category": "Education",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "patriotic-education",
@@ -358,7 +640,14 @@
       "category": "Education",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "end-tenure",
@@ -366,7 +655,14 @@
       "category": "Education",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "school-choice",
@@ -374,7 +670,14 @@
       "category": "Education",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "end-dei",
@@ -388,7 +691,14 @@
           "note": "Executive order signed to dismantle federal DEI programs",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "repeal-obamacare",
@@ -396,7 +706,18 @@
       "category": "Healthcare",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Wealthy",
+        "Insurance Companies"
+      ],
+      "who_harmed": [
+        "Low Income",
+        "Middle Class",
+        "Pre-existing Conditions",
+        "20+ Million People"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "lower-drug-prices",
@@ -404,7 +725,14 @@
       "category": "Healthcare",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "health-transparency",
@@ -412,7 +740,14 @@
       "category": "Healthcare",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "protect-medicare",
@@ -420,7 +755,18 @@
       "category": "Healthcare",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Wall Street",
+        "Investment Firms"
+      ],
+      "who_harmed": [
+        "Elderly",
+        "Retirees",
+        "Disabled",
+        "Low Income"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "drain-swamp",
@@ -434,7 +780,17 @@
           "note": "Executive order on Schedule F reclassification",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Anti-Government Activists",
+        "Private Contractors"
+      ],
+      "who_harmed": [
+        "Federal Workers",
+        "Government Services",
+        "Public Sector"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "schedule-f",
@@ -448,7 +804,17 @@
           "note": "Schedule F reinstated via executive order",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Anti-Government Activists",
+        "Private Contractors"
+      ],
+      "who_harmed": [
+        "Federal Workers",
+        "Government Services",
+        "Public Sector"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "term-limits-congress",
@@ -456,7 +822,14 @@
       "category": "Government",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "ban-lobbying",
@@ -464,7 +837,14 @@
       "category": "Government",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "downsize-bureaucracy",
@@ -472,7 +852,14 @@
       "category": "Government",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "relocate-agencies",
@@ -480,7 +867,14 @@
       "category": "Government",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "end-weaponization-doj",
@@ -488,7 +882,14 @@
       "category": "Government",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "pardon-j6",
@@ -502,7 +903,17 @@
           "note": "Pardoned approximately 1,500 January 6th defendants",
           "source": "Presidential Pardons"
         }
-      ]
+      ],
+      "who_benefits": [
+        "January 6 Defendants",
+        "Far Right"
+      ],
+      "who_harmed": [
+        "Rule of Law",
+        "Police Officers",
+        "Democracy"
+      ],
+      "public_opinion": "negative"
     },
     {
       "id": "war-on-cartels",
@@ -510,7 +921,14 @@
       "category": "Justice",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "law-and-order",
@@ -518,7 +936,14 @@
       "category": "Justice",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "end-crime-wave",
@@ -526,7 +951,14 @@
       "category": "Justice",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "police-immunity",
@@ -534,7 +966,14 @@
       "category": "Justice",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "military-spending-increase",
@@ -542,7 +981,18 @@
       "category": "Military",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Military",
+        "Defense Contractors",
+        "Military Industrial Complex"
+      ],
+      "who_harmed": [
+        "Domestic Programs",
+        "Taxpayers",
+        "National Debt"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "end-woke-military",
@@ -550,7 +1000,14 @@
       "category": "Military",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "missile-defense",
@@ -558,7 +1015,14 @@
       "category": "Military",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "space-force",
@@ -566,7 +1030,14 @@
       "category": "Military",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "veteran-healthcare",
@@ -574,7 +1045,14 @@
       "category": "Military",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "free-speech",
@@ -582,7 +1060,14 @@
       "category": "Civil Liberties",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "section-230",
@@ -590,7 +1075,14 @@
       "category": "Civil Liberties",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "protect-2a",
@@ -598,7 +1090,14 @@
       "category": "Civil Liberties",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "ban-transgender-sports",
@@ -612,7 +1111,14 @@
           "note": "Executive order signed banning transgender athletes from women's sports",
           "source": "Executive Order"
         }
-      ]
+      ],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "end-transgender-youth",
@@ -620,7 +1126,14 @@
       "category": "Social Issues",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "protect-religious-liberty",
@@ -628,7 +1141,14 @@
       "category": "Social Issues",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "ban-critical-race-theory",
@@ -636,7 +1156,14 @@
       "category": "Social Issues",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     },
     {
       "id": "baby-bonuses",
@@ -644,7 +1171,14 @@
       "category": "Social Issues",
       "status": "in_progress",
       "source_url": "https://www.donaldjtrump.com/agenda47",
-      "updates": []
+      "updates": [],
+      "who_benefits": [
+        "Supporters"
+      ],
+      "who_harmed": [
+        "Critics"
+      ],
+      "public_opinion": "mixed"
     }
   ],
   "summary": {

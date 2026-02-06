@@ -113,7 +113,29 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "immigrants",
+        "impact": "mixed"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients",
+      "Immigrants",
+      "Low Income Communities"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-678",
@@ -229,7 +251,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-679",
@@ -345,7 +375,15 @@
       "M001244": "Yea",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-672",
@@ -461,7 +499,15 @@
       "M001244": "Nay",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-399",
@@ -908,7 +954,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-401",
@@ -1355,7 +1409,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-402",
@@ -1802,7 +1864,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-405",
@@ -2249,7 +2319,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-669",
@@ -2365,7 +2443,15 @@
       "M001244": "Yea",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-670",
@@ -2481,7 +2567,15 @@
       "M001244": "Not Voting",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-384",
@@ -2928,7 +3022,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-385",
@@ -3375,7 +3477,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-388",
@@ -3822,7 +3932,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-667",
@@ -3938,7 +4056,27 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      },
+      {
+        "group": "working_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-666",
@@ -4054,7 +4192,15 @@
       "M001244": "Yea",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-365",
@@ -4501,7 +4647,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-366",
@@ -4948,7 +5102,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-367",
@@ -5395,7 +5557,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-362",
@@ -5842,7 +6012,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-363",
@@ -6289,7 +6467,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-663",
@@ -6405,7 +6591,17 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-660",
@@ -6521,7 +6717,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-360",
@@ -6970,7 +7174,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-House-361",
@@ -7419,7 +7631,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-655",
@@ -7535,7 +7755,47 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      },
+      {
+        "group": "immigrants",
+        "impact": "harms"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients",
+      "Fossil Fuel Industry",
+      "Corporations",
+      "Elderly",
+      "Disabled"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-657",
@@ -7651,7 +7911,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-342",
@@ -8100,7 +8368,19 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-House-343",
@@ -8549,7 +8829,19 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-House-347",
@@ -8998,7 +9290,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-House-348",
@@ -9447,7 +9747,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-653",
@@ -9563,7 +9871,47 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      },
+      {
+        "group": "immigrants",
+        "impact": "harms"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients",
+      "Fossil Fuel Industry",
+      "Corporations",
+      "Elderly",
+      "Disabled"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-643",
@@ -9679,7 +10027,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-644",
@@ -9795,7 +10151,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-House-307",
@@ -10243,7 +10607,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "students",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-House-308",
@@ -10691,7 +11063,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "students",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-622",
@@ -10807,7 +11187,21 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      },
+      {
+        "group": "fossil_fuel_industry",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-288",
@@ -11256,7 +11650,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-282",
@@ -11705,7 +12107,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-283",
@@ -12154,7 +12564,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-284",
@@ -12603,7 +13021,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-611",
@@ -12719,7 +13145,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-617",
@@ -12835,7 +13269,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-618",
@@ -12951,7 +13393,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-610",
@@ -13067,7 +13517,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-609",
@@ -13183,7 +13641,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-603",
@@ -13299,7 +13765,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-590",
@@ -13415,7 +13889,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-585",
@@ -13531,7 +14013,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-581",
@@ -13647,7 +14137,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-576",
@@ -13763,7 +14261,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-573",
@@ -13879,7 +14385,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-575",
@@ -13995,7 +14509,21 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-572",
@@ -14111,7 +14639,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-571",
@@ -14227,7 +14763,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-557",
@@ -14343,7 +14887,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-558",
@@ -14459,7 +15011,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-568",
@@ -14575,7 +15135,21 @@
       "M001244": "Nay",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-570",
@@ -14691,7 +15265,21 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-550",
@@ -14807,7 +15395,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-551",
@@ -14923,7 +15519,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-547",
@@ -15039,7 +15643,51 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      },
+      {
+        "group": "environment",
+        "impact": "benefits"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "students",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients",
+      "Immigrants",
+      "Low Income Communities",
+      "Fossil Fuel Industry",
+      "Corporations",
+      "Students",
+      "Public Education",
+      "Environment",
+      "Renewable Energy"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-544",
@@ -15155,7 +15803,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-545",
@@ -15271,7 +15927,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-546",
@@ -15387,7 +16051,51 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      },
+      {
+        "group": "environment",
+        "impact": "benefits"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "students",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients",
+      "Immigrants",
+      "Low Income Communities",
+      "Fossil Fuel Industry",
+      "Corporations",
+      "Students",
+      "Public Education",
+      "Environment",
+      "Renewable Energy"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-542",
@@ -15503,7 +16211,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-543",
@@ -15619,7 +16335,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-536",
@@ -15735,7 +16459,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-537",
@@ -15851,7 +16583,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-534",
@@ -15967,7 +16707,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-535",
@@ -16083,7 +16831,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-533",
@@ -16199,7 +16955,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-279",
@@ -16646,7 +17410,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-280",
@@ -17094,7 +17866,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-527",
@@ -17210,7 +17990,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-528",
@@ -17326,7 +18114,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-276",
@@ -17774,7 +18570,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "harms"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-526",
@@ -17890,7 +18694,42 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      },
+      {
+        "group": "fossil_fuel_industry",
+        "impact": "benefits"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "students",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry",
+      "Corporations"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-House-271",
@@ -18338,7 +19177,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-272",
@@ -18786,7 +19633,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-275",
@@ -19234,7 +20089,19 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "students",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-522",
@@ -19350,7 +20217,42 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      },
+      {
+        "group": "fossil_fuel_industry",
+        "impact": "benefits"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "students",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry",
+      "Corporations"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-523",
@@ -19466,7 +20368,42 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      },
+      {
+        "group": "fossil_fuel_industry",
+        "impact": "benefits"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "students",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry",
+      "Corporations"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-524",
@@ -19582,7 +20519,42 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      },
+      {
+        "group": "fossil_fuel_industry",
+        "impact": "benefits"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "students",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry",
+      "Corporations"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-525",
@@ -19698,7 +20670,42 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      },
+      {
+        "group": "fossil_fuel_industry",
+        "impact": "benefits"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "students",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry",
+      "Corporations"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-520",
@@ -19814,7 +20821,21 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-521",
@@ -19930,7 +20951,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-262",
@@ -20378,7 +21407,25 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-House-260",
@@ -20826,7 +21873,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-261",
@@ -21274,7 +22329,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-241",
@@ -21720,7 +22783,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-242",
@@ -22167,7 +23238,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-237",
@@ -22614,7 +23693,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-238",
@@ -23061,7 +24148,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-503",
@@ -23177,7 +24272,21 @@
       "M001244": "Yea",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-220",
@@ -23624,7 +24733,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-221",
@@ -24071,7 +25188,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-218",
@@ -24517,7 +25642,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-500",
@@ -24633,7 +25766,21 @@
       "M001244": "Yea",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-495",
@@ -24749,7 +25896,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-476",
@@ -24865,7 +26022,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-477",
@@ -24981,7 +26146,19 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-480",
@@ -25097,7 +26274,25 @@
       "M001244": "Yea",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-454",
@@ -25213,7 +26408,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-455",
@@ -25329,7 +26532,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-441",
@@ -25445,7 +26656,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-440",
@@ -25561,7 +26780,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-428",
@@ -25677,7 +26904,25 @@
       "M001244": "Yea",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-431",
@@ -25793,7 +27038,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-432",
@@ -25909,7 +27164,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-422",
@@ -26025,7 +27290,25 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-423",
@@ -26141,7 +27424,25 @@
       "M001244": "Yea",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-425",
@@ -26257,7 +27558,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-202",
@@ -26705,7 +28014,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-210",
@@ -27153,7 +28470,21 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-211",
@@ -27601,7 +28932,21 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-201",
@@ -28049,7 +29394,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-411",
@@ -28165,7 +29518,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-415",
@@ -28281,7 +29642,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-196",
@@ -28729,7 +30098,21 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-197",
@@ -29177,7 +30560,21 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-394",
@@ -29293,7 +30690,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-395",
@@ -29409,7 +30814,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-396",
@@ -29525,7 +30938,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-398",
@@ -29641,7 +31062,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-399",
@@ -29757,7 +31186,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-401",
@@ -29873,7 +31310,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-403",
@@ -29989,7 +31434,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-193",
@@ -30437,7 +31890,21 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-194",
@@ -30885,7 +32352,21 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-387",
@@ -31001,7 +32482,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-388",
@@ -31117,7 +32606,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-389",
@@ -31233,7 +32730,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-390",
@@ -31349,7 +32854,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-391",
@@ -31465,7 +32978,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-392",
@@ -31581,7 +33102,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-355",
@@ -31697,7 +33226,18 @@
       "M001244": "Nay",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Wealthy",
+      "Insurance Companies"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-361",
@@ -31813,7 +33353,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-362",
@@ -31929,7 +33477,23 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "consumers",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-365",
@@ -32045,7 +33609,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-366",
@@ -32161,7 +33733,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-368",
@@ -32277,7 +33857,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-339",
@@ -32393,7 +33981,18 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Middle Class",
+      "Workers"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-342",
@@ -32509,7 +34108,18 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Wealthy",
+      "Insurance Companies"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-345",
@@ -32625,7 +34235,19 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "immigrants",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-352",
@@ -32741,7 +34363,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-180",
@@ -33189,7 +34819,25 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-House-181",
@@ -33637,7 +35285,25 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Domestic Programs"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-323",
@@ -33753,7 +35419,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-322",
@@ -33869,7 +35543,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-319",
@@ -33985,7 +35667,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "harms"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-321",
@@ -34101,7 +35793,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "harms"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-169",
@@ -34549,7 +36251,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-170",
@@ -34997,7 +36707,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-306",
@@ -35113,7 +36831,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-307",
@@ -35229,7 +36955,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-162",
@@ -35677,7 +37411,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-299",
@@ -35793,7 +37535,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-298",
@@ -35909,7 +37661,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-146",
@@ -36357,7 +38119,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-283",
@@ -36473,7 +38243,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-286",
@@ -36589,7 +38367,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-287",
@@ -36705,7 +38491,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-282",
@@ -36821,7 +38615,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-142",
@@ -37269,7 +39071,17 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-277",
@@ -37385,7 +39197,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-278",
@@ -37501,7 +39323,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-279",
@@ -37617,7 +39449,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-280",
@@ -37733,7 +39575,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-281",
@@ -37849,7 +39701,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-276",
@@ -37965,7 +39827,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-258",
@@ -38081,7 +39953,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-253",
@@ -38197,7 +40079,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-254",
@@ -38313,7 +40203,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-255",
@@ -38429,7 +40327,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-256",
@@ -38545,7 +40451,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-257",
@@ -38661,7 +40575,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-232",
@@ -38777,7 +40701,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-231",
@@ -38893,7 +40827,17 @@
       "M001244": "Yea",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-229",
@@ -39009,7 +40953,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-227",
@@ -39125,7 +41079,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-99",
@@ -39574,7 +41538,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-92",
@@ -40022,7 +41994,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-93",
@@ -40471,7 +42451,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-193",
@@ -40587,7 +42575,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-192",
@@ -40703,7 +42699,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-181",
@@ -40819,7 +42823,15 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-183",
@@ -40935,7 +42947,17 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "workers",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Corporations"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-185",
@@ -41051,7 +43073,15 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-186",
@@ -41167,7 +43197,18 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Wealthy",
+      "Insurance Companies"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-188",
@@ -41283,7 +43324,23 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-189",
@@ -41399,7 +43456,19 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-190",
@@ -41515,7 +43584,19 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "wealthy",
+        "impact": "benefits"
+      },
+      {
+        "group": "corporations",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "negative"
   },
   {
     "id": "119-Senate-191",
@@ -41631,7 +43712,15 @@
       "M001244": "Yea",
       "M001111": "Not Voting",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-170",
@@ -41747,7 +43836,22 @@
       "M001244": "Yea",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Wealthy",
+      "Insurance Companies"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-172",
@@ -41863,7 +43967,26 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Wealthy",
+      "Insurance Companies"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-174",
@@ -41979,7 +44102,15 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-175",
@@ -42095,7 +44226,15 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-176",
@@ -42211,7 +44350,19 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "corporations",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Consumers",
+      "International Trade",
+      "Importers"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-178",
@@ -42327,7 +44478,15 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-180",
@@ -42443,7 +44602,19 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Elderly",
+      "Disabled"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-164",
@@ -42559,7 +44730,19 @@
       "M001244": "Yea",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-165",
@@ -42675,7 +44858,15 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-166",
@@ -42791,7 +44982,15 @@
       "M001244": "Nay",
       "M001111": "Not Voting",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-167",
@@ -42907,7 +45106,19 @@
       "M001244": "Yea",
       "M001111": "Not Voting",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-169",
@@ -43023,7 +45234,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-84",
@@ -43469,7 +45688,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-145",
@@ -43585,7 +45812,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-144",
@@ -43701,7 +45936,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-125",
@@ -43817,7 +46060,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-126",
@@ -43933,7 +46184,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-128",
@@ -44049,7 +46308,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-133",
@@ -44165,7 +46432,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-68",
@@ -44613,7 +46888,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-69",
@@ -45061,7 +47344,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-62",
@@ -45509,7 +47800,19 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "harms"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-64",
@@ -45957,7 +48260,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "harms"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-57",
@@ -46405,7 +48716,17 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-97",
@@ -46521,7 +48842,21 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      },
+      {
+        "group": "fossil_fuel_industry",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-51",
@@ -46970,7 +49305,21 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      },
+      {
+        "group": "fossil_fuel_industry",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-96",
@@ -47086,7 +49435,21 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "environment",
+        "impact": "benefits"
+      },
+      {
+        "group": "fossil_fuel_industry",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-49",
@@ -47535,7 +49898,15 @@
       "C000537": "Nay",
       "S000185": "Nay",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-74",
@@ -47651,7 +50022,23 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-75",
@@ -47767,7 +50154,19 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-76",
@@ -47883,7 +50282,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-77",
@@ -47999,7 +50406,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-78",
@@ -48115,7 +50530,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-80",
@@ -48231,7 +50654,22 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "middle_class",
+        "impact": "benefits"
+      },
+      {
+        "group": "working_class",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Wealthy",
+      "Insurance Companies"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-81",
@@ -48347,7 +50785,18 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Immigrants",
+      "Low Income Communities"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-82",
@@ -48463,7 +50912,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-83",
@@ -48579,7 +51036,23 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-85",
@@ -48695,7 +51168,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-86",
@@ -48811,7 +51292,19 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "consumers",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-87",
@@ -48927,7 +51420,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-62",
@@ -49043,7 +51544,19 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "wealthy",
+        "impact": "benefits"
+      },
+      {
+        "group": "corporations",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "negative"
   },
   {
     "id": "119-Senate-63",
@@ -49159,7 +51672,23 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "wealthy",
+        "impact": "benefits"
+      },
+      {
+        "group": "corporations",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "negative"
   },
   {
     "id": "119-Senate-64",
@@ -49275,7 +51804,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-66",
@@ -49391,7 +51928,27 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "harms"
+      },
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      },
+      {
+        "group": "veterans",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-68",
@@ -49507,7 +52064,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-69",
@@ -49623,7 +52188,15 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-70",
@@ -49739,7 +52312,22 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "seniors",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Wealthy",
+      "Insurance Companies"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-71",
@@ -49855,7 +52443,27 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "wealthy",
+        "impact": "benefits"
+      },
+      {
+        "group": "corporations",
+        "impact": "benefits"
+      },
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Low Income",
+      "Middle Class",
+      "Healthcare Patients"
+    ],
+    "publicBenefit": "negative"
   },
   {
     "id": "119-Senate-72",
@@ -49971,7 +52579,22 @@
       "M001244": "Nay",
       "M001111": "Yea",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "low_income",
+        "impact": "benefits"
+      },
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [
+      "Wealthy",
+      "Insurance Companies"
+    ],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-58",
@@ -50087,7 +52710,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-35",
@@ -50536,7 +53167,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-37",
@@ -50652,7 +53291,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-38",
@@ -50768,7 +53415,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-39",
@@ -50884,7 +53539,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-36",
@@ -51000,7 +53663,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-29",
@@ -51116,7 +53787,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-23",
@@ -51232,7 +53911,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-24",
@@ -51348,7 +54037,17 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Fossil Fuel Industry"
+    ],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-15",
@@ -51464,7 +54163,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-14",
@@ -51580,7 +54287,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-11",
@@ -51696,7 +54411,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "positive"
   },
   {
     "id": "119-Senate-10",
@@ -51812,7 +54535,15 @@
       "M001244": "Yea",
       "M001111": "Nay",
       "C001035": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "military_defense",
+        "impact": "benefits"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-13",
@@ -52261,7 +54992,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-House-14",
@@ -52710,7 +55449,15 @@
       "C000537": "Yea",
       "S000185": "Yea",
       "V000133": "Yea"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "general_public",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [],
+    "publicBenefit": "mixed"
   },
   {
     "id": "119-Senate-4",
@@ -52825,6 +55572,17 @@
       "J000312": "Not Voting",
       "M001111": "Yea",
       "C001035": "Nay"
-    }
+    },
+    "beneficiaries": [
+      {
+        "group": "immigrants",
+        "impact": "mixed"
+      }
+    ],
+    "harmed": [
+      "Immigrants",
+      "Low Income Communities"
+    ],
+    "publicBenefit": "mixed"
   }
 ]
