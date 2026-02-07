@@ -21,7 +21,6 @@ interface MemberData {
 
 interface CampaignPositionsProps {
   bioguideId: string;
-  memberName: string;
   positionsData?: { members: MemberData[] };
 }
 
@@ -208,7 +207,7 @@ function CategorySection({
   );
 }
 
-export default function CampaignPositions({ bioguideId, memberName, positionsData }: CampaignPositionsProps) {
+export default function CampaignPositions({ bioguideId, positionsData }: CampaignPositionsProps) {
   // Load positions data - either from prop or from file
   const data = positionsData || require('@/data/positions.json');
   const memberData = data.members.find((m: MemberData) => m.bioguide_id === bioguideId);
@@ -238,7 +237,7 @@ export default function CampaignPositions({ bioguideId, memberName, positionsDat
           Campaign Positions
         </h2>
         <p className="text-sm text-slate-600">
-          {memberName}'s stated positions on key issues from campaign and public statements
+          {memberData.name}'s stated positions on key issues from campaign and public statements
         </p>
         <div className="mt-3 flex items-center gap-2 text-xs text-slate-500">
           <span>📊 {memberData.positions.length} positions tracked</span>

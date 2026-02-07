@@ -73,27 +73,27 @@ const mockPositionsData = {
 
 describe("CampaignPositions", () => {
   it("renders campaign positions title", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     expect(screen.getByText("Campaign Positions")).toBeInTheDocument();
   });
 
   it("displays member name in description", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     expect(screen.getByText(/Test Member's stated positions/)).toBeInTheDocument();
   });
 
   it("shows total position count", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     expect(screen.getByText(/6 positions tracked/)).toBeInTheDocument();
   });
 
   it("displays data source attribution", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     expect(screen.getByText(/Source: OnTheIssues.org/)).toBeInTheDocument();
   });
 
   it("groups positions by category", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // Categories should be visible
     expect(screen.getByText(/Social Issues/)).toBeInTheDocument();
@@ -102,7 +102,7 @@ describe("CampaignPositions", () => {
   });
 
   it("displays position count per category", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // Should show counts like "(2)" next to category names
     const socialIssuesHeader = screen.getByText(/Social Issues/);
@@ -110,7 +110,7 @@ describe("CampaignPositions", () => {
   });
 
   it("expands and collapses categories", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // First category should be expanded by default
     expect(screen.getByText("Abortion is a woman's unrestricted right")).toBeInTheDocument();
@@ -126,7 +126,7 @@ describe("CampaignPositions", () => {
   });
 
   it("displays stance with appropriate styling", () => {
-    const { container } = render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    const { container } = render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // Check for green styling on "Strongly Supports"
     const strongSupports = container.querySelector('.bg-green-100.text-green-800');
@@ -134,7 +134,7 @@ describe("CampaignPositions", () => {
   });
 
   it("shows intensity indicators", () => {
-    const { container } = render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    const { container } = render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // Should have intensity bars (5 bars per position)
     const intensityBars = container.querySelectorAll('.w-2.h-4.rounded-sm');
@@ -142,7 +142,7 @@ describe("CampaignPositions", () => {
   });
 
   it("expands and shows quotes when clicked", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // First category is expanded by default
     // Find "Show Quotes" button for the abortion position
@@ -160,7 +160,7 @@ describe("CampaignPositions", () => {
   });
 
   it("hides quotes when clicked again", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     const showQuotesButtons = screen.getAllByText("Show Quotes");
     fireEvent.click(showQuotesButtons[0]);
@@ -177,7 +177,7 @@ describe("CampaignPositions", () => {
   });
 
   it("does not show quotes button for positions without quotes", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // Expand Education category (which has position with no quotes)
     const educationButton = screen.getByRole('button', { name: /Education/i });
@@ -189,7 +189,7 @@ describe("CampaignPositions", () => {
   });
 
   it("displays source link", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     const link = screen.getByRole('link', { name: /View full profile on OnTheIssues.org/i });
     expect(link).toBeInTheDocument();
@@ -211,17 +211,17 @@ describe("CampaignPositions", () => {
       ]
     };
     
-    const { container } = render(<CampaignPositions bioguideId="T000002" memberName="Empty Member" positionsData={emptyData} />);
+    const { container } = render(<CampaignPositions bioguideId="T000002" positionsData={emptyData} />);
     expect(container.firstChild).toBeNull();
   });
 
   it("returns null when member is not found", () => {
-    const { container } = render(<CampaignPositions bioguideId="NOTFOUND" memberName="Unknown Member" positionsData={mockPositionsData} />);
+    const { container } = render(<CampaignPositions bioguideId="NOTFOUND" positionsData={mockPositionsData} />);
     expect(container.firstChild).toBeNull();
   });
 
   it("categorizes positions correctly", () => {
-    render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // Check that positions are grouped into expected categories
     expect(screen.getByText(/Social Issues/)).toBeInTheDocument();
@@ -232,7 +232,7 @@ describe("CampaignPositions", () => {
   });
 
   it("sorts categories by position count", () => {
-    const { container } = render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    const { container } = render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // Get all category headers
     const categoryButtons = container.querySelectorAll('button h3');
@@ -243,7 +243,7 @@ describe("CampaignPositions", () => {
   });
 
   it("applies correct color coding to stances", () => {
-    const { container } = render(<CampaignPositions bioguideId="T000001" memberName="Test Member" positionsData={mockPositionsData} />);
+    const { container } = render(<CampaignPositions bioguideId="T000001" positionsData={mockPositionsData} />);
     
     // Should have green styling for supports positions
     const greenElements = container.querySelectorAll('[class*="bg-green"]');
