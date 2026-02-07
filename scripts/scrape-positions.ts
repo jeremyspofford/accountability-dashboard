@@ -256,9 +256,9 @@ async function main() {
     targetMembers = members.filter(m => m.bioguide_id === bioguideFilter);
     console.log(`Filtering to bioguide_id: ${bioguideFilter}`);
   } else {
-    // Get all senators (better coverage on OnTheIssues) + some reps
+    // Get ALL members
     const senators = members.filter(m => m.chamber === 'senate');
-    const reps = members.filter(m => m.chamber === 'house').slice(0, 25);
+    const reps = members.filter(m => m.chamber === 'house');
     targetMembers = [...senators, ...reps];
     console.log(`Selected ${targetMembers.length} members (${senators.length} senators + ${reps.length} reps)`);
   }
@@ -294,6 +294,18 @@ async function main() {
     if (memberPositions && memberPositions.positions.length >= 5) {
       results.push(memberPositions);
       successCount++;
+      
+      // Incremental save every 10 successful scrapes
+      if (successCount % 10 === 0) {
+        const incrementalOutput: PositionData = {
+          members: results,
+          generated_at: new Date().toISOString(),
+          total_members: results.length,
+          total_positions: results.reduce((sum, r) => sum + r.positions.length, 0),
+        };
+        writeFileSync(outputPath, JSON.stringify(incrementalOutput, null, 2), 'utf-8');
+        console.log(`  💾 Saved checkpoint: ${results.length} members`);
+      }
     } else {
       failCount++;
     }

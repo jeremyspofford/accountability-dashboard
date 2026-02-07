@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { calculateMemberAlignment, type AlignmentResult, type MemberAlignmentSummary } from "@/lib/alignment";
+import type { MemberPositions } from "@/lib/types";
 
 export interface Position {
   topic: string;
@@ -19,9 +21,16 @@ interface MemberData {
   positions: Position[];
 }
 
+interface KeyVote {
+  category: string;
+  publicBenefit: string;
+  votes: Record<string, string>;
+}
+
 interface CampaignPositionsProps {
   bioguideId: string;
   positionsData?: { members: MemberData[] };
+  keyVotesData?: KeyVote[];
 }
 
 // Categorize positions by topic keywords
@@ -108,8 +117,37 @@ function IntensityIndicator({ intensity }: { intensity: number }) {
   );
 }
 
-// Individual position card
-function PositionCard({ position }: { position: Position }) {
+// Alignment score badge
+function AlignmentBadge({ score }: { score: number | null }) {
+  if (score === null) {
+    return (
+      <span className="px-2 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-500">
+        No votes
+      </span>
+    );
+  }
+  
+  let bgColor, textColor;
+  if (score >= 75) {
+    bgColor = 'bg-green-100';
+    textColor = 'text-green-700';
+  } else if (score >= 50) {
+    bgColor = 'bg-yellow-100';
+    textColor = 'text-yellow-700';
+  } else {
+    bgColor = 'bg-red-100';
+    textColor = 'text-red-700';
+  }
+  
+  return (
+    <span className={`px-2 py-1 rounded-lg text-xs font-bold ${bgColor} ${textColor}`}>
+      {score}% aligned
+    </span>
+  );
+}
+
+// Individual position card with alignment
+function PositionCard({ position, alignment }: { position: Position; alignment?: AlignmentResult }) {
   const [expanded, setExpanded] = useState(false);
   const colors = getStanceColor(position.stance);
   const hasQuotes = position.quotes && position.quotes.length > 0 && position.quotes.some(q => q.trim());
@@ -123,10 +161,21 @@ function PositionCard({ position }: { position: Position }) {
         <IntensityIndicator intensity={position.intensity} />
       </div>
       
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between gap-3 flex-wrap">
         <span className={`px-3 py-1 rounded-lg text-xs font-bold ${colors.bg} ${colors.text} border ${colors.border}`}>
           {position.stance}
         </span>
+        
+        {alignment && (
+          <div className="flex items-center gap-2">
+            <AlignmentBadge score={alignment.alignmentScore} />
+            {alignment.relevantVotes > 0 && (
+              <span className="text-xs text-slate-500">
+                ({alignment.alignedVotes}/{alignment.relevantVotes} votes)
+              </span>
+            )}
+          </div>
+        )}
         
         {hasQuotes && (
           <button
@@ -164,17 +213,24 @@ function PositionCard({ position }: { position: Position }) {
   );
 }
 
-// Category section
+// Category section with alignment
 function CategorySection({ 
   category, 
   positions, 
+  alignmentResults,
   defaultExpanded = false 
 }: { 
   category: string; 
   positions: Position[];
+  alignmentResults?: AlignmentResult[];
   defaultExpanded?: boolean;
 }) {
   const [expanded, setExpanded] = useState(defaultExpanded);
+  
+  // Map positions to their alignment results
+  const getAlignment = (position: Position) => {
+    return alignmentResults?.find(r => r.position.topic === position.topic);
+  };
 
   return (
     <div className="border-b border-slate-200 pb-6 last:border-b-0">
@@ -199,7 +255,11 @@ function CategorySection({
       {expanded && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {positions.map((position, idx) => (
-            <PositionCard key={idx} position={position} />
+            <PositionCard 
+              key={idx} 
+              position={position} 
+              alignment={getAlignment(position)}
+            />
           ))}
         </div>
       )}
@@ -207,10 +267,109 @@ function CategorySection({
   );
 }
 
-export default function CampaignPositions({ bioguideId, positionsData }: CampaignPositionsProps) {
+// Overall alignment score display
+function OverallAlignmentScore({ summary }: { summary: MemberAlignmentSummary | null }) {
+  if (!summary || summary.overallAlignmentScore === null) {
+    return null;
+  }
+  
+  const score = summary.overallAlignmentScore;
+  let bgColor, textColor, label;
+  
+  if (score >= 75) {
+    bgColor = 'bg-green-100';
+    textColor = 'text-green-700';
+    label = 'High Alignment';
+  } else if (score >= 50) {
+    bgColor = 'bg-yellow-100';
+    textColor = 'text-yellow-700';
+    label = 'Moderate Alignment';
+  } else {
+    bgColor = 'bg-red-100';
+    textColor = 'text-red-700';
+    label = 'Low Alignment';
+  }
+  
+  return (
+    <div className={`${bgColor} rounded-xl p-4 mb-6`}>
+      <div className="flex items-center justify-between">
+        <div>
+          <p className={`text-sm font-semibold ${textColor}`}>{label}</p>
+          <p className="text-xs text-slate-600 mt-1">
+            Comparing stated positions to actual voting record
+          </p>
+        </div>
+        <div className="text-right">
+          <p className={`text-3xl font-black ${textColor}`}>{score}%</p>
+          <p className="text-xs text-slate-500">
+            {summary.positionsWithVotes} of {summary.totalPositions} positions have votes
+          </p>
+        </div>
+      </div>
+      
+      {/* Category breakdown */}
+      {Object.keys(summary.categoryScores).length > 0 && (
+        <div className="mt-4 pt-4 border-t border-slate-200">
+          <p className="text-xs font-semibold text-slate-700 mb-2">By Category:</p>
+          <div className="flex flex-wrap gap-2">
+            {Object.entries(summary.categoryScores).map(([cat, catScore]) => (
+              <span 
+                key={cat} 
+                className={`px-2 py-1 rounded text-xs font-medium ${
+                  catScore >= 75 ? 'bg-green-50 text-green-700' :
+                  catScore >= 50 ? 'bg-yellow-50 text-yellow-700' :
+                  'bg-red-50 text-red-700'
+                }`}
+              >
+                {cat}: {catScore}%
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function CampaignPositions({ bioguideId, positionsData, keyVotesData }: CampaignPositionsProps) {
   // Load positions data - either from prop or from file
   const data = positionsData || require('@/data/positions.json');
   const memberData = data.members.find((m: MemberData) => m.bioguide_id === bioguideId);
+  
+  // Load key votes data - either from prop or from file
+  const keyVotes: KeyVote[] = useMemo(() => {
+    if (keyVotesData) return keyVotesData;
+    try {
+      const votesData = require('@/data/key-votes.json');
+      return votesData.map((v: { category: string; result: string; votes: Record<string, string> }) => ({
+        category: v.category,
+        publicBenefit: v.result === 'passed' ? 'positive' : 'negative',
+        votes: v.votes
+      }));
+    } catch {
+      return [];
+    }
+  }, [keyVotesData]);
+  
+  // Calculate alignment
+  const alignmentSummary = useMemo(() => {
+    if (!memberData || keyVotes.length === 0) return null;
+    
+    const memberPositions: MemberPositions = {
+      bioguide_id: memberData.bioguide_id,
+      name: memberData.name,
+      source: 'ontheissues',
+      source_url: memberData.source_url,
+      last_updated: memberData.last_updated,
+      positions: memberData.positions.map(p => ({
+        ...p,
+        stance: p.stance as "Strongly Supports" | "Supports" | "Neutral" | "Opposes" | "Strongly Opposes",
+        votes: []
+      }))
+    };
+    
+    return calculateMemberAlignment(memberPositions, keyVotes);
+  }, [memberData, keyVotes]);
   
   if (!memberData || !memberData.positions || memberData.positions.length === 0) {
     return null;
@@ -237,7 +396,7 @@ export default function CampaignPositions({ bioguideId, positionsData }: Campaig
           Campaign Positions
         </h2>
         <p className="text-sm text-slate-600">
-          {memberData.name}'s stated positions on key issues from campaign and public statements
+          {memberData.name}&apos;s stated positions on key issues from campaign and public statements
         </p>
         <div className="mt-3 flex items-center gap-2 text-xs text-slate-500">
           <span>📊 {memberData.positions.length} positions tracked</span>
@@ -245,6 +404,9 @@ export default function CampaignPositions({ bioguideId, positionsData }: Campaig
           <span>Source: OnTheIssues.org</span>
         </div>
       </div>
+      
+      {/* Overall alignment score */}
+      <OverallAlignmentScore summary={alignmentSummary} />
 
       <div className="space-y-6">
         {sortedCategories.map(([category, positions], idx) => (
@@ -252,6 +414,7 @@ export default function CampaignPositions({ bioguideId, positionsData }: Campaig
             key={category}
             category={category}
             positions={positions}
+            alignmentResults={alignmentSummary?.results}
             defaultExpanded={idx === 0} // First category expanded by default
           />
         ))}
