@@ -7,6 +7,7 @@ import MemberVotingRecord from "@/components/MemberVotingRecord";
 import CommitteeMemberships from "@/components/CommitteeMemberships";
 import StockTradesSection from "@/components/StockTradesSection";
 import FinancialDisclosuresSection from "@/components/FinancialDisclosuresSection";
+import CampaignPositions from "@/components/CampaignPositions";
 import keyVotesData from "@/data/key-votes.json";
 
 export function generateStaticParams() {
@@ -214,6 +215,12 @@ export default function RepPage({ params }: { params: { id: string } }) {
                 result: "Passed" | "Failed" | "Unknown";
                 votes: Record<string, string>;
               }>}
+            />
+
+            {/* Policy Positions from OnTheIssues */}
+            <CampaignPositions 
+              bioguideId={member.bioguide_id} 
+              memberName={member.full_name}
             />
             
             {/* Voting Record (Party Loyalty & Ideology) */}
