@@ -221,8 +221,7 @@ export default function RepPage({ params }: { params: { id: string } }) {
             {/* Policy Positions from OnTheIssues */}
             <CampaignPositions 
               bioguideId={member.bioguide_id} 
-              memberName={member.full_name}
-              positionsData={positionsData as { members: Array<{ bioguide_id: string; name: string; source: string; source_url: string; last_updated: string; positions: Array<{ topic: string; stance: string; intensity: number; quotes: string[]; votes?: unknown[] }> }> }}
+              positionsData={positionsData as { members: Array<{ bioguide_id: string; name: string; source: string; source_url: string; last_updated: string; positions: Array<{ topic: string; stance: string; intensity: number; quotes: string[]; votes: string[] }> }> }}
             />
             
             {/* Voting Record (Party Loyalty & Ideology) */}
