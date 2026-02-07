@@ -296,3 +296,30 @@ export interface SupremeCourtJustice {
   ideology_label: "Very Liberal" | "Liberal" | "Moderate" | "Conservative" | "Very Conservative";
   bio: string;
 }
+
+// ==================== Political Positions (OnTheIssues.org) ====================
+
+export interface Position {
+  topic: string;
+  stance: "Strongly Supports" | "Supports" | "Neutral" | "Opposes" | "Strongly Opposes";
+  intensity: number;  // 1-5 scale: 1=Strongly Opposes, 3=Neutral, 5=Strongly Supports
+  quotes: string[];   // Supporting quotes and statements
+  votes: string[];    // Related bill numbers (HR123, S456, etc.)
+  source_url?: string;
+}
+
+export interface MemberPositions {
+  bioguide_id: string;
+  name: string;
+  source: "ontheissues";
+  source_url: string;
+  last_updated: string;
+  positions: Position[];
+}
+
+export interface PositionData {
+  members: MemberPositions[];
+  generated_at: string;
+  total_members: number;
+  total_positions: number;
+}
