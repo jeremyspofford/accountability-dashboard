@@ -256,13 +256,11 @@ async function main() {
     targetMembers = members.filter(m => m.bioguide_id === bioguideFilter);
     console.log(`Filtering to bioguide_id: ${bioguideFilter}`);
   } else {
-    // Get top 50 members (25 senators, 25 representatives) by prominence
-    // Use party leaders + committee chairs as heuristic
-    // For now, just take first 25 of each chamber
-    const senators = members.filter(m => m.chamber === 'senate').slice(0, 25);
+    // Get all senators (better coverage on OnTheIssues) + some reps
+    const senators = members.filter(m => m.chamber === 'senate');
     const reps = members.filter(m => m.chamber === 'house').slice(0, 25);
     targetMembers = [...senators, ...reps];
-    console.log(`Selected ${targetMembers.length} top members (25 senators + 25 reps)`);
+    console.log(`Selected ${targetMembers.length} members (${senators.length} senators + ${reps.length} reps)`);
   }
 
   if (limit) {
@@ -270,9 +268,21 @@ async function main() {
     console.log(`Limited to ${limit} members`);
   }
 
+  // Load existing positions and skip already-scraped members
+  const outputPath = join(__dirname, '../src/data/positions.json');
+  let existingPositions: MemberPositions[] = [];
+  if (existsSync(outputPath)) {
+    const existing: PositionData = JSON.parse(readFileSync(outputPath, 'utf-8'));
+    existingPositions = existing.members || [];
+    const existingIds = new Set(existingPositions.map(p => p.bioguide_id));
+    const before = targetMembers.length;
+    targetMembers = targetMembers.filter(m => !existingIds.has(m.bioguide_id));
+    console.log(`Skipping ${before - targetMembers.length} already-scraped members, ${targetMembers.length} remaining`);
+  }
+
   // Scrape positions
-  const results: MemberPositions[] = [];
-  let successCount = 0;
+  const results: MemberPositions[] = [...existingPositions];
+  let successCount = existingPositions.length;
   let failCount = 0;
 
   for (let i = 0; i < targetMembers.length; i++) {
@@ -306,7 +316,6 @@ async function main() {
   };
 
   // Save to file
-  const outputPath = join(__dirname, '../src/data/positions.json');
   writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
 
   // Summary
