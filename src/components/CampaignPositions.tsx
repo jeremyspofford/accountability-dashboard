@@ -227,8 +227,8 @@ export default function CampaignPositions({ bioguideId, positionsData }: Campaig
   }, {});
 
   // Sort categories by number of positions (descending)
-  const sortedCategories = Object.entries(positionsByCategory)
-    .sort((a, b) => b[1].length - a[1].length);
+  const sortedCategories = Object.entries(positionsByCategory) as [string, Position[]][];
+  sortedCategories.sort((a, b) => b[1].length - a[1].length);
 
   return (
     <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300">
