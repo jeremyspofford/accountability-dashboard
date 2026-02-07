@@ -341,9 +341,9 @@ export default function CampaignPositions({ bioguideId, positionsData, keyVotesD
     if (keyVotesData) return keyVotesData;
     try {
       const votesData = require('@/data/key-votes.json');
-      return votesData.map((v: { category: string; result: string; votes: Record<string, string> }) => ({
+      return votesData.map((v: { category: string; publicBenefit: string; votes: Record<string, string> }) => ({
         category: v.category,
-        publicBenefit: v.result === 'passed' ? 'positive' : 'negative',
+        publicBenefit: v.publicBenefit || 'positive', // Use actual publicBenefit field
         votes: v.votes
       }));
     } catch {
