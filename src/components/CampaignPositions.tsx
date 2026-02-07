@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-interface Position {
+export interface Position {
   topic: string;
   stance: string;
   intensity: number;
   quotes: string[];
-  votes: string[];
+  votes?: unknown[];
 }
 
-interface MemberPositions {
+interface MemberData {
   bioguide_id: string;
   name: string;
   source: string;
@@ -21,73 +21,143 @@ interface MemberPositions {
 
 interface CampaignPositionsProps {
   bioguideId: string;
-  positionsData: { members: MemberPositions[] };
+  memberName: string;
+  positionsData?: { members: MemberData[] };
 }
 
-const stanceColors: Record<string, { bg: string; text: string; border: string }> = {
-  'Strongly Supports': { bg: 'bg-green-100', text: 'text-green-800', border: 'border-green-300' },
-  'Supports': { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200' },
-  'Favors': { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200' },
-  'No opinion': { bg: 'bg-gray-50', text: 'text-gray-600', border: 'border-gray-200' },
-  'Opposes': { bg: 'bg-red-50', text: 'text-red-700', border: 'border-red-200' },
-  'Strongly Opposes': { bg: 'bg-red-100', text: 'text-red-800', border: 'border-red-300' },
-};
-
-function getStanceStyle(stance: string) {
-  return stanceColors[stance] || { bg: 'bg-gray-50', text: 'text-gray-600', border: 'border-gray-200' };
+// Categorize positions by topic keywords
+function categorizePosition(topic: string): string {
+  const topicLower = topic.toLowerCase();
+  
+  if (topicLower.includes('abortion') || topicLower.includes('marriage') || topicLower.includes('gay') || topicLower.includes('gender')) {
+    return 'Social Issues';
+  }
+  if (topicLower.includes('tax') || topicLower.includes('spending') || topicLower.includes('stimulus') || topicLower.includes('economy')) {
+    return 'Economic Policy';
+  }
+  if (topicLower.includes('healthcare') || topicLower.includes('obamacare') || topicLower.includes('medicaid') || topicLower.includes('medicare')) {
+    return 'Healthcare';
+  }
+  if (topicLower.includes('security') || topicLower.includes('social security') || topicLower.includes('privatize')) {
+    return 'Social Security';
+  }
+  if (topicLower.includes('education') || topicLower.includes('school') || topicLower.includes('voucher')) {
+    return 'Education';
+  }
+  if (topicLower.includes('environment') || topicLower.includes('epa') || topicLower.includes('climate') || topicLower.includes('energy')) {
+    return 'Environment & Energy';
+  }
+  if (topicLower.includes('immigration') || topicLower.includes('border') || topicLower.includes('pathway to citizenship')) {
+    return 'Immigration';
+  }
+  if (topicLower.includes('gun') || topicLower.includes('second amendment') || topicLower.includes('firearm')) {
+    return 'Gun Rights';
+  }
+  if (topicLower.includes('foreign') || topicLower.includes('military') || topicLower.includes('defense') || topicLower.includes('war')) {
+    return 'Foreign Policy & Defense';
+  }
+  if (topicLower.includes('drug') || topicLower.includes('marijuana') || topicLower.includes('legalize')) {
+    return 'Drug Policy';
+  }
+  if (topicLower.includes('god') || topicLower.includes('religion') || topicLower.includes('faith')) {
+    return 'Religion & Values';
+  }
+  if (topicLower.includes('hiring') || topicLower.includes('minorities') || topicLower.includes('affirmative')) {
+    return 'Civil Rights';
+  }
+  
+  return 'Other Issues';
 }
 
-function IntensityBar({ intensity }: { intensity: number }) {
+// Get color based on stance
+function getStanceColor(stance: string): { bg: string; text: string; border: string } {
+  const stanceLower = stance.toLowerCase();
+  
+  if (stanceLower.includes('strongly supports') || stanceLower.includes('strongly favors')) {
+    return { bg: 'bg-green-100', text: 'text-green-800', border: 'border-green-300' };
+  }
+  if (stanceLower.includes('supports') || stanceLower.includes('favors')) {
+    return { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200' };
+  }
+  if (stanceLower.includes('strongly opposes')) {
+    return { bg: 'bg-red-100', text: 'text-red-800', border: 'border-red-300' };
+  }
+  if (stanceLower.includes('opposes')) {
+    return { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200' };
+  }
+  if (stanceLower.includes('neutral') || stanceLower.includes('mixed')) {
+    return { bg: 'bg-slate-100', text: 'text-slate-700', border: 'border-slate-200' };
+  }
+  
+  return { bg: 'bg-slate-50', text: 'text-slate-600', border: 'border-slate-200' };
+}
+
+// Intensity indicator (1-5 scale)
+function IntensityIndicator({ intensity }: { intensity: number }) {
   return (
-    <div className="flex gap-0.5" title={`Intensity: ${intensity}/5`}>
-      {[1, 2, 3, 4, 5].map((i) => (
+    <div className="flex items-center gap-1">
+      {[1, 2, 3, 4, 5].map((level) => (
         <div
-          key={i}
-          className={`w-2 h-2 rounded-full ${
-            i <= intensity ? 'bg-slate-600' : 'bg-slate-200'
+          key={level}
+          className={`w-2 h-4 rounded-sm ${
+            level <= intensity ? 'bg-blue-600' : 'bg-slate-200'
           }`}
+          title={`Intensity: ${intensity}/5`}
         />
       ))}
     </div>
   );
 }
 
+// Individual position card
 function PositionCard({ position }: { position: Position }) {
   const [expanded, setExpanded] = useState(false);
-  const style = getStanceStyle(position.stance);
-  const hasQuotes = position.quotes && position.quotes.length > 0;
+  const colors = getStanceColor(position.stance);
+  const hasQuotes = position.quotes && position.quotes.length > 0 && position.quotes.some(q => q.trim());
 
   return (
-    <div className={`rounded-lg border ${style.border} ${style.bg} p-3 mb-2`}>
-      <div className="flex items-start justify-between gap-2">
-        <div className="flex-1">
-          <h4 className="font-medium text-slate-900 text-sm">{position.topic}</h4>
-          <div className="flex items-center gap-2 mt-1">
-            <span className={`text-xs font-semibold px-2 py-0.5 rounded ${style.bg} ${style.text}`}>
-              {position.stance}
-            </span>
-            <IntensityBar intensity={position.intensity} />
-          </div>
-        </div>
+    <div className={`border-2 ${colors.border} ${colors.bg} rounded-xl p-4 transition-all duration-200 hover:shadow-md`}>
+      <div className="flex items-start justify-between gap-3 mb-2">
+        <h4 className="font-bold text-slate-900 text-sm flex-1 leading-relaxed">
+          {position.topic}
+        </h4>
+        <IntensityIndicator intensity={position.intensity} />
+      </div>
+      
+      <div className="flex items-center justify-between gap-3">
+        <span className={`px-3 py-1 rounded-lg text-xs font-bold ${colors.bg} ${colors.text} border ${colors.border}`}>
+          {position.stance}
+        </span>
+        
         {hasQuotes && (
           <button
             onClick={() => setExpanded(!expanded)}
-            className="text-slate-500 hover:text-slate-700 text-xs"
+            className="text-blue-600 hover:text-blue-700 text-xs font-semibold flex items-center gap-1 transition-colors"
           >
-            {expanded ? '▲ Less' : '▼ More'}
+            {expanded ? 'Hide' : 'Show'} Quotes
+            <svg 
+              className={`w-4 h-4 transition-transform ${expanded ? 'rotate-180' : ''}`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            </svg>
           </button>
         )}
       </div>
       
       {expanded && hasQuotes && (
-        <div className="mt-2 pt-2 border-t border-slate-200">
-          <p className="text-xs text-slate-500 mb-1">Supporting evidence:</p>
-          <ul className="text-xs text-slate-600 space-y-1">
-            {position.quotes.slice(0, 3).map((quote, i) => (
-              <li key={i} className="pl-2 border-l-2 border-slate-300">
-                {quote}
-              </li>
-            ))}
+        <div className="mt-4 pt-4 border-t border-slate-200 space-y-2">
+          <p className="text-xs font-bold text-slate-700 uppercase tracking-wide">Quotes & Statements:</p>
+          <ul className="space-y-2">
+            {position.quotes
+              .filter(q => q.trim())
+              .map((quote, idx) => (
+                <li key={idx} className="text-sm text-slate-700 pl-3 border-l-2 border-blue-300 leading-relaxed">
+                  {quote}
+                </li>
+              ))}
           </ul>
         </div>
       )}
@@ -95,44 +165,114 @@ function PositionCard({ position }: { position: Position }) {
   );
 }
 
-export default function CampaignPositions({ bioguideId, positionsData }: CampaignPositionsProps) {
-  const member = positionsData.members.find(m => m.bioguide_id === bioguideId);
-  
-  if (!member) {
-    return null; // No position data for this member
-  }
+// Category section
+function CategorySection({ 
+  category, 
+  positions, 
+  defaultExpanded = false 
+}: { 
+  category: string; 
+  positions: Position[];
+  defaultExpanded?: boolean;
+}) {
+  const [expanded, setExpanded] = useState(defaultExpanded);
 
-  const positions = member.positions || [];
+  return (
+    <div className="border-b border-slate-200 pb-6 last:border-b-0">
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="w-full flex items-center justify-between mb-4 group"
+      >
+        <h3 className="text-xl font-black text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors">
+          {category}
+          <span className="ml-2 text-sm font-normal text-slate-500">({positions.length})</span>
+        </h3>
+        <svg 
+          className={`w-5 h-5 text-slate-400 group-hover:text-blue-600 transition-all ${expanded ? 'rotate-180' : ''}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      
+      {expanded && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {positions.map((position, idx) => (
+            <PositionCard key={idx} position={position} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function CampaignPositions({ bioguideId, memberName, positionsData }: CampaignPositionsProps) {
+  // Load positions data - either from prop or from file
+  const data = positionsData || require('@/data/positions.json');
+  const memberData = data.members.find((m: MemberData) => m.bioguide_id === bioguideId);
   
-  if (positions.length === 0) {
+  if (!memberData || !memberData.positions || memberData.positions.length === 0) {
     return null;
   }
 
-  return (
-    <section className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold text-slate-900">
-          Policy Positions
-        </h2>
-        <a
-          href={member.source_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-blue-600 hover:text-blue-700"
-        >
-          Source: OnTheIssues →
-        </a>
-      </div>
-      
-      <p className="text-sm text-slate-600 mb-4">
-        Based on voting record, public statements, and interest group ratings.
-      </p>
+  // Group positions by category
+  const positionsByCategory = memberData.positions.reduce((acc: Record<string, Position[]>, position: Position) => {
+    const category = categorizePosition(position.topic);
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(position);
+    return acc;
+  }, {});
 
-      <div className="grid md:grid-cols-2 gap-2">
-        {positions.map((position, index) => (
-          <PositionCard key={index} position={position} />
+  // Sort categories by number of positions (descending)
+  const sortedCategories = Object.entries(positionsByCategory)
+    .sort((a, b) => b[1].length - a[1].length);
+
+  return (
+    <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm hover:shadow-xl transition-all duration-300">
+      <div className="mb-6">
+        <h2 className="text-2xl font-black text-slate-900 mb-2 tracking-tight">
+          Campaign Positions
+        </h2>
+        <p className="text-sm text-slate-600">
+          {memberName}'s stated positions on key issues from campaign and public statements
+        </p>
+        <div className="mt-3 flex items-center gap-2 text-xs text-slate-500">
+          <span>📊 {memberData.positions.length} positions tracked</span>
+          <span>•</span>
+          <span>Source: OnTheIssues.org</span>
+        </div>
+      </div>
+
+      <div className="space-y-6">
+        {sortedCategories.map(([category, positions], idx) => (
+          <CategorySection
+            key={category}
+            category={category}
+            positions={positions}
+            defaultExpanded={idx === 0} // First category expanded by default
+          />
         ))}
       </div>
-    </section>
+
+      {memberData.source_url && (
+        <div className="mt-6 pt-6 border-t border-slate-200">
+          <a
+            href={memberData.source_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-700 text-sm font-semibold hover:underline inline-flex items-center gap-1"
+          >
+            View full profile on OnTheIssues.org
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      )}
+    </div>
   );
 }

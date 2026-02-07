@@ -9,6 +9,7 @@ import StockTradesSection from "@/components/StockTradesSection";
 import FinancialDisclosuresSection from "@/components/FinancialDisclosuresSection";
 import CampaignPositions from "@/components/CampaignPositions";
 import keyVotesData from "@/data/key-votes.json";
+import positionsData from "@/data/positions.json";
 
 export function generateStaticParams() {
   return getMembers().map((member) => ({
@@ -221,6 +222,7 @@ export default function RepPage({ params }: { params: { id: string } }) {
             <CampaignPositions 
               bioguideId={member.bioguide_id} 
               memberName={member.full_name}
+              positionsData={positionsData as { members: Array<{ bioguide_id: string; name: string; source: string; source_url: string; last_updated: string; positions: Array<{ topic: string; stance: string; intensity: number; quotes: string[]; votes?: unknown[] }> }> }}
             />
             
             {/* Voting Record (Party Loyalty & Ideology) */}
