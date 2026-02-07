@@ -361,7 +361,7 @@ export default function CampaignPositions({ bioguideId, positionsData, keyVotesD
       source: 'ontheissues',
       source_url: memberData.source_url,
       last_updated: memberData.last_updated,
-      positions: memberData.positions.map(p => ({
+      positions: memberData.positions.map((p: Position) => ({
         ...p,
         stance: p.stance as "Strongly Supports" | "Supports" | "Neutral" | "Opposes" | "Strongly Opposes",
         votes: []
